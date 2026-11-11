@@ -1,0 +1,25 @@
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+
+# Auxiliares do LaTeX
+relatorios/*.aux
+relatorios/*.log
+relatorios/*.out
+relatorios/*.toc
+relatorios/*.fls
+relatorios/*.fdb_latexmk
+
+# Contêm CPF e nome de credores pessoa física; baixar com scripts/coleta_bases.py --temas tce
+dados/originais/4_rastreabilidade_recurso/tce_rs/
+
+# Dados pessoais (nomes de servidores no histórico e CPF de credores): não publicar
+dados/processados/4_rastreabilidade_recurso/empenhos_enchente.csv
+dados/processados/4_rastreabilidade_recurso/contratos_credores_enchente.csv
+
+# Cópias e material fora da entrega
+/data.json
+dados/originais/data (1).json
+entrega_fase2/
+entrega_fase2*.zip
+devolutiva_inct/

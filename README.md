@@ -1,0 +1,40 @@
+# Enchentes em Porto Alegre: dashboard INCT SiMAI
+
+Projeto extensionista da disciplina Coleta, Preparação e Análise de Dados (PUCRS).
+
+**Autor:** João Pedro da Silva Kriger
+
+**Dashboard:** [link público, na versão final]
+
+## Como rodar
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+.venv/bin/python scripts/coleta_bases.py     # baixa as bases externas para dados/originais/
+.venv/bin/python scripts/limpeza_inct.py     # gera o JSON do INCT limpo em formato longo
+.venv/bin/python scripts/obras_por_nivel.py  # obras dentro da mancha do INCT em cada nível (Tela 2)
+.venv/bin/python scripts/cruza_obras_contratos.py  # contrato do TCE-RS por trás do valor das obras de prevenção
+.venv/bin/python scripts/prova_testes_inct.py  # gera relatorios/provas_testes_inct.pdf
+.venv/bin/python scripts/plota_todos_bairros.py  # curvas por bairro, dados originais e limpos
+.venv/bin/python scripts/gera_wireframe.py   # gera relatorios/wireframe_telas.pdf
+```
+
+O arquivo `data.json` do INCT é fornecido pela disciplina e fica em `dados/originais/1_simulacao_inct/`. Os pontos P08 do Copernicus EMSN194 ficam em `dados/originais/comum/copernicus_p08/` e são baixados manualmente, porque o `robots.txt` do site proíbe download automático: o script de coleta indica o link e a pasta.
+
+O notebook de análise exploratória é `notebooks/eda.ipynb`. O relatório de limpeza é compilado com `latexmk -pdf limpeza_dados.tex`, dentro de `relatorios/`.
+
+Os arquivos do TCE-RS não são versionados, porque contêm CPF e nome de credores pessoa física; `coleta_bases.py --temas tce` os baixa. A pasta `devolutiva_inct/` reúne o material enviado ao INCT sobre as inconsistências do `data.json`.
+
+## Estrutura
+
+| Pasta | Conteúdo |
+|---|---|
+| `dados/originais/` | dados como vieram da fonte, por tema |
+| `dados/processados/` | dados limpos e derivados |
+| `scripts/` | coleta, limpeza, gráficos e wireframe |
+| `notebooks/` | análise exploratória |
+| `relatorios/` | relatório de limpeza, provas dos testes, gráficos por bairro e wireframe |
+| `docs/projeto.md` | ideia, decisões, dados e análises |
+
+As fontes de cada arquivo estão em `dados/README.md`.

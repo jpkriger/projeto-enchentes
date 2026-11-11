@@ -1,0 +1,76 @@
+nivel_m,bairro,campo,valor_original,valor_corrigido,regra
+3.1,Arquipélago,affected_buildings,4680,4685,monotonia: máximo acumulado
+3.2,Arquipélago,affected_buildings,4680,4685,monotonia: máximo acumulado
+3.3,Arquipélago,affected_buildings,4680,4685,monotonia: máximo acumulado
+3.4,Arquipélago,affected_buildings,4680,4685,monotonia: máximo acumulado
+3.6,Arquipélago,affected_buildings,4680,4685,monotonia: máximo acumulado
+3.7,Arquipélago,affected_buildings,4680,4685,monotonia: máximo acumulado
+3.8,Arquipélago,affected_buildings,4680,4685,monotonia: máximo acumulado
+3.9,Arquipélago,affected_buildings,4680,4685,monotonia: máximo acumulado
+4.1,Arquipélago,affected_buildings,4674,4685,monotonia: máximo acumulado
+4.2,Arquipélago,affected_buildings,4680,4685,monotonia: máximo acumulado
+4.3,Arquipélago,affected_buildings,4680,4685,monotonia: máximo acumulado
+4.4,Arquipélago,affected_buildings,4680,4685,monotonia: máximo acumulado
+4.6,Arquipélago,affected_buildings,4680,4685,monotonia: máximo acumulado
+4.7,Arquipélago,affected_buildings,4680,4685,monotonia: máximo acumulado
+4.8,Arquipélago,affected_buildings,4680,4685,monotonia: máximo acumulado
+4.9,Arquipélago,affected_buildings,4680,4685,monotonia: máximo acumulado
+5.1,Arquipélago,affected_buildings,4680,4685,monotonia: máximo acumulado
+5.2,Arquipélago,affected_buildings,4680,4685,monotonia: máximo acumulado
+5.4,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+5.5,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+5.6,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+5.7,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+5.8,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+5.9,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+6.0,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+6.1,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+6.2,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+6.3,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+6.4,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+6.5,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+6.6,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+6.7,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+6.8,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+6.9,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+7.0,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+7.1,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+7.2,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+7.3,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+7.4,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+7.5,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+7.6,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+7.7,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+7.8,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+7.9,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+8.0,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+8.1,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+8.2,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+8.3,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+8.4,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+8.5,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+8.6,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+8.7,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+8.8,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+8.9,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+9.0,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+9.1,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+9.2,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+9.3,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+9.4,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+9.5,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+9.6,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+9.7,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+9.8,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+9.9,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+10.0,Arquipélago,affected_buildings,4680,4688,monotonia: máximo acumulado
+9.7,Centro Histórico,affected_buildings,0,2077,zero isolado: interpolação linear
+9.8,Centro Histórico,affected_buildings,0,2103,zero isolado: interpolação linear
+3.0,Espírito Santo,affected_buildings,637,25,bloco inicial incompatível: primeiro valor plausível
+3.1,Espírito Santo,affected_buildings,637,25,bloco inicial incompatível: primeiro valor plausível
+3.2,Espírito Santo,affected_buildings,637,25,bloco inicial incompatível: primeiro valor plausível
+3.3,Espírito Santo,affected_buildings,637,25,bloco inicial incompatível: primeiro valor plausível
+3.4,Espírito Santo,affected_buildings,633,25,bloco inicial incompatível: primeiro valor plausível
+4.7,Espírito Santo,affected_buildings,2101,46,pico isolado: interpolação linear
+8.1,Lageado,affected_buildings,0,109,zero isolado: interpolação linear
+8.8,Rubem Berta,affected_buildings,0,269,zero isolado: interpolação linear
