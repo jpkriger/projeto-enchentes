@@ -24,9 +24,11 @@ python3 -m venv .venv
 
 O arquivo `data.json` do INCT é fornecido pela disciplina e fica em `dados/originais/1_simulacao_inct/`. Os pontos P08 do Copernicus EMSN194 ficam em `dados/originais/comum/copernicus_p08/` e são baixados manualmente, porque o `robots.txt` do site proíbe download automático: o script de coleta indica o link e a pasta.
 
-O notebook de análise exploratória é `notebooks/eda.ipynb`. O relatório de limpeza é compilado com `latexmk -pdf limpeza_dados.tex`, dentro de `relatorios/`.
+O notebook de análise exploratória é `notebooks/eda.ipynb`. Os relatórios são compilados com `latexmk -pdf <arquivo>.tex`, dentro de `relatorios/`.
 
-Os arquivos do TCE-RS não são versionados, porque contêm CPF e nome de credores pessoa física; `coleta_bases.py --temas tce` os baixa. A pasta `devolutiva_inct/` reúne o material enviado ao INCT sobre as inconsistências do `data.json`.
+No Streamlit Community Cloud, o app usa o arquivo principal `app/app.py` e as dependências enxutas de `app/requirements.txt`.
+
+Os arquivos do TCE-RS não são versionados, porque contêm CPF e nome de credores pessoa física; `coleta_bases.py --temas tce` os baixa.
 
 ## Estrutura
 
@@ -34,9 +36,10 @@ Os arquivos do TCE-RS não são versionados, porque contêm CPF e nome de credor
 |---|---|
 | `dados/originais/` | dados como vieram da fonte, por tema |
 | `dados/processados/` | dados limpos e derivados |
-| `scripts/` | coleta, limpeza, gráficos e wireframe |
-| `notebooks/` | análise exploratória |
-| `relatorios/` | relatório de limpeza, provas dos testes, gráficos por bairro e wireframe |
-| `docs/projeto.md` | ideia, decisões, dados e análises |
+| `app/` | dashboard em Streamlit: Tela 1, Tela 2 e página "Sobre os dados" |
+| `scripts/` | coleta, limpeza, preparação dos dados do app, gráficos e wireframe |
+| `notebooks/` | análise exploratória e figuras, incluindo as curvas por bairro |
+| `relatorios/` | base de dados (Fase 1), limpeza (Fase 2), dashboard (Fase 3), provas dos testes e wireframe |
+| `docs/projeto.md` | ideia, decisões, dados e o que eles mostram |
 
 As fontes de cada arquivo estão em `dados/README.md`.
