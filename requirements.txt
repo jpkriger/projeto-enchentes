@@ -1,4 +1,4 @@
-pandas
+pandas>=3.1
 numpy
 geopandas
 pyogrio
@@ -9,5 +9,5 @@ matplotlib
 nbformat
 nbclient
 ipykernel
-streamlit
-plotly
+streamlit>=1.67
+plotly>=7.1

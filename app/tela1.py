@@ -7,7 +7,7 @@ import streamlit as st
 
 import dados
 import estado
-from estilo import (AGUA, CONFIG_PLOTLY, NEUTRO, NEUTRO_CLARO, NIVEL_RECORDE_SIMULADO, RAMPA_AZUL, RECORDE_2024,
+from estilo import (AGUA, CONFIG_PLOTLY, NEUTRO, NIVEL_RECORDE_SIMULADO, RAMPA_AZUL, RECORDE_2024,
                     TINTA_SECUNDARIA, cartao, escopo, fonte, layout_grafico, nivel, niveis, numero, secao, titulo)
 
 FONTE_INCT = ('simulação do <a href="http://vhlab.com.br/INCT/floods/" target="_blank">INCT SiMAI</a> '
@@ -90,7 +90,7 @@ def ranking(no_nivel):
 
 def mostrar():
     limpo = dados.inct_limpo()
-    titulo("Tela 1 · Simulação do INCT", "Escolha o nível do Guaíba e veja o que a simulação do INCT SiMAI prevê para Porto Alegre.")
+    titulo("Tela 1 · Simulação do INCT", "Escolha o nível do Guaíba e veja o que a simulação do INCT SiMAI estima para Porto Alegre.")
     escopo(["Se o Guaíba chegar a X metros, quais bairros e quantas pessoas são afetados?"],
            ["Os 94 bairros de Porto Alegre, com o rio de 3,0 a 10,0 m",
             "Prédios afetados por bairro, segundo a simulação do INCT (prédios do OpenStreetMap)",
@@ -109,6 +109,10 @@ def mostrar():
                   width="stretch", help="O JSON tem passos de 0,1 m: 5,3 m é o nível simulado mais próximo de 5,35 m.")
     valor = round(valor, 1)
     st.markdown(estado_do_nivel(valor), unsafe_allow_html=True)
+    st.markdown('<div class="aviso"><b>Limitações:</b> os números são <b>estimativas de uma simulação</b>, não previsões nem '
+                'contagens reais. A população afetada supõe pessoas distribuídas igualmente entre todos os prédios do bairro, '
+                'e não se sabe se a simulação considera diques e casas de bombas. Mais detalhes no fim da página.</div>',
+                unsafe_allow_html=True)
 
     no_nivel = limpo[limpo["nivel_m"] == valor]
     pessoas = no_nivel["affected_population"].sum()
@@ -152,7 +156,7 @@ def mostrar():
 
     fonte(FONTE_INCT + '. Malha de bairros: <a href="https://gis-smamus.portoalegre.rs.gov.br/server/rest/services/'
           'A02_SOLO_CRIADO/bairros/FeatureServer/0" target="_blank">Prefeitura de Porto Alegre</a>, coletada em 27/10/2026.')
-    with st.expander("Limitações dos dados"):
+    with st.expander("Limitações dos dados", expanded=True):
         st.markdown(
             "- A simulação considera a altura da água; não sabemos se inclui diques, comportas e casas de bombas.\n"
             "- A população afetada é a população do bairro multiplicada pela porcentagem de prédios afetados, "

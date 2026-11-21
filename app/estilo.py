@@ -21,7 +21,6 @@ TINTA_SECUNDARIA = "#52514e"
 NEUTRO = "#8c8b86"          # contexto, referências, itens fora da seleção
 NEUTRO_CLARO = "#e4e3df"
 FUNDO_CARTAO = "#ffffff"
-SUPERFICIE = "#fcfcfb"
 
 RAMPA_AZUL = ["#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#2a78d6", "#1c5cab", "#104281"]
 CORES_CATEGORIA = {"Sistema de proteção": PROTECAO, "Equipamentos públicos": EQUIPAMENTOS}

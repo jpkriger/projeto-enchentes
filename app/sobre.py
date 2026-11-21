@@ -17,6 +17,9 @@ Só as **318 obras de reconstrução** que a Prefeitura monitora desde a enchent
 - **194 de equipamentos públicos:** 137 de esporte e lazer, 20 de assistência social, 18 de saúde, 14 de educação e 5 de cultura;
 - **124 do sistema de proteção contra cheias:** diques, casas de bombas e comportas.
 
+274 têm coordenada e aparecem no mapa. Das 44 sem coordenada, 43 são do sistema de proteção: só 81 das 124 obras de
+proteção estão no mapa.
+
 A situação (concluída, em andamento ou sem informação) é a da obra de reconstrução, como a Prefeitura informa. Habitação,
 transformação urbana e ações de adaptação climática também estão no painel da Prefeitura, mas ficam fora do mapa: na
 habitação, o valor é uma necessidade estimada de reposição, e não o valor de uma obra; nas outras duas, não há localização ou
@@ -25,7 +28,7 @@ valor por obra.
 ### Como usar
 - **Tela 1:** escolha o nível do Guaíba no slider (3,0 a 10,0 m). Indicadores, mapa, barras, curva e ranking mudam juntos.
   O botão *Ir para o recorde de 2024* leva a 5,3 m, o nível simulado mais próximo dos 5,35 m de maio de 2024.
-- **Tela 2:** o mesmo nível vale aqui, limitado a 5,4 m. Use os filtros de tipo e situação da obra e passe o mouse
+- **Tela 2:** o mesmo nível vale aqui, limitado a 5,4 m. Use os filtros de grupo e situação da obra e passe o mouse
   sobre os pontos do mapa para ver cada obra.
 
 ### Fontes
@@ -43,16 +46,17 @@ valor por obra.
   valor plausível ou máximo acumulado, e a porcentagem e a população foram recalculadas. Detalhes em
   `relatorios/limpeza_dados.pdf`.
 - **Investimento exposto:** uma obra é contada quando o seu ponto fica dentro da mancha do INCT, ou a até 50 m dela, naquele
-  nível. O valor somado é o investimento previsto pela Prefeitura para cada obra.
+  nível. O valor somado é o investimento previsto pela Prefeitura para cada obra. Diques, casas de bombas e comportas ficam
+  na beira da água por função, por isso já são alcançados nos níveis baixos e respondem pela maior parte da soma.
 
 ### Limitações
 - Os números da simulação são estimativas, não previsões nem contagens oficiais. A população afetada supõe pessoas
   distribuídas igualmente entre todos os prédios do bairro.
-- Acima de 5,35 m, os níveis são cenários que nunca ocorreram.
+- Acima de 5,35 m, os níveis são cenários que nunca ocorreram. Na Tela 2, as manchas do INCT foram coletadas só até 5,4 m.
 - Os valores das obras são **previstos**, não pagos, e muitos são rateios: o mesmo contrato dividido entre vários projetos.
   Servem como ordem de grandeza, não como custo exato de cada obra.
 - Cada obra é um ponto no mapa; um dique de vários quilômetros aparece como um único lugar. 44 obras não têm coordenada e
-  ficam de fora.
+  ficam de fora, 43 delas do sistema de proteção.
 - Os números exibidos no site do painel da Prefeitura às vezes diferem dos dados abertos que ele publica; este dashboard usa
   os dados abertos.
 
