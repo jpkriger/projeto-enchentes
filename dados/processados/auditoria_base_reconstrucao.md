@@ -73,7 +73,7 @@ Busca automática pelo nome da obra no objeto dos contratos de 2024–2026 (Pref
 | US Fradique Vizeu | R$ 0,89 mi | 92325/2024 e 92458/2024: R$ 0,15 mi no total | Parcial. |
 | EMEB Liberato Salzano | R$ 7,95 mi | nenhum contrato público (obra paga por doação privada) | Esperado. |
 
-**Conclusão:** o valor da base às vezes é compatível com o contrato, às vezes é o valor inicial sem aditivos, e às vezes é valor-padrão sem contrato correspondente. **Ligar obra a contrato com confiança exige conferência manual** no LicitaCon Cidadão (o link está em `processados/4_rastreabilidade_recurso/contratos_credores_enchente.csv`).
+**Conclusão:** o valor da base às vezes é compatível com o contrato, às vezes é o valor inicial sem aditivos, e às vezes é valor-padrão sem contrato correspondente. **Ligar obra a contrato com confiança exige conferência manual** no LicitaCon Cidadão.
 
 ---
 
@@ -94,4 +94,4 @@ Busca automática pelo nome da obra no objeto dos contratos de 2024–2026 (Pref
 1. **No dashboard, não apresentar o valor por obra como preciso.** Mostrar o tipo, o local, a fonte e o status, com o valor rotulado "previsto". Não somar por bairro nem calcular custo por área.
 2. **Para totais, usar o painel financeiro da Prefeitura** (necessidade, solicitado e recebido). O TCE-RS serve para conferir obras específicas, não para totais.
 3. **Para precisão por obra:** ligar manualmente as 20 a 30 maiores obras ao contrato no LicitaCon Cidadão, ou pedir a tabela obra → contrato → valor pago via Lei de Acesso à Informação (Prefeitura e DMAE).
-4. **Registrar as inconsistências acima no relatório de limpeza e na devolutiva à Prefeitura e ao INCT:** valores rateados, conflito de valor e de status entre camadas, aditivos fora da base, ausência de data de atualização por obra e status ausente na habitação.
+4. **Registrar as inconsistências acima no relatório de limpeza:** valores rateados, conflito de valor e de status entre camadas, aditivos fora da base, ausência de data de atualização por obra e status ausente na habitação.

@@ -31,15 +31,10 @@ R = "originais/4_rastreabilidade_recurso"
 CAMADAS = [
     (f"{C}/bairros.geojson", "A02_SOLO_CRIADO/bairros/FeatureServer/0", "geojson", "1=1", "*", 0.0006),
     (f"{C}/cotas_inunda_5_35_limite_muni.geojson", "Hosted/Cotas_inunda_5_35LimiteMuni/FeatureServer/0", "geojson", "1=1", "fid", 0.0004),
-    (f"{C}/cota_inundacao_535.geojson", "01_PUBLICACOES/cota_inundacao_535/FeatureServer/0", "geojson", "1=1", "*", 0.0006),
-    (f"{C}/cotas_inundacao_300_400_535.geojson", "01_PUBLICACOES/cotas_inundacao_300_535/FeatureServer/0", "geojson", "contourmax in (300,400,535)", "contourmax,area_ha", 0.0005),
     (f"{I}/base_reconstrucao_4_prevencao.json", "HUB/base_reconstrucao/FeatureServer/4", "json", "1=1", "*", None),
     (f"{I}/base_reconstrucao_2_infraestrutura_centroid.json", "HUB/base_reconstrucao/FeatureServer/2", "json", "1=1", "*", None),
     (f"{I}/base_reconstrucao_3_infraestrutura.json", "HUB/base_reconstrucao/FeatureServer/3", "json", "1=1", "*", None),
     (f"{I}/hub_habitacao_1_demhab.json", "HUB/hub_habitacao_/FeatureServer/1", "json", "1=1", "*", None),
-    (f"{I}/hub_habitacao_1_demhab.geojson", "HUB/hub_habitacao_/FeatureServer/1", "geojson", "1=1", "*", None),
-    (f"{I}/hub_habitacao_4_demanda_mapeada.json", "HUB/hub_habitacao_/FeatureServer/4", "json", "1=1", "*", None),
-    (f"{I}/hub_habitacao_7_demanda_encaminhada.json", "HUB/hub_habitacao_/FeatureServer/7", "json", "1=1", "*", None),
     (f"{I}/hub_base_financeiro_1.json", "HUB/hub_base_financeiro/FeatureServer/1", "json", "1=1", "*", None),
     (f"{I}/hub_base_financeiro_2_recursos.json", "HUB/hub_base_financeiro/FeatureServer/2", "json", "1=1", "*", None),
 ]
