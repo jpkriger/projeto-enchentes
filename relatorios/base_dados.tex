@@ -1,0 +1,124 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\setlength{\parskip}{0.6em}
+\setlength{\parindent}{0pt}
+\newcommand{\campo}[1]{\texttt{#1}}
+
+\title{\textbf{Levantamento das bases de dados}\\[0.3em]\large Projeto Extensionista: análise de dados de enchentes do INCT SiMAI\\Coleta, Preparação e Análise de Dados (Fase 1)}
+\author{Autor: João Pedro da Silva Kriger}
+\date{21 de novembro de 2026}
+
+\begin{document}
+\maketitle
+
+\section{Objetivo}
+
+Este relatório descreve as bases sobre enchentes no Rio Grande do Sul levantadas para o projeto: de onde vêm, o que trazem, que recorte de espaço e tempo cobrem, em que formato estão, como foram coletadas, sob que condições podem ser usadas e como se ligam aos dados do INCT SiMAI. No fim, justifica a escolha das bases da Tela 2 e da pergunta que ela responde.
+
+O levantamento começou em 27/10/2026. Esta versão é a reentrega da Fase 1 e descreve as bases que de fato ficaram no projeto; as que foram avaliadas e descartadas estão na seção~\ref{sec:descartadas}. A origem de cada arquivo também está em \campo{dados/README.md}, no repositório.
+
+\section{Simulação do INCT SiMAI}
+
+\textbf{Origem.} Instituto Nacional de Ciência e Tecnologia SiMAI, que publica o resultado na página \href{http://vhlab.com.br/INCT/floods/}{Flood -- INCT SiMAI}.
+
+\textbf{Conteúdo.} O arquivo \campo{data.json} traz, para cada nível do Guaíba, os 94 bairros de Porto Alegre com cinco campos: total de prédios (OpenStreetMap), prédios atingidos (simulação), porcentagem de prédios atingidos, população do bairro (Censo IBGE 2022) e população afetada estimada. Além dele, foram coletadas as manchas simuladas, ou seja, a área que a simulação indica como alagada em cada nível.
+
+\textbf{Recorte.} Município de Porto Alegre. Níveis de 3,0 a 10,0 m em passos de 0,1 m (71 níveis, 6.674 registros); as manchas foram coletadas de 3,0 a 5,4 m (25 níveis). Não há dimensão de tempo: é um cenário por nível do rio.
+
+\textbf{Formato.} JSON aninhado (nível, bairro, campos). As manchas são polígonos em JSON.
+
+\textbf{Coleta.} O \campo{data.json} foi fornecido pela disciplina em 27/10/2026. As manchas vêm da mesma API usada pelo site do INCT (\campo{POST http://vhlab.lad.pucrs.br:5002/api/map-data}), coletadas por código em 10/11/2026 com \campo{scripts/coleta\_bases.py --temas inct}. A API não tem \campo{robots.txt}, e o script faz pausas entre as requisições.
+
+\textbf{Licença.} Material cedido para fins acadêmicos no projeto; o uso cita o INCT SiMAI como fonte.
+
+\textbf{Ligação com o INCT.} É a própria simulação: o JSON é a única base da Tela 1, e as manchas ligam a Tela 2 ao mesmo nível do rio.
+
+\section{Malha oficial de bairros (Prefeitura de Porto Alegre)}
+
+\textbf{Origem.} Unidade de Monitoramento do Desenvolvimento Urbano, Secretaria Municipal de Urbanismo, no servidor ArcGIS da Prefeitura (camada \campo{A02\_SOLO\_CRIADO/bairros}), a mesma publicada no ObservaPOA.
+
+\textbf{Conteúdo.} Os limites dos 94 bairros definidos pela Lei Municipal 12.112/2016.
+
+\textbf{Recorte.} Município de Porto Alegre; limites vigentes desde 2016.
+
+\textbf{Formato.} GeoJSON, em versão simplificada para exibição.
+
+\textbf{Coleta.} Por código, pela API REST do ArcGIS, em 27/10/2026 (\campo{scripts/coleta\_bases.py --temas arcgis}). O servidor não tem \campo{robots.txt}; o script faz pausas.
+
+\textbf{Licença.} Dado aberto publicado pela Prefeitura, sem licença explícita na camada; o uso cita a fonte.
+
+\textbf{Ligação com o INCT.} Pelo nome do bairro. Dois nomes são escritos de forma diferente nas duas fontes, e a equivalência ficou na coluna \campo{bairro\_malha} do dado limpo. A malha é usada só para desenhar o mapa da Tela 1 e as divisas na Tela 2.
+
+\section{Monitoramento da Reconstrução (Prefeitura de Porto Alegre)}
+
+\textbf{Origem.} Dados abertos do painel \href{https://prefeitura.poa.br/monitoramento-reconstrucao}{Monitoramento da Reconstrução}, publicados no servidor ArcGIS da Prefeitura (serviços \campo{HUB/base\_reconstrucao}, \campo{HUB/hub\_habitacao\_} e \campo{HUB/hub\_base\_financeiro}).
+
+\textbf{Conteúdo.} As 318 obras de reconstrução que a Prefeitura monitora desde a enchente de 2024 (194 de equipamentos públicos e 124 do sistema de proteção contra cheias), com tipo, bairro, coordenada, valor previsto, fonte do recurso e situação; as 570 etapas das obras do sistema de proteção, com contratos e empresas; as 120 áreas de habitação do DEMHAB, com a necessidade estimada de reposição; e o painel financeiro, com a necessidade estimada, os valores solicitados à União e recebidos, e os recursos aplicados por origem.
+
+\textbf{Recorte.} Município de Porto Alegre, obras e recursos posteriores à enchente de maio de 2024. Os registros são de 17/09/2026; a base não informa a data de cada situação de obra.
+
+\textbf{Formato.} JSON da API do ArcGIS (atributos e geometria).
+
+\textbf{Coleta.} Por código, pela API REST do ArcGIS, em 27/10/2026, com conferência em 09/11/2026 de que o número de registros é igual ao da fonte.
+
+\textbf{Licença.} Dado aberto publicado pela Prefeitura, sem licença explícita nas camadas; o uso cita o painel e a data dos registros.
+
+\textbf{Ligação com o INCT.} Pela localização: cada obra com coordenada é cruzada com a mancha do INCT em cada nível do rio, e pelo bairro.
+
+\section{Contratos e empenhos (TCE-RS)}
+
+\textbf{Origem.} \href{https://dados.tce.rs.gov.br}{Portal de dados abertos do Tribunal de Contas do Estado do RS}.
+
+\textbf{Conteúdo.} Licitações, contratos (com aditivos) e empenhos da Prefeitura (código 54900) e do DMAE (54907).
+
+\textbf{Recorte.} Porto Alegre, anos de 2024 e 2025.
+
+\textbf{Formato.} CSV compactado em ZIP.
+
+\textbf{Coleta.} Por código, só por URLs diretas de download e com 10 segundos entre acessos, porque o \campo{robots.txt} do portal proíbe o caminho \campo{/api/} e pede esse intervalo (\campo{scripts/coleta\_bases.py --temas tce}).
+
+\textbf{Licença e cuidado.} Dados abertos do TCE-RS, sem licença explícita nos conjuntos consultados; o uso cita a fonte. Os arquivos contêm CPF e nome de credores pessoa física, por isso não são versionados no repositório e nenhum nome de pessoa física é publicado.
+
+\textbf{Ligação com o INCT.} Indireta: serve para tentar ligar obras do sistema de proteção aos seus contratos. Não é usada para totais, porque não existe um marcador oficial que identifique toda a despesa da enchente.
+
+\section{Prédios atingidos em 2024 (Copernicus EMSN194)}
+
+\textbf{Origem.} \href{https://riskandrecovery.emergency.copernicus.eu/EMSN194/}{Copernicus Emergency Management Service}, ativação EMSN194, produto P08.
+
+\textbf{Conteúdo.} 119.626 prédios e instalações marcados como atingidos por intérpretes em imagens de 0,5 m, dos quais 42,6 mil em Porto Alegre.
+
+\textbf{Recorte.} Áreas de interesse 02, 03 e 04 da ativação, que cobrem só parte da cidade; imagens de maio de 2024.
+
+\textbf{Formato.} GeoJSON de pontos.
+
+\textbf{Coleta.} Manual, porque o \campo{robots.txt} do site proíbe o caminho \campo{/download/}. O script de coleta indica o link e a pasta. Baixado em 04/11/2026.
+
+\textbf{Licença.} Uso livre com a citação ``© European Union, Copernicus Emergency Management Service''.
+
+\textbf{Ligação com o INCT.} Pela enchente de 2024: os pontos aparecem como camada opcional no mapa da Tela 2, para comparar a área simulada com os locais atingidos de verdade.
+
+\section{Bases avaliadas e descartadas}
+\label{sec:descartadas}
+
+Foram avaliadas e retiradas: a mancha observada do IPH/UFRGS e os domicílios do Censo, para validar a mancha do INCT, porque não existe uma fonte da verdade para a extensão da enchente; o nível do Guaíba da ANA e as áreas das casas de bombas, para estudar falhas do sistema de proteção, retiradas para manter o foco; a fila do SUS (GERCON), que só tinha consultas com especialista; e as empresas sancionadas, CNPJ e licitações do Dados Abertos POA, que serviam a uma busca de pontos de atenção em contratos que deixou de ser o foco. Os dados dessas análises foram apagados.
+
+\section{Escolha das bases e da pergunta da Tela 2}
+
+O enunciado pede que a Tela 2 mostre o que outras bases acrescentam à resposta da Tela 1. A Tela 1 diz quem a água alcança; a pergunta escolhida para a Tela 2 é: \textbf{se o rio subir, quais obras da reconstrução ficam na área alcançada pela água, e quanto está previsto nelas?}
+
+A base central é o Monitoramento da Reconstrução da Prefeitura, por três motivos. Ela é oficial, aberta e obtida por código. Ela tem coordenada por obra, o que permite cruzar com a mancha do INCT nível a nível, a mesma ligação que a Tela 1 usa. E a pergunta tem uso prático para o parceiro e para a população: mostra quanto da verba da reconstrução está em lugares que alagam, e quantos equipamentos públicos, como unidades de saúde, escolas e centros esportivos, ficam expostos já em cheias menores que a de 2024. A soma dos valores dessas obras é chamada de \textbf{investimento exposto}; não é custo de dano.
+
+O painel financeiro da mesma fonte dá o contexto da cidade inteira: quanto a Prefeitura estima precisar, quanto pediu à União e quanto recebeu. O Copernicus entra como referência da enchente real, e o TCE-RS só para ligar obras específicas aos seus contratos.
+
+\section{Uso de ferramenta de IA}
+
+O assistente Claude Code (Anthropic) foi utilizado no levantamento e na coleta das bases, na verificação do \campo{robots.txt} e das licenças e na redação deste relatório. As escolhas e as conclusões são do autor, que conferiu as fontes.
+
+\end{document}

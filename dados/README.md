@@ -38,7 +38,7 @@ Os [dados abertos do TCE-RS](https://dados.tce.rs.gov.br) (licitações, contrat
 
 ## Licenças
 
-Os dados da Prefeitura de Porto Alegre e do TCE-RS são dados abertos publicados pelos próprios órgãos para livre reutilização, com citação da fonte. Os produtos do Copernicus EMS são de uso livre com a citação "© European Union, Copernicus Emergency Management Service". O `data.json` e as manchas do INCT SiMAI são usados para fins acadêmicos, citando o INCT como fonte.
+Os dados da Prefeitura de Porto Alegre e do TCE-RS são publicados como dados abertos pelos próprios órgãos, sem licença explícita nas camadas e conjuntos consultados; o uso cita a fonte e a data. Os produtos do Copernicus EMS são de uso livre com a citação "© European Union, Copernicus Emergency Management Service". O `data.json` e as manchas do INCT SiMAI são usados para fins acadêmicos, citando o INCT como fonte.
 
 ## Coleta responsável
 
