@@ -1,0 +1,275 @@
+obra,categoria,tipo,situacao,bairro,valor_previsto,lat,lon,nivel_alcance
+EMEF MIGRANTES,Equipamentos públicos,Educação,Concluída,ANCHIETA,935861.03,-29.98668032,-51.15779108,3.0
+EMEB DR. LIBERATO SALZANO VIEIRA DA CUNHA,Equipamentos públicos,Educação,Concluída,SARANDI,7950000.0,-29.99414422,-51.13325103,
+EMEI JARDIM DE PRAÇA PASSARINHO DOURADO,Equipamentos públicos,Educação,Concluída,SÃO GERALDO,298484.48,-30.01106122,-51.19584589,4.8
+EMEI JARDIM DE PRAÇA MEU AMIGUINHO,Equipamentos públicos,Educação,Concluída,FLORESTA,427981.55,-30.02065236,-51.21029265,4.0
+COMPORTA 11,Sistema de proteção,Sistema de proteção,Em andamento,SÃO GERALDO,2771833.33333333,-30.00764307,-51.21015182,3.0
+COMPORTA 12,Sistema de proteção,Sistema de proteção,Em andamento,NAVEGANTES,2771833.33333333,-30.00228098,-51.20809698,3.0
+COMPORTA 13,Sistema de proteção,Sistema de proteção,Concluída,NAVEGANTES,797568.35714286,-29.99898646,-51.20696056,3.2
+COMPORTA 14,Sistema de proteção,Sistema de proteção,Concluída,NAVEGANTES,2771833.33333333,-29.99803754,-51.20667078,3.1
+EMEF PORTO ALEGRE,Equipamentos públicos,Educação,Concluída,CENTRO HISTÓRICO,344186.47,-30.03654911,-51.2394237,3.6
+EMEI JARDIM DE PRAÇA CANTINHO AMIGO,Equipamentos públicos,Educação,Concluída,AZENHA,312219.61,-30.04417905,-51.21946848,4.3
+MURO DA MAUÁ,Sistema de proteção,Sistema de proteção,Concluída,CENTRO HISTÓRICO,3300000.0,-30.02810086,-51.23208906,3.0
+EMEI JARDIM DE PRAÇA PATINHO FEIO,Equipamentos públicos,Educação,Concluída,SÃO GERALDO,459295.19,-30.00526108,-51.20146623,4.0
+EMEI MUNICIPÁRIOS TIO BARNABÉ,Equipamentos públicos,Educação,Concluída,AZENHA,522201.63,-30.04641669,-51.21561892,4.8
+EMEI HUMAITÁ,Equipamentos públicos,Educação,Concluída,HUMAITÁ,317381.46,-29.98056908,-51.18566548,3.2
+US ASA BRANCA (unidade nova),Equipamentos públicos,Saúde,Sem situação informada,SARANDI,3000000.0,-29.9841548,-51.12115379,3.6
+EMEI VILA ELIZABETH,Equipamentos públicos,Educação,Concluída,SARANDI,760374.22,-29.98009271,-51.12711231,3.0
+EMEI MIGUEL GRANATO VELASQUEZ,Equipamentos públicos,Educação,Concluída,SARANDI,444125.23,-29.98246354,-51.12385183,3.0
+EMEF VER. ANTONIO GIUDICE,Equipamentos públicos,Educação,Concluída,HUMAITÁ,1000000.0,-29.98064718,-51.18607387,3.2
+EMEI ILHA DA PINTADA,Equipamentos públicos,Educação,Concluída,ARQUIPÉLAGO,477820.84,-30.01682708,-51.2602812,3.0
+EMEF PRES. JOÃO BELCHIOR MARQUES GOULART,Equipamentos públicos,Educação,Concluída,SARANDI,1734316.54,-29.97928646,-51.12655901,3.0
+US MARIO QUINTANA,Equipamentos públicos,Saúde,Concluída,FARRAPOS,719409.66,-29.9767363,-51.19776791,3.0
+US ILHA DA PINTADA,Equipamentos públicos,Saúde,Concluída,ARQUIPÉLAGO,5326268.0,-30.02789624,-51.25387497,3.0
+US NOVA BRASÍLIA,Equipamentos públicos,Saúde,Concluída,SARANDI,1089538.0,-29.9824794,-51.1346625,3.0
+US FRADIQUE VIZEU,Equipamentos públicos,Saúde,Concluída,FARRAPOS,889101.47,-29.98405093,-51.19795458,3.0
+US SARANDI,Equipamentos públicos,Saúde,Concluída,SARANDI,807967.69,-29.99499139,-51.13403411,5.4
+US FARRAPOS,Equipamentos públicos,Saúde,Concluída,FARRAPOS,1037828.58,-29.97961181,-51.19452054,3.0
+US ILHA DOS MARINHEIROS,Equipamentos públicos,Saúde,Sem situação informada,ARQUIPÉLAGO,5326268.0,-29.99336088,-51.22491047,3.0
+CF NAVEGANTES,Equipamentos públicos,Saúde,Concluída,NAVEGANTES,1233969.44,-30.00007201,-51.2002289,3.6
+CF DIRETOR PESTANA,Equipamentos públicos,Saúde,Concluída,HUMAITÁ,359137.77,-29.99291487,-51.19374278,3.3
+US ASA BRANCA (unidade atual),Equipamentos públicos,Saúde,Concluída,SARANDI,138491.68,-29.98416297,-51.121153,3.6
+"US VILA ELIZABETH - 745647,64",Equipamentos públicos,Saúde,Concluída,SARANDI,564967.0,-29.98009039,-51.12666767,3.0
+US ILHA DO PAVÃO,Equipamentos públicos,Saúde,Sem situação informada,ARQUIPÉLAGO,5326268.0,-29.99382036,-51.22184563,3.0
+US MORRO DOS SARGENTOS,Equipamentos públicos,Saúde,Concluída,SERRARIA,66256.2,-30.16313276,-51.22755806,3.0
+CS SANTA MARTA,Equipamentos públicos,Saúde,Concluída,CENTRO HISTÓRICO,500530.97,-30.02848884,-51.23255526,3.3
+SEDE VIGILÂNCIA SANITÁRIA,Equipamentos públicos,Saúde,Concluída,MENINO DEUS,208822.25,-30.06297299,-51.23107912,3.8
+BASE DO SAMU NAVEGANTES,Equipamentos públicos,Saúde,Concluída,FARRAPOS,24385.65,-29.98381408,-51.19786268,3.0
+"CRAS CENTRO - 496573,92",Equipamentos públicos,Assistência Social,Concluída,MENINO DEUS,497022.55,-30.04467703,-51.22048791,3.9
+CRAS ILHAS,Equipamentos públicos,Assistência Social,Sem situação informada,ARQUIPÉLAGO,2500000.0,-30.01441466,-51.25993435,3.0
+CRAS VILA FARRAPOS,Equipamentos públicos,Assistência Social,Sem situação informada,FARRAPOS,2500000.0,-29.9796679,-51.19727245,3.0
+CRAS NORTE / CREAS NORTE (CECOVE),Equipamentos públicos,Assistência Social,Sem situação informada,SARANDI,1732250.45,-29.97977111,-51.12708096,3.0
+CRAS GLORIA (NOVA SEDE),Equipamentos públicos,Assistência Social,Em andamento,MEDIANEIRA,2377777.77,-30.06841176,-51.20825009,
+PRAÇA ENGENHEIRO RUY MEDEIROS,Equipamentos públicos,Esporte e Lazer,Sem situação informada,BELÉM NOVO,1000000.0,-30.21285803,-51.173535,3.8
+COMPORTA 01,Sistema de proteção,Sistema de proteção,Concluída,CENTRO HISTÓRICO,435000.0,-30.03347868,-51.24051043,3.0
+PRAÇA PINHEIRO MACHADO,Equipamentos públicos,Esporte e Lazer,Concluída,SÃO GERALDO,70693.95,-30.00563917,-51.2014818,4.0
+PRAÇA OLIVEIRA ROLIM,Equipamentos públicos,Esporte e Lazer,Concluída,SARANDI,50133.98,-29.9864426,-51.13376215,4.5
+PRAÇA SUELY SÓ DE CASTRO,Equipamentos públicos,Esporte e Lazer,Concluída,CRISTAL,10089.2546,-30.08240445,-51.24746475,3.0
+PRAÇA LUPICÍNIO RODRIGUES,Equipamentos públicos,Esporte e Lazer,Concluída,MENINO DEUS,40000.0,-30.04645851,-51.22005014,3.9
+PRAÇA GARIBALDI,Equipamentos públicos,Esporte e Lazer,Concluída,AZENHA,40000.0,-30.04391511,-51.21992025,3.9
+CRAS GLORIA (SEDE ATUAL),Equipamentos públicos,Assistência Social,Sem situação informada,MEDIANEIRA,296750.25,-30.0682918,-51.2078082,
+PRAÇA DA LAMPADOSA,Equipamentos públicos,Esporte e Lazer,Concluída,SARANDI,172249.08,-29.98618129,-51.12913061,4.3
+"PRAÇA ISABEL, A CATÓLICA",Equipamentos públicos,Esporte e Lazer,Concluída,PRAIA DE BELAS,60080.83,-30.04206302,-51.2282808,4.0
+PRAÇA BRIGADEIRO SAMPAIO,Equipamentos públicos,Esporte e Lazer,Concluída,CENTRO HISTÓRICO,54740.06,-30.03224287,-51.23848919,3.0
+PRAÇA DR SALOMÃO PIRES ABRAHÃO,Equipamentos públicos,Esporte e Lazer,Concluída,ARQUIPÉLAGO,40000.0,-30.014369,-51.2594183,3.0
+LARGO DOM VICENTE SCHERER,Equipamentos públicos,Esporte e Lazer,Concluída,CRISTAL,57375.8943,-30.07464188,-51.24318524,3.0
+PRAÇA QUINZE DE NOVEMBRO,Equipamentos públicos,Esporte e Lazer,Concluída,CENTRO HISTÓRICO,682613.05,-30.02835383,-51.22719599,5.0
+PRAÇA DOS AÇORIANOS,Equipamentos públicos,Esporte e Lazer,Concluída,PRAIA DE BELAS,449845.09,-30.03865194,-51.22881676,3.3
+RESERVA BIOLÓGICA DO LAMI JOSÉ LUTZENBERGER,Equipamentos públicos,Esporte e Lazer,Concluída,LAMI,225848.54,-30.24453175,-51.10377229,3.0
+PRAÇA JÚLIO MESQUITA,Equipamentos públicos,Esporte e Lazer,Concluída,CENTRO HISTÓRICO,60901.92,-30.03490279,-51.24031801,3.9
+PRAÇA INÁCIO ANTÔNIO DA SILVA,Equipamentos públicos,Esporte e Lazer,Concluída,BELÉM NOVO,36786.05966667,-30.21181968,-51.18332616,3.4
+PRAÇA DA ALFÂNDEGA,Equipamentos públicos,Esporte e Lazer,Concluída,CENTRO HISTÓRICO,117077.23,-30.02968791,-51.23109216,
+PRAÇA SARGENTO LUCIO UBIRAJARA DE FREITAS MUNHOS E TENENTE DEROCI DE ALMEIDA DA COSTA,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,40000.0,-29.97982495,-51.19607329,3.0
+CALÇADÃO DE IPANEMA,Equipamentos públicos,Esporte e Lazer,Concluída,IPANEMA,12609734.82,-30.13967353,-51.22917705,
+PARQUE MARECHAL MASCARENHAS DE MORAES,Equipamentos públicos,Esporte e Lazer,Concluída,HUMAITÁ,299594.16,-29.98371343,-51.18908647,3.2
+PRAÇA PARQUE ZENO SIMON,Equipamentos públicos,Esporte e Lazer,Concluída,GUARUJÁ,124118.9145,-30.15422309,-51.22537387,3.0
+PARQUE ORLA JAIME LERNER (TRECHO 3),Equipamentos públicos,Esporte e Lazer,Concluída,PRAIA DE BELAS,6504188.59,-30.05335828,-51.23352392,3.0
+PARQUE MARINHA DO BRASIL,Equipamentos públicos,Esporte e Lazer,Concluída,PRAIA DE BELAS,260180.6,-30.05717201,-51.23241582,3.1
+PARQUE ORLA MOACYR SCLIAR (TRECHO 1),Equipamentos públicos,Esporte e Lazer,Em andamento,PRAIA DE BELAS,12038448.38,-30.03881324,-51.24041695,3.0
+CALÇADÃO LAMI,Equipamentos públicos,Esporte e Lazer,Em andamento,LAMI,7315258.15,-30.24105163,-51.08727066,3.0
+CONSELHO TUTELAR MICRORREGIÃO 2,Equipamentos públicos,Assistência Social,Concluída,SARANDI,84317.01,-29.97977111,-51.12708096,3.0
+CONSELHO TUTELAR MICRORREGIÃO 1 (SEDE ATUAL),Equipamentos públicos,Assistência Social,Concluída,SÃO GERALDO,50000.0,-30.00631429,-51.20311696,3.9
+CONSELHO TUTELAR MICRORREGIÃO 1 (SEDE FUTURA),Equipamentos públicos,Assistência Social,Sem situação informada,SÃO GERALDO,660000.0,-30.00563917,-51.2014818,4.0
+SINE MUNICIPAL,Equipamentos públicos,Assistência Social,Concluída,CENTRO HISTÓRICO,1250000.0,-30.02817279,-51.2321217,3.6
+DIQUE SARANDI,Sistema de proteção,Sistema de proteção,Concluída,SARANDI,152438515.673333,-29.98294796,-51.13699099,3.0
+EBE BARROS CASSAL,Sistema de proteção,Sistema de proteção,Sem situação informada,FLORESTA,65866.17142857,-30.02580499,-51.2175045,3.8
+EBE PONTA GROSSA II,Sistema de proteção,Sistema de proteção,Sem situação informada,PONTA GROSSA,65866.17142857,-30.1874069,-51.18835121,4.0
+EBE BARONESA DO GRAVATAÍ,Sistema de proteção,Sistema de proteção,Sem situação informada,MENINO DEUS,65866.17142857,-30.0474664,-51.22616052,3.8
+EBE ASA BRANCA,Sistema de proteção,Sistema de proteção,Sem situação informada,SARANDI,65866.17142857,-29.9799803,-51.12285548,3.0
+EBE DO BOSQUE,Sistema de proteção,Sistema de proteção,Sem situação informada,SANTA ROSA DE LIMA,65866.17142857,-29.98834448,-51.09014888,3.9
+ETE DO BOSQUE,Sistema de proteção,Sistema de proteção,Sem situação informada,SANTA ROSA DE LIMA,0.0,-29.98834448,-51.09014888,3.9
+ETE SARANDI,Sistema de proteção,Sistema de proteção,Sem situação informada,SARANDI,7520000.0,-29.96952922,-51.13734495,3.0
+EBE SÃO JOÃO NAVEGANTES,Sistema de proteção,Sistema de proteção,Sem situação informada,HUMAITÁ,65866.17142857,-29.99119133,-51.19344713,3.3
+ETE SÃO JOÃO NAVEGANTES,Sistema de proteção,Sistema de proteção,Em andamento,FARRAPOS,0.0,-29.99119133,-51.19344713,3.3
+EBE AS SISTEMA RESTINGA,Sistema de proteção,Sistema de proteção,Sem situação informada,HÍPICA,65866.17142857,-30.16836371,-51.1933456,3.6
+EBE GASPAR MARTINS,Sistema de proteção,Sistema de proteção,Sem situação informada,FLORESTA,65866.17142857,-30.02171004,-51.21113918,4.0
+EBE LAMI,Sistema de proteção,Sistema de proteção,Sem situação informada,LAMI,65866.17142857,-30.24101565,-51.0863159,3.0
+EBE MARINO BARCELOS,Sistema de proteção,Sistema de proteção,Sem situação informada,LAMI,65866.17142857,-30.23692919,-51.08071496,3.0
+EBE PADRE VOGEL,Sistema de proteção,Sistema de proteção,Sem situação informada,FARRAPOS,65866.17142857,-29.98607143,-51.19813154,3.0
+EBE PONTA DA CADEIA,Sistema de proteção,Sistema de proteção,Sem situação informada,CENTRO HISTÓRICO,65866.17142857,-30.03624496,-51.24003795,3.0
+EBE PONTA GROSSA I,Sistema de proteção,Sistema de proteção,Sem situação informada,PONTA GROSSA,65866.17142857,-30.18132342,-51.18865129,4.2
+EBE SARANDI,Sistema de proteção,Sistema de proteção,Sem situação informada,SARANDI,65866.17142857,-29.97100099,-51.13731726,3.0
+EBE 1 - BELÉM NOVO,Sistema de proteção,Sistema de proteção,Sem situação informada,BELÉM NOVO,65866.17142857,-30.2105648,-51.18760217,3.0
+EBE 2 - BELÉM NOVO (poço),Sistema de proteção,Sistema de proteção,Sem situação informada,BELÉM NOVO,65866.17142857,-30.21654509,-51.1723004,3.1
+EBE 1S,Sistema de proteção,Sistema de proteção,Sem situação informada,VILA ASSUNÇÃO,65866.17142857,-30.10591173,-51.26135535,3.0
+EBE 2S,Sistema de proteção,Sistema de proteção,Sem situação informada,TRISTEZA,65866.17142857,-30.11398194,-51.25924688,3.0
+EBE 3S,Sistema de proteção,Sistema de proteção,Sem situação informada,PEDRA REDONDA,65866.17142857,-30.12473372,-51.24744908,3.0
+EBE 4S,Sistema de proteção,Sistema de proteção,Sem situação informada,ESPÍRITO SANTO,65866.17142857,-30.1474807,-51.22459516,3.0
+EBE 5S,Sistema de proteção,Sistema de proteção,Sem situação informada,GUARUJÁ,65866.17142857,-30.15897934,-51.22624743,3.0
+EBAP 01 - RODOVIÁRIA,Sistema de proteção,Sistema de proteção,Sem situação informada,FLORESTA,12148528.842,-30.01913538,-51.21595155,3.3
+EBAP 18 - CENTRO,Sistema de proteção,Sistema de proteção,Sem situação informada,CENTRO HISTÓRICO,11395995.817,-30.0244589,-51.22333904,3.0
+EBAP 17 - MAUÁ,Sistema de proteção,Sistema de proteção,Sem situação informada,CENTRO HISTÓRICO,11395995.817,-30.03031195,-51.23669262,3.0
+EBAP 16 - RÓTULA DAS CUIAS,Sistema de proteção,Sistema de proteção,Sem situação informada,PRAIA DE BELAS,12148528.842,-30.04320272,-51.23249065,3.2
+EBAP 15 - ÉRICO VERÍSSIMO,Sistema de proteção,Sistema de proteção,Sem situação informada,MENINO DEUS,12148528.842,-30.04782025,-51.21941961,3.9
+EBAP 14 - POLÍCIA FEDERAL,Sistema de proteção,Sistema de proteção,Sem situação informada,AZENHA,12148528.842,-30.04815562,-51.21521703,4.3
+EBAP 13 - PARQUE MARINHA,Sistema de proteção,Sistema de proteção,Sem situação informada,PRAIA DE BELAS,12148528.842,-30.0546073,-51.23202309,3.9
+EBAP 12 - PARQUE GIGANTE,Sistema de proteção,Sistema de proteção,Sem situação informada,PRAIA DE BELAS,13502327.062,-30.06143154,-51.23603099,3.4
+EBAP 10 - ABÍLIO FERNANDES,Sistema de proteção,Sistema de proteção,Sem situação informada,SARANDI,12148528.842,-29.97807781,-51.13782788,3.0
+EBAP 09 - SARANDI,Sistema de proteção,Sistema de proteção,Sem situação informada,SARANDI,12148528.842,-29.96808896,-51.13863996,3.0
+EBAP 08 - VILA FARRAPOS,Sistema de proteção,Sistema de proteção,Sem situação informada,FARRAPOS,3122201.772,-29.98265168,-51.19752085,3.0
+EBAP 07 - SILVIO BRUM,Sistema de proteção,Sistema de proteção,Sem situação informada,JARDIM SÃO PEDRO,122201.772,-30.00277191,-51.17185045,4.9
+EBAP 06 - TREVO,Sistema de proteção,Sistema de proteção,Sem situação informada,ANCHIETA,12148528.842,-29.96976547,-51.17565446,3.2
+EBAP 05 - ADELINO MACHADO DE SOUZA,Sistema de proteção,Sistema de proteção,Sem situação informada,FARRAPOS,12148528.842,-29.98192471,-51.20118519,3.0
+EBAP 04 - PARQUE NÁUTICO,Sistema de proteção,Sistema de proteção,Sem situação informada,NAVEGANTES,12148528.842,-30.00206114,-51.20769141,3.7
+EBAP 03 - SÃO PEDRO,Sistema de proteção,Sistema de proteção,Sem situação informada,SÃO GERALDO,12148528.842,-30.0086675,-51.21034164,3.0
+EBAP 02 - SÃO JOÃO,Sistema de proteção,Sistema de proteção,Sem situação informada,FLORESTA,12148528.842,-30.01606447,-51.21436131,3.5
+EBAP 20 - VILA MINUANO,Sistema de proteção,Sistema de proteção,Sem situação informada,SARANDI,13368885.252,-29.99067929,-51.13964405,3.5
+EBAP 21 - ASA BRANCA,Sistema de proteção,Sistema de proteção,Sem situação informada,SARANDI,3122201.772,-29.97808802,-51.12237956,3.0
+EBAP 22 - TRINCHEIRA DA CEARÁ,Sistema de proteção,Sistema de proteção,Sem situação informada,SÃO JOÃO,122201.772,-29.99622538,-51.18952923,3.5
+RECONSTRUÇÃO DA EBAB MOINHO DE VENTO,Sistema de proteção,Sistema de proteção,Sem situação informada,FLORESTA,316030.91,-30.01537588,-51.21283555,3.3
+GERÊNCIA DE ARRECADAÇÃO (GARE),Sistema de proteção,Sistema de proteção,Sem situação informada,CIDADE BAIXA,,-30.03930638,-51.22762143,3.3
+ABRIGO MARLENE,Equipamentos públicos,Assistência Social,Concluída,MENINO DEUS,662757.33,-30.04476566,-51.2207527,3.9
+SEDE ADMINISTRATIVA,Equipamentos públicos,Assistência Social,Sem situação informada,MENINO DEUS,551723.86,-30.04765856,-51.22532042,4.0
+CASA PASSAGEM FAMÍLIA (LAR EMANUEL),Equipamentos públicos,Assistência Social,Concluída,SÃO JOÃO,513722.12,-30.0063176,-51.18987498,4.2
+RECONSTRUÇÃO DA EBAB TRISTEZA,Sistema de proteção,Sistema de proteção,Sem situação informada,VILA ASSUNÇÃO,0.0,-30.09686032,-51.25519829,3.0
+RECONSTRUÇÃO DA EBAB MENINO DEUS,Sistema de proteção,Sistema de proteção,Sem situação informada,PRAIA DE BELAS,0.0,-30.06078577,-51.2312428,3.4
+RECONSTRUÇÃO DA EBAB SÃO JOÃO,Sistema de proteção,Sistema de proteção,Sem situação informada,FLORESTA,0.0,-30.01508347,-51.21293972,3.3
+RECONSTRUÇÃO DA EBAB E ETA ILHA DA PINTADA,Sistema de proteção,Sistema de proteção,Sem situação informada,ARQUIPÉLAGO,0.0,-30.01356456,-51.25964026,3.0
+ETE SERRARIA,Sistema de proteção,Sistema de proteção,Sem situação informada,SERRARIA,0.0,-30.16804313,-51.21659644,3.0
+ETE LAMI,Sistema de proteção,Sistema de proteção,Concluída,LAMI,0.0,-30.23512038,-51.08337781,3.6
+GERÊNCIA DISTRITAL NORTE (GDNO),Sistema de proteção,Sistema de proteção,Sem situação informada,FLORESTA,,-30.01571511,-51.21199039,3.5
+COORDENAÇÃO DE PATRIMÔNIO (C-PATRI),Sistema de proteção,Sistema de proteção,Sem situação informada,SÃO GERALDO,,-30.00992716,-51.20474437,3.7
+POSTO DE ATENDIMENTO CENTRO (GCLI),Sistema de proteção,Sistema de proteção,Sem situação informada,CENTRO HISTÓRICO,,-30.02904928,-51.22699942,
+COORDENAÇÃO DE BENS IMÓVEIS (C-BENSIMOV),Sistema de proteção,Sistema de proteção,Sem situação informada,FLORESTA,,-30.01571511,-51.21199039,3.5
+COORDENAÇÃO PLUVIAL CENTRO,Sistema de proteção,Sistema de proteção,Sem situação informada,CIDADE BAIXA,,-30.03928698,-51.22279428,4.9
+CAPATAZIA SERTÓRIO,Sistema de proteção,Sistema de proteção,Sem situação informada,ANCHIETA,,-30.00242166,-51.17228476,4.2
+FÁBRICA DE TUBOS PLUVIAL,Sistema de proteção,Sistema de proteção,Sem situação informada,CENTRO HISTÓRICO,,-30.03668397,-51.23866942,3.9
+GRÁFICA DO DMAE (UCS),Sistema de proteção,Sistema de proteção,Sem situação informada,FLORESTA,,-30.01571511,-51.21199039,3.5
+PRAÇA REVERENDO DR. DERLY DE AZEVEDO CHAVES,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,45602.98,-29.98180609,-51.19423361,3.0
+PRAÇA OSCAR BERTHOLDO,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,25241.14,-29.98564599,-51.19646172,3.0
+PRAÇA KAUÃ MACHADO NIETO,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,13331.74,-29.98324078,-51.19955982,3.0
+PRAÇA FÁBIO ANDRÉ KOFF,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,438412.07,-29.9759114,-51.19749181,3.0
+070/01 PRAÇA SEM NOME - ARQUIPÉLAGO,Equipamentos públicos,Esporte e Lazer,Concluída,ARQUIPÉLAGO,800000.0,-30.02075395,-51.25849431,3.0
+PRAÇA IBERÊ CAMARGO,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,25508.36,-29.97855789,-51.19539079,3.0
+PRAÇA IRMÃO DÉSIRÉ AFONSO,Equipamentos públicos,Esporte e Lazer,Concluída,SARANDI,102007.75,-29.98260029,-51.12539438,3.0
+SÍTIO DO LAÇADOR,Equipamentos públicos,Esporte e Lazer,Concluída,ANCHIETA,2725.76,-29.99124536,-51.18451192,3.0
+PRAÇA ROTARY,Equipamentos públicos,Esporte e Lazer,Concluída,PRAIA DE BELAS,40000.0,-30.05576983,-51.22956565,3.6
+PRAÇA GENERAL BRAGA PINHEIRO,Equipamentos públicos,Esporte e Lazer,Concluída,CENTRO HISTÓRICO,43392.77,-30.03755099,-51.23013134,3.4
+PRAÇA ITÁLIA,Equipamentos públicos,Esporte e Lazer,Concluída,PRAIA DE BELAS,40000.0,-30.05155206,-51.22906718,3.8
+PRAÇA SÃO JOÃO,Equipamentos públicos,Esporte e Lazer,Sem situação informada,SÃO JOÃO,399070.33,-30.0065218,-51.19222062,4.1
+PRAÇA ESTADO DE ISRAEL,Equipamentos públicos,Esporte e Lazer,Concluída,MENINO DEUS,40000.0,-30.05272622,-51.22628393,3.8
+PRAÇA FLORESTA AURORA,Equipamentos públicos,Esporte e Lazer,Concluída,CRISTAL,40000.0,-30.09391019,-51.23777951,
+PRAÇA DANTE SANTORO,Equipamentos públicos,Esporte e Lazer,Concluída,FLORESTA,7316.96,-30.01726499,-51.20911409,3.6
+PRAÇA JORGE GODOFREDO FELIZARDO,Equipamentos públicos,Esporte e Lazer,Concluída,ANCHIETA,40000.0,-29.9778758,-51.17487188,3.2
+PRAÇA NILVA MORTARI,Equipamentos públicos,Esporte e Lazer,Concluída,SANTA MARIA GORETTI,57662.86,-30.00465271,-51.17953756,4.4
+PRAÇA BARTOLOMEU DE GUSMÃO (ANTIGA PRAÇA FLORIDA),Equipamentos públicos,Esporte e Lazer,Concluída,FLORESTA,10981.9,-30.02062741,-51.21041031,4.0
+PRAÇA ARAGUAIA/ORLA JOSÉ AUGUSTO CÔRREA ROTH,Equipamentos públicos,Esporte e Lazer,Concluída,VILA ASSUNÇÃO,40000.0,-30.1049902,-51.26239818,3.0
+PRAÇA ALMERINDO LIMA,Equipamentos públicos,Esporte e Lazer,Concluída,BELÉM NOVO,15594.8544,-30.21200811,-51.18998824,3.0
+PRAÇA JOSÉ COMUNAL,Equipamentos públicos,Esporte e Lazer,Concluída,BELÉM NOVO,1302038.0943,-30.21085578,-51.18780972,3.0
+PRAÇA ELIAS JORGE MOUSSALLE,Equipamentos públicos,Esporte e Lazer,Concluída,SARANDI,793347.34,-29.98274309,-51.12786891,3.1
+PRAÇA ENGENHEIRO DANIEL RIBEIRO,Equipamentos públicos,Esporte e Lazer,Concluída,HUMAITÁ,40000.0,-29.97874887,-51.18408628,3.2
+PRAÇA ENGENHEIRO GUILHERME GAUDENZI,Equipamentos públicos,Esporte e Lazer,Concluída,PRAIA DE BELAS,100000.0,-30.04438236,-51.22987986,3.0
+PRAÇA CILON CUNHA BRUM,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,78760.67,-29.97929796,-51.19817428,3.0
+PRAÇA JÚLIO ANDREATTA,Equipamentos públicos,Esporte e Lazer,Concluída,SÃO GERALDO,30717.49,-30.01139912,-51.19444497,5.1
+037/02 PRAÇA SEM NOME - SARANDI - CAMPO NOVA BRASÍLIA,Equipamentos públicos,Esporte e Lazer,Concluída,SARANDI,183669.53,-29.97900255,-51.1372458,3.0
+PRAÇA HARRYSSON CURTYS TESTA,Equipamentos públicos,Esporte e Lazer,Concluída,ANCHIETA,1693.04,-29.9821398,-51.17317665,3.1
+PRAÇA SÃO GERALDO,Equipamentos públicos,Esporte e Lazer,Concluída,SÃO GERALDO,42229.47,-30.01120283,-51.19588241,4.8
+PRAÇA ESTADO DE SANTA CATARINA,Equipamentos públicos,Esporte e Lazer,Concluída,PRAIA DE BELAS,40000.0,-30.0576065,-51.23005601,3.3
+PRAÇA CONSELHEIRO AFFONSO PEREIRA DA FONSECA,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,37297.59,-29.98467293,-51.19615095,3.0
+PRAÇA MARCO ANTONIO HILÁRIO DE OLIVEIRA,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,15455.47,-29.97915596,-51.1929352,3.0
+PRAÇA IVO ALEXANDRE RIZZO,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,22672.77,-29.98066259,-51.19461641,3.0
+PORTAL OTTO NIEMEYER,Equipamentos públicos,Esporte e Lazer,Sem situação informada,TRISTEZA,226232.35,-30.11147891,-51.258534,3.0
+PRAÇA ARAÚJO GUERRA,Equipamentos públicos,Esporte e Lazer,Concluída,SARANDI,5626.56,-29.99249596,-51.13368641,4.6
+PRAÇA ANTÃO ABADE DAS CHAGAS,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,17275.52,-29.9776396,-51.19486653,3.0
+PORTAL MÁRIO TOTTA,Equipamentos públicos,Esporte e Lazer,Concluída,TRISTEZA,27676.14686667,-30.11671725,-51.25987796,3.0
+PRAÇA REVOLUÇÃO FARROUPILHA,Equipamentos públicos,Esporte e Lazer,Concluída,CENTRO HISTÓRICO,53903.63,-30.02673918,-51.22818265,3.0
+PRAÇA FRANCIELE REIS DE OLIVEIRA,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,23816.41,-29.98020681,-51.19847654,3.0
+PRAÇA DE ESPANHA,Equipamentos públicos,Esporte e Lazer,Concluída,PRAIA DE BELAS,40000.0,-30.04377939,-51.22786917,3.1
+PRAÇA ANTERO DE QUENTAL,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,13551.2,-29.98462173,-51.19712283,3.0
+PRAÇA MALAQUIAS JOSÉ DE SOUZA,Equipamentos públicos,Esporte e Lazer,Sem situação informada,BELÉM NOVO,40000.0,-30.21445961,-51.17506236,4.1
+PRAÇA ARLINDO WENDELINO KREMER,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,48182.62,-29.978883,-51.19406376,3.0
+PRAÇA DOM EDMUNDO KUNZ,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,23593.54,-29.98507359,-51.19528313,3.0
+PORTAL DR BARCELLOS,Equipamentos públicos,Esporte e Lazer,Sem situação informada,TRISTEZA,221173.48,-30.10867581,-51.2580723,3.0
+PORTAL VICENTE FAILACE,Equipamentos públicos,Esporte e Lazer,Sem situação informada,TRISTEZA,80802.51,-30.10774268,-51.25888955,3.0
+PRAÇA DIMAS COSTA,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,17495.48,-29.98136043,-51.19606559,3.0
+PRAÇA SPORT CLUB INTERNACIONAL,Equipamentos públicos,Esporte e Lazer,Concluída,AZENHA,40000.0,-30.04594744,-51.21738297,4.4
+PRAÇA PEDRO PUFAL,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,20097.2,-29.98559669,-51.19743894,3.0
+PRAÇA SETEMBRINO NUNES DA SILVA,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,26277.77,-29.97776679,-51.19391882,3.0
+PRAÇA LUIZ CASTRO DA SILVA,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,41613.6,-29.97808877,-51.19302771,3.0
+044/12 PRAÇA SEM NOME - HUMAITÁ,Equipamentos públicos,Esporte e Lazer,Concluída,HUMAITÁ,159138.04,-29.99227948,-51.1927647,3.3
+043/02 PRAÇA SEM NOME - NAVEGANTES,Equipamentos públicos,Esporte e Lazer,Concluída,NAVEGANTES,44136.37,-29.98918972,-51.20124486,3.0
+PRAÇA MONSENHOR ALBERTO NEJAR,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,9988.28,-29.98289628,-51.19436979,3.0
+PRAÇA MONTEVIDÉO,Equipamentos públicos,Esporte e Lazer,Concluída,CENTRO HISTÓRICO,8793.18,-30.02836899,-51.2285264,5.0
+PRAÇA JUVENAL JACINTHO DE SOUZA,Equipamentos públicos,Esporte e Lazer,Concluída,SERRARIA,48091.34466667,-30.16094366,-51.22630076,3.6
+PRAÇA MARCOS MACHADO,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,20717.23,-29.97709333,-51.19249497,3.1
+PRAÇA PROFESSOR JÚLIO GRAU,Equipamentos públicos,Esporte e Lazer,Concluída,SANTA MARIA GORETTI,11300.61,-30.00573897,-51.18091807,4.6
+037/07 PRAÇA SEM NOME - SARANDI,Equipamentos públicos,Esporte e Lazer,Concluída,SARANDI,40000.0,-29.98118607,-51.12319664,3.0
+PRAÇA APPARICIO SILVA RILLO,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,11969.44,-29.97681998,-51.19361444,3.1
+PRAÇA DOM CLÁUDIO COLLING,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,15385.97,-29.98167562,-51.19518524,3.0
+LARGO DA VIDA,Equipamentos públicos,Esporte e Lazer,Concluída,ANCHIETA,20000.0,-29.98766634,-51.17152275,3.1
+PRAÇA LAURENTINO ZOTTIS,Equipamentos públicos,Esporte e Lazer,Concluída,MENINO DEUS,40000.0,-30.0438479,-51.22362153,3.9
+PRAÇA PAULO RENATO CROCHEMORE,Equipamentos públicos,Esporte e Lazer,Concluída,ANCHIETA,40000.0,-29.97836171,-51.17654502,3.2
+PRAÇA BATALHÃO SUEZ,Equipamentos públicos,Esporte e Lazer,Sem situação informada,PRAIA DE BELAS,100000.0,-30.03845651,-51.23001206,3.3
+PRAÇA ARMANDO SIMÕES PIRES,Equipamentos públicos,Esporte e Lazer,Concluída,ANCHIETA,6424.35,-29.98796268,-51.17069158,3.0
+PRAÇA PROF. JOSÉ ZAMPROGNA,Equipamentos públicos,Esporte e Lazer,Concluída,HUMAITÁ,40000.0,-29.9757195,-51.1797651,3.1
+PORTAL ALMIRANTE CÂMARA,Equipamentos públicos,Esporte e Lazer,Sem situação informada,TRISTEZA,137352.49,-30.11437902,-51.25938394,3.0
+PRAÇA CARLINHOS HARTLIEB,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,11567.09,-29.98380444,-51.19586877,3.0
+PRAÇA GLAUCUS SARAIVA,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,11106.44,-29.98235316,-51.19660695,3.0
+PRAÇA NORBERTO CAVALCANTI DA SILVEIRA,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,10684.06,-29.98353069,-51.19697918,3.0
+PRAÇA EDGAR SCHNEIDER,Equipamentos públicos,Esporte e Lazer,Sem situação informada,CENTRO HISTÓRICO,98600.0,-30.02342588,-51.22283373,3.0
+PRAÇA DIRCEU MOSMANN,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,10250.56,-29.98262268,-51.19548611,3.0
+PRAÇA OSVALDO MAZOLA RODRIGUES,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,29998.29,-29.97654903,-51.1947301,3.0
+080/02 PRAÇA SEM NOME - ARQUIPÉLAGO,Equipamentos públicos,Esporte e Lazer,Concluída,ARQUIPÉLAGO,35000.0,-30.02801761,-51.25369478,3.0
+043/05 PRAÇA SEM NOME - ARQUIPÉLAGO,Equipamentos públicos,Esporte e Lazer,Concluída,ARQUIPÉLAGO,50000.0,-29.9936862,-51.21852515,3.0
+PRAÇA OSWALDO CRUZ,Equipamentos públicos,Esporte e Lazer,Concluída,CENTRO HISTÓRICO,40000.0,-30.02644998,-51.22275063,
+PRAÇA FABIANO DUTRA,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,13274.77,-29.97610824,-51.19638661,3.1
+PRAÇA PROFESSOR SILVA NUNES,Equipamentos públicos,Esporte e Lazer,Concluída,SARANDI,6883.36,-29.99374491,-51.13287806,
+PRAÇA ARISTIDES DIAS SOUTO,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,15381.36,-29.98093656,-51.1935176,3.0
+PRAÇA ANTONIO CARLESSO,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,9902.04,-29.98407118,-51.19474808,3.0
+171/04 PRAÇA SEM NOME - CANTEIRO CENTRAL,Equipamentos públicos,Esporte e Lazer,Concluída,IPANEMA,23801.1543,-30.13796449,-51.22959507,3.0
+PORTAL PONTA DA PRAIA DA PEDRA REDONDA,Equipamentos públicos,Esporte e Lazer,Sem situação informada,PEDRA REDONDA,250000.0,-30.12334006,-51.25543275,3.0
+PORTAL PONTA EVARISTO DO AMARAL,Equipamentos públicos,Esporte e Lazer,Sem situação informada,PEDRA REDONDA,250000.0,-30.12391137,-51.25018701,3.0
+PORTAL PONTA DA RUA MANOEL LEÃO,Equipamentos públicos,Esporte e Lazer,Sem situação informada,PEDRA REDONDA,250000.0,-30.1317514,-51.24029235,3.0
+PORTAL VILA CONCEIÇÃO,Equipamentos públicos,Esporte e Lazer,Sem situação informada,VILA CONCEIÇÃO,166323.37,-30.12147074,-51.26135236,3.0
+044/13 PRAÇA SEM NOME - HUMAITÁ,Equipamentos públicos,Esporte e Lazer,Concluída,HUMAITÁ,275223.12,-29.98907395,-51.19387702,3.3
+ESPLANADA ATTILIO FONTANA - RÓTULA,Equipamentos públicos,Esporte e Lazer,Sem situação informada,SÃO JOÃO,,-30.00723001,-51.19091834,4.2
+PRAÇA THEODOR WIEDERSPAHN,Equipamentos públicos,Esporte e Lazer,Sem situação informada,MENINO DEUS,234878.12,-30.05501064,-51.22521363,4.1
+PRAÇA JORGE ALENCASTRO DE OLIVEIRA,Equipamentos públicos,Esporte e Lazer,Sem situação informada,MENINO DEUS,38802.0,-30.05583112,-51.22531209,3.8
+PRAÇA PERY DE CASTRO,Equipamentos públicos,Esporte e Lazer,Concluída,ESPÍRITO SANTO,14451.1245,-30.14616285,-51.22035596,
+PORTAL DR. ARMANDO BARBEDO,Equipamentos públicos,Esporte e Lazer,Concluída,TRISTEZA,40000.0,-30.11339216,-51.25909692,3.0
+PRAÇA LUIZ LESEIGNEUR DE FARIA,Equipamentos públicos,Esporte e Lazer,Concluída,SÃO JOÃO,5376.89,-30.00286827,-51.19192644,3.7
+PRAÇA INÁCIO MARTINS DA SILVA,Equipamentos públicos,Esporte e Lazer,Concluída,BELÉM NOVO,33111.80466667,-30.21175909,-51.19063668,3.0
+PRAÇA CÔNEGO MARCELINO,Equipamentos públicos,Esporte e Lazer,Concluída,CIDADE BAIXA,40000.0,-30.04171019,-51.22773279,4.5
+048/05 PRAÇA SEM NOME - SARANDI,Equipamentos públicos,Esporte e Lazer,Concluída,SARANDI,40000.0,-29.98678463,-51.11579519,4.4
+PRAÇA CORONEL ELPÍDIO MARTINS,Equipamentos públicos,Esporte e Lazer,Sem situação informada,CIDADE BAIXA,40000.0,-30.03928954,-51.22801466,3.3
+034/24 PRAÇA SEM NOME - FARRAPOS,Equipamentos públicos,Esporte e Lazer,Concluída,FARRAPOS,14096.32,-29.97713666,-51.19660526,3.0
+PRAÇA NAVEGANTES,Equipamentos públicos,Esporte e Lazer,Concluída,NAVEGANTES,40000.0,-29.99819399,-51.20453882,3.7
+PRAÇA CORONEL ORPHEU CORREA DA SILVA,Equipamentos públicos,Esporte e Lazer,Concluída,SANTA ROSA DE LIMA,21008.53,-29.99682676,-51.08840977,5.0
+PARQUE ESPORTIVO IPANEMA JOSÉ TRINDADE,Equipamentos públicos,Esporte e Lazer,Concluída,IPANEMA,0.0,-30.13405685,-51.22574007,
+PORTAL PADRE JOÃO BATISTA RÉUS,Equipamentos públicos,Esporte e Lazer,Sem situação informada,TRISTEZA,115909.73,-30.11996448,-51.26188841,3.0
+PRAÇA SENADOR ALBERTO PASQUALINI,Equipamentos públicos,Esporte e Lazer,Concluída,IPANEMA,29268.675,-30.13367473,-51.23086722,
+PRAÇA JORGE AVELINE,Equipamentos públicos,Esporte e Lazer,Concluída,IPANEMA,40000.0,-30.13848891,-51.22575002,
+PRAÇA UBIRAJARA VALDEZ,Equipamentos públicos,Esporte e Lazer,Concluída,SANTA ROSA DE LIMA,15370.77,-29.98802674,-51.09212687,4.4
+PRAÇA POETISA CONSUELO BELLONI,Equipamentos públicos,Esporte e Lazer,Concluída,JARDIM SÃO PEDRO,40000.0,-30.00415324,-51.16730268,
+LARGO ALMIRANTE ÍNDIO DO BRASIL,Equipamentos públicos,Esporte e Lazer,Concluída,TRISTEZA,27866.7593,-30.11361271,-51.25668501,4.6
+CRAS CENTRO SUL (CECOPAM),Equipamentos públicos,Assistência Social,Sem situação informada,CAVALHADA,393311.42,-30.1007385,-51.2297676,
+SCFV - CENTRO DE CONVIVÊNCIA NORTE (CECOVE),Equipamentos públicos,Assistência Social,Sem situação informada,SARANDI,315750.32,-29.97970652,-51.12665287,3.0
+CF LAMI (PROJETO),Equipamentos públicos,Saúde,Sem situação informada,LAMI,3500000.0,-30.23871072,-51.08832382,3.3
+MUSEU JOAQUIM FELIZARDO,Equipamentos públicos,Cultura,Em andamento,CIDADE BAIXA,159650.0,-30.04183378,-51.22430754,4.5
+UNIDADE DO PARQUE MASCARENHAS DE MORAES,Equipamentos públicos,Esporte e Lazer,Concluída,HUMAITÁ,32715.76,-29.98393911,-51.18818726,3.2
+PAÇO MUNICIPAL,Equipamentos públicos,Cultura,Em andamento,CENTRO HISTÓRICO,1470422.31,-30.0280038,-51.22865946,5.0
+CENTRO MUNICIPAL DE CULTURA,Equipamentos públicos,Cultura,Concluída,MENINO DEUS,3621293.69,-30.04732674,-51.2190036,4.0
+CASA DA MÚSICA,Equipamentos públicos,Cultura,Sem situação informada,CIDADE BAIXA,98342.14,-30.03981887,-51.22568194,4.2
+CASA TORELLY,Equipamentos públicos,Cultura,Em andamento,INDEPENDÊNCIA,735770.13,-30.02953744,-51.21682364,
+CECOVE,Equipamentos públicos,Esporte e Lazer,Sem situação informada,SARANDI,817766.59,-29.97979407,-51.12743233,3.0
+CECOPAM (SMELJ),Equipamentos públicos,Esporte e Lazer,Concluída,CAVALHADA,3000000.0,-30.1007385,-51.2297676,
+GINÁSIO TESOURINHA,Equipamentos públicos,Esporte e Lazer,Em andamento,MENINO DEUS,5053408.83,-30.04553164,-51.21975849,3.9
+PRAÇA PARQUE PONTAL DO ESTALEIRO,Equipamentos públicos,Esporte e Lazer,Sem situação informada,CRISTAL,2000000.0,-30.08001263,-51.24834059,3.0
+DIQUE INTERNO (FIERGS),Sistema de proteção,Sistema de proteção,Concluída,SARANDI,101438515.673333,-29.9797377,-51.10905586,3.2
+VILA DIQUE,Sistema de proteção,Sistema de proteção,Sem situação informada,ANCHIETA,114838515.673333,-29.98193057,-51.15544475,3.0
+TRECHO USINA DO GASÔMETRO,Sistema de proteção,Sistema de proteção,Sem situação informada,PRAIA DE BELAS,0.0,-30.05348107,-51.23705899,
+DIQUE VILA MINUANO,Sistema de proteção,Sistema de proteção,Sem situação informada,SARANDI,11912960.0,-29.99441261,-51.13981601,
+PONTO ERNESTO NEUGEBAUER,Sistema de proteção,Sistema de proteção,Sem situação informada,HUMAITÁ,0.0,-29.96933255,-51.17705532,3.2
+COMPORTA 02,Sistema de proteção,Sistema de proteção,Concluída,CENTRO HISTÓRICO,235000.0,-30.03213531,-51.23996895,3.0
+COMPORTA 03,Sistema de proteção,Sistema de proteção,Concluída,CENTRO HISTÓRICO,498280.76540232,-30.02997865,-51.23656176,3.0
+COMPORTA 04,Sistema de proteção,Sistema de proteção,Concluída,CENTRO HISTÓRICO,535000.0,-30.02771915,-51.23192964,3.0
+COMPORTA 05,Sistema de proteção,Sistema de proteção,Concluída,CENTRO HISTÓRICO,157019.61062394,-30.02726424,-51.23099682,3.0
+COMPORTA 06,Sistema de proteção,Sistema de proteção,Concluída,CENTRO HISTÓRICO,235000.0,-30.02613716,-51.22865221,3.0
+COMPORTA 07,Sistema de proteção,Sistema de proteção,Concluída,CENTRO HISTÓRICO,498280.76540232,-30.02352467,-51.22201546,3.0
+COMPORTA 08,Sistema de proteção,Sistema de proteção,Concluída,FLORESTA,797568.35714286,-30.02039879,-51.21707495,3.0
+COMPORTA 09,Sistema de proteção,Sistema de proteção,Concluída,FLORESTA,797568.35714286,-30.01490736,-51.21385926,3.0
+COMPORTA 10,Sistema de proteção,Sistema de proteção,Concluída,SÃO GERALDO,797568.35714286,-30.01078884,-51.21180304,3.0
+UNIDADE DE TRIAGEM 1 - FREDERICO MENTZ/CEAR,Equipamentos públicos,Assistência Social,Sem situação informada,NAVEGANTES,553551.06,-29.99232609,-51.20166816,3.0
+UNIDADE DE TRIAGEM 2 - ATERRO NORTE,Equipamentos públicos,Assistência Social,Sem situação informada,SARANDI,641223.89,-29.98683814,-51.14244658,3.4
+UNIDADE DE TRIAGEM 3 - ANJOS DA ECOLOGIA,Equipamentos públicos,Assistência Social,Concluída,FLORESTA,438159.35,-30.01996429,-51.21549619,3.8
+UNIDADE DE TRIAGEM 4 - RECICLANDO PELA VIDA,Equipamentos públicos,Assistência Social,Concluída,FLORESTA,600488.73,-30.01958692,-51.21574002,3.8

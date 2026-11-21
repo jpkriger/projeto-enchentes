@@ -18,6 +18,8 @@ python3 -m venv .venv
 .venv/bin/python scripts/prova_testes_inct.py  # gera relatorios/provas_testes_inct.pdf
 .venv/bin/python scripts/plota_todos_bairros.py  # curvas por bairro, dados originais e limpos
 .venv/bin/python scripts/gera_wireframe.py   # gera relatorios/wireframe_telas.pdf
+.venv/bin/python scripts/prepara_dashboard.py  # arquivos leves usados pelo dashboard
+.venv/bin/streamlit run app/app.py             # abre o dashboard em http://localhost:8501
 ```
 
 O arquivo `data.json` do INCT é fornecido pela disciplina e fica em `dados/originais/1_simulacao_inct/`. Os pontos P08 do Copernicus EMSN194 ficam em `dados/originais/comum/copernicus_p08/` e são baixados manualmente, porque o `robots.txt` do site proíbe download automático: o script de coleta indica o link e a pasta.

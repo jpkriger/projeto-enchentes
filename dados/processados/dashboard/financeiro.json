@@ -1,0 +1,34 @@
+{
+ "necessidade_estimada": {
+  "Equipamentos e infraestrutura": 784500000.0,
+  "Habitação": 5500000000.0,
+  "Água, esgoto e drenagem": 383000000.0,
+  "Diques e adequação viária": 338000000.0,
+  "Perda de arrecadação": 602800000.0,
+  "Expansão da macrodrenagem": 4700000000.0
+ },
+ "solicitado_recebido": {
+  "Reconstrução": {
+   "Solicitado": 196588429.81,
+   "Recebido": 8438494.81
+  },
+  "Emergência": {
+   "Solicitado": 182824681.0,
+   "Recebido": 164422152.53
+  },
+  "Total Recebido": {
+   "Solicitado": 379413110.81,
+   "Recebido": 172860647.34
+  }
+ },
+ "recursos_aplicados_por_origem": {
+  "Estado": 10666002.0,
+  "Município": 492416272.09,
+  "União": 152494321.12
+ },
+ "recursos_aplicados_por_classe": {
+  "Emergência": 398691775.0,
+  "Reconstrução": 256884820.21
+ },
+ "data_dos_registros": "17/09/2026"
+}
