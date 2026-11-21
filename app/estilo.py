@@ -72,6 +72,14 @@ def aplicar_css():
       .aviso {{ background: #f7f6f3; border: 1px solid {NEUTRO_CLARO}; border-radius: 10px; padding: 10px 14px;
                 color: {TINTA_SECUNDARIA}; font-size: .9rem; margin-bottom: .6rem; }}
       .aviso b {{ color: {TINTA}; }}
+      .escopo {{ display: grid; grid-template-columns: 1.1fr 1.3fr 1fr; gap: 0; background: {FUNDO_CARTAO};
+                  border: 1px solid {NEUTRO_CLARO}; border-radius: 12px; margin: .2rem 0 .9rem 0; }}
+      .escopo > div {{ padding: 12px 16px; border-left: 1px solid {NEUTRO_CLARO}; font-size: .88rem; color: {TINTA_SECUNDARIA}; }}
+      .escopo > div:first-child {{ border-left: none; }}
+      .escopo .cab {{ font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; color: {NEUTRO}; margin-bottom: 4px; font-weight: 600; }}
+      .escopo .pergunta-principal {{ color: {TINTA}; font-size: 1rem; font-weight: 650; line-height: 1.3; }}
+      .escopo ul {{ margin: 0; padding-left: 1.05rem; }} .escopo li {{ margin: 1px 0; }}
+      @media (max-width: 900px) {{ .escopo {{ grid-template-columns: 1fr; }} .escopo > div {{ border-left: none; border-top: 1px solid {NEUTRO_CLARO}; }} }}
       .secao {{ font-size: 1.1rem; font-weight: 650; color: {TINTA}; margin: .4rem 0 .1rem 0; }}
       .subsecao {{ color: {TINTA_SECUNDARIA}; font-size: .86rem; margin-bottom: .3rem; }}
       .fonte {{ color: {NEUTRO}; font-size: .78rem; margin-top: -.2rem; }}
@@ -86,6 +94,16 @@ def cartao(rotulo, valor, detalhe="", destaque=False, cor=AGUA):
     estilo = f'style="--cor-destaque:{cor}"' if destaque else ""
     st.markdown(f'<div class="{classe}" {estilo}><div class="rotulo">{rotulo}</div><div class="valor">{valor}</div>'
                 f'<div class="detalhe">{detalhe}</div></div>', unsafe_allow_html=True)
+
+
+def escopo(perguntas, cobre, nao_cobre):
+    """Quadro no topo da tela: que pergunta ela responde, o que os dados cobrem e o que fica de fora."""
+    itens_perguntas = "".join(f'<div class="pergunta-principal">{p}</div>' for p in perguntas)
+    itens_cobre = "".join(f"<li>{item}</li>" for item in cobre)
+    itens_nao = "".join(f"<li>{item}</li>" for item in nao_cobre)
+    st.markdown(f'<div class="escopo"><div><div class="cab">Pergunta que esta tela responde</div>{itens_perguntas}</div>'
+                f'<div><div class="cab">O que os dados cobrem</div><ul>{itens_cobre}</ul></div>'
+                f'<div><div class="cab">O que fica de fora</div><ul>{itens_nao}</ul></div></div>', unsafe_allow_html=True)
 
 
 def titulo(texto, pergunta):

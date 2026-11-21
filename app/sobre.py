@@ -7,6 +7,21 @@ from estilo import titulo
 def mostrar():
     titulo("Sobre os dados", "O que o dashboard mostra, de onde vêm os números e o que eles não dizem.")
     st.markdown("""
+### Que perguntas o dashboard responde
+- **Tela 1:** se o Guaíba chegar a X metros, quais bairros e quantas pessoas são afetados, segundo a simulação do INCT?
+- **Tela 2:** com o rio a esse nível, quais obras da reconstrução ficam na área alcançada pela água, e quanto está previsto
+  nelas? E quanto dinheiro a cidade estima precisar, pediu à União e recebeu?
+
+### Que obras aparecem na Tela 2
+Só as **318 obras de reconstrução** que a Prefeitura monitora desde a enchente de 2024, não todas as obras da cidade:
+- **194 de equipamentos públicos:** 137 de esporte e lazer, 20 de assistência social, 18 de saúde, 14 de educação e 5 de cultura;
+- **124 do sistema de proteção contra cheias:** diques, casas de bombas e comportas.
+
+A situação (concluída, em andamento ou sem informação) é a da obra de reconstrução, como a Prefeitura informa. Habitação,
+transformação urbana e ações de adaptação climática também estão no painel da Prefeitura, mas ficam fora do mapa: na
+habitação, o valor é uma necessidade estimada de reposição, e não o valor de uma obra; nas outras duas, não há localização ou
+valor por obra.
+
 ### Como usar
 - **Tela 1:** escolha o nível do Guaíba no slider (3,0 a 10,0 m). Indicadores, mapa, barras, curva e ranking mudam juntos.
   O botão *Ir para o recorde de 2024* leva a 5,3 m, o nível simulado mais próximo dos 5,35 m de maio de 2024.

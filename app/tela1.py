@@ -8,7 +8,7 @@ import streamlit as st
 import dados
 import estado
 from estilo import (AGUA, CONFIG_PLOTLY, NEUTRO, NEUTRO_CLARO, NIVEL_RECORDE_SIMULADO, RAMPA_AZUL, RECORDE_2024,
-                    TINTA_SECUNDARIA, cartao, fonte, layout_grafico, nivel, niveis, numero, secao, titulo)
+                    TINTA_SECUNDARIA, cartao, escopo, fonte, layout_grafico, nivel, niveis, numero, secao, titulo)
 
 FONTE_INCT = ('simulação do <a href="http://vhlab.com.br/INCT/floods/" target="_blank">INCT SiMAI</a> '
               '(arquivo data.json fornecido pela disciplina, coletado em 27/10/2026), depois da limpeza descrita no relatório')
@@ -90,11 +90,13 @@ def ranking(no_nivel):
 
 def mostrar():
     limpo = dados.inct_limpo()
-    titulo("Se o Guaíba chegar a X metros, quem é afetado?",
-           "Simulação do INCT SiMAI para Porto Alegre: escolha o nível do rio e veja bairros, prédios e pessoas afetados.")
-    st.markdown('<div class="aviso"><b>Estes números são estimativas de uma simulação</b>, não previsões nem contagens oficiais. '
-                'A população afetada supõe pessoas distribuídas igualmente entre todos os prédios do bairro.</div>',
-                unsafe_allow_html=True)
+    titulo("Tela 1 · Simulação do INCT", "Escolha o nível do Guaíba e veja o que a simulação do INCT SiMAI prevê para Porto Alegre.")
+    escopo(["Se o Guaíba chegar a X metros, quais bairros e quantas pessoas são afetados?"],
+           ["Os 94 bairros de Porto Alegre, com o rio de 3,0 a 10,0 m",
+            "Prédios afetados por bairro, segundo a simulação do INCT (prédios do OpenStreetMap)",
+            "Pessoas afetadas estimadas a partir da população do Censo 2022"],
+           ["Contagens reais da enchente de 2024: é uma simulação",
+            "Moradores por prédio: a população é distribuída igualmente entre todos os prédios"])
 
     st.session_state["nivel_t1"] = estado.nivel_atual()   # parte do nível usado por último em qualquer tela
     coluna_slider, coluna_botao = st.columns([5, 1.3], vertical_alignment="bottom")
@@ -127,22 +129,22 @@ def mostrar():
     st.write("")
     esquerda, direita = st.columns([1.45, 1])
     with esquerda:
-        secao("Onde a água chega", f"Porcentagem de prédios afetados em cada bairro, com o rio a {nivel(valor)}. "
+        secao("Quais bairros a água alcança?", f"Porcentagem de prédios afetados em cada bairro, com o rio a {nivel(valor)}. "
               "Bairros em cinza não são atingidos.")
         st.plotly_chart(mapa(no_nivel), width="stretch", config=CONFIG_PLOTLY)
     with direita:
         figura, quantidade = barras_por_bairro(no_nivel)
-        secao("Porcentagem de prédios afetados por bairro", f"{quantidade} bairros atingidos, do mais ao menos afetado.")
+        secao("Quanto de cada bairro é afetado?", f"{quantidade} bairros atingidos, do mais ao menos afetado.")
         if quantidade:
             with st.container(height=520, border=False):
                 st.plotly_chart(figura, width="stretch", config=CONFIG_PLOTLY)
 
     esquerda, direita = st.columns([1.45, 1])
     with esquerda:
-        secao("População afetada na cidade, nível a nível", "O ponto mostra o nível escolhido; a linha tracejada, o recorde de 2024.")
+        secao("Como cresce o número de pessoas afetadas?", "O ponto mostra o nível escolhido; a linha tracejada, o recorde de 2024.")
         st.plotly_chart(curva_populacao(limpo, valor), width="stretch", config=CONFIG_PLOTLY)
     with direita:
-        secao("Bairros com mais pessoas afetadas", f"Os 10 primeiros com o rio a {nivel(valor)}.")
+        secao("Quais bairros têm mais pessoas afetadas?", f"Os 10 primeiros com o rio a {nivel(valor)}.")
         st.dataframe(ranking(no_nivel), hide_index=True, width="stretch", height=388,
                      column_config={"#": st.column_config.NumberColumn(width="small"),
                                     "Pessoas afetadas": st.column_config.TextColumn(),

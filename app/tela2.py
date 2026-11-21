@@ -10,7 +10,7 @@ import streamlit as st
 import dados
 import estado
 from estilo import (AGUA_CLARA, CONFIG_PLOTLY, CORES_CATEGORIA, EQUIPAMENTOS, NEUTRO, NEUTRO_CLARO, NIVEL_RECORDE_SIMULADO,
-                    PROTECAO, RECORDE_2024, TINTA, TINTA_SECUNDARIA, cartao, fonte, layout_grafico, nivel, niveis, numero, reais,
+                    PROTECAO, RECORDE_2024, TINTA, TINTA_SECUNDARIA, cartao, escopo, fonte, layout_grafico, nivel, niveis, numero, reais,
                     secao, titulo)
 
 NIVEL_MAXIMO = 5.4
@@ -121,12 +121,20 @@ def preparar_obras(obras, valor):
 
 
 def mostrar():
-    titulo("Investimento exposto: quanto da verba da reconstrução está onde a água chega",
-           "Conforme o Guaíba sobe, segundo a mesma simulação do INCT da Tela 1, veja quais obras de reconstrução "
-           "ficam na área alcançada e quanto está previsto nelas.")
-    st.markdown('<div class="aviso"><b>Investimento exposto</b> é o valor <b>previsto</b> das obras de reconstrução que ficam '
-                'na área alcançada pela água. <b>Não é custo de dano</b> nem valor pago: mostra quanto da verba está indo para '
-                'lugares que alagam.</div>', unsafe_allow_html=True)
+    titulo("Tela 2 · Investimento exposto",
+           "A mesma simulação do INCT da Tela 1, cruzada com as obras que a Prefeitura monitora desde a enchente de 2024.")
+    escopo(["Se o rio subir, quais obras da reconstrução ficam na área alcançada pela água, e quanto está previsto nelas?"],
+           ["As 318 obras de reconstrução monitoradas pela Prefeitura após a enchente de 2024 (274 com localização)",
+            "194 de equipamentos públicos: 137 de esporte e lazer, 20 de assistência social, 18 de saúde, 14 de educação e 5 de cultura",
+            "124 do sistema de proteção contra cheias: diques, casas de bombas, comportas",
+            "Valor previsto e situação de cada obra, informados pela Prefeitura"],
+           ["Todas as obras da cidade: só as da reconstrução",
+            "Habitação, cujo valor é uma necessidade estimada, e não o valor de uma obra",
+            "Transformação urbana e ações de adaptação climática, sem localização ou valor por obra",
+            "Valores pagos: o valor de cada obra é previsto"])
+    st.markdown('<div class="aviso"><b>Investimento exposto</b> é a soma do valor <b>previsto</b> das obras que ficam na área '
+                'alcançada pela água. <b>Não é custo de dano</b>: mostra quanto da verba da reconstrução está em lugares que alagam.</div>',
+                unsafe_allow_html=True)
 
     nivel_compartilhado = estado.nivel_atual()
     st.session_state["nivel_t2"] = min(nivel_compartilhado, NIVEL_MAXIMO)
@@ -145,11 +153,11 @@ def mostrar():
 
     filtro1, filtro2, filtro3 = st.columns([1.3, 1.6, 1])
     with filtro1:
-        categorias = st.multiselect("Tipo de obra", CATEGORIAS, default=CATEGORIAS)
+        categorias = st.multiselect("Grupo de obra", CATEGORIAS, default=CATEGORIAS)
     todas = dados.obras()
     situacoes = sorted(todas["situacao"].unique())
     with filtro2:
-        escolhidas = st.multiselect("Situação da obra", situacoes, default=situacoes)
+        escolhidas = st.multiselect("Situação da obra de reconstrução", situacoes, default=situacoes)
     with filtro3:
         st.write("")
         mostrar_p08 = st.toggle("Prédios atingidos em 2024", help="Pontos do Copernicus EMSN194 (P08): prédios marcados como atingidos na enchente real.")
@@ -164,7 +172,7 @@ def mostrar():
         cartao("Investimento exposto (valor previsto)", reais(alcancadas["valor_previsto"].sum()),
                f"com o rio a {nivel(valor)}, de {reais(obras['valor_previsto'].sum())} previstos nas obras selecionadas", destaque=True)
     with c2:
-        cartao("Obras na área alcançada", f"{len(alcancadas)} de {len(obras)}", "obras com localização, conforme os filtros")
+        cartao("Obras na área alcançada", f"{len(alcancadas)} de {len(obras)}", "obras de reconstrução com localização, conforme os filtros")
     with c3:
         cartao("Equipamentos públicos alcançados", numero(len(equipamentos)),
                f"{reais(equipamentos['valor_previsto'].sum())} previstos em escolas, saúde, praças e assistência")
@@ -172,13 +180,13 @@ def mostrar():
     st.write("")
     esquerda, direita = st.columns([1.45, 1])
     with esquerda:
-        secao("Onde estão as obras", f"Área azul: mancha simulada pelo INCT com o rio a {nivel(valor)}. Tamanho do ponto: valor previsto.")
+        secao("Onde estão as obras alcançadas?", f"Área azul: mancha simulada pelo INCT com o rio a {nivel(valor)}. Tamanho do ponto: valor previsto.")
         legenda_categorias()
         st.plotly_chart(mapa(obras, valor, mostrar_p08), width="stretch", config=CONFIG_PLOTLY)
     with direita:
-        secao("Investimento exposto, nível a nível", "Soma do valor previsto das obras alcançadas em cada nível.")
+        secao("Como cresce o investimento exposto conforme o rio sobe?", "Soma do valor previsto das obras alcançadas em cada nível.")
         st.plotly_chart(curva(obras, valor), width="stretch", config=CONFIG_PLOTLY)
-        secao("Obras alcançadas", "Ordenadas pelo valor previsto. Clique no cabeçalho para reordenar.")
+        secao("Quais são as obras alcançadas?", "Ordenadas pelo valor previsto. Clique no cabeçalho para reordenar.")
         ordenadas = alcancadas.sort_values("valor_previsto", ascending=False)
         valores = []
         for valor_obra in ordenadas["valor_previsto"]:
@@ -199,7 +207,7 @@ def mostrar():
 
     st.divider()
     financeiro = dados.financeiro()
-    secao("E o dinheiro?", "Totais da cidade no painel financeiro da Prefeitura. Não dependem do nível do rio.")
+    secao("E quanto dinheiro a cidade estima precisar, pediu e recebeu?", "Totais da cidade no painel financeiro da Prefeitura, para toda a recuperação, não só para as obras do mapa. Não dependem do nível do rio.")
     a, b, c = st.columns(3)
     pedidos = financeiro["solicitado_recebido"]["Total Recebido"]
     aplicados = sum(financeiro["recursos_aplicados_por_origem"].values())
@@ -214,10 +222,10 @@ def mostrar():
                f"{reais(origem['Município'])} do Município, {reais(origem['União'])} da União, {reais(origem['Estado'])} do Estado")
     esquerda, direita = st.columns(2)
     with esquerda:
-        secao("Solicitado e recebido", "Para a reconstrução chegaram cerca de 4% do solicitado.")
+        secao("Quanto foi pedido à União e quanto chegou?", "Para a reconstrução chegaram cerca de 4% do solicitado.")
         st.plotly_chart(solicitado_recebido(financeiro), width="stretch", config=CONFIG_PLOTLY)
     with direita:
-        secao("Prejuízo estimado por destino", "Habitação e macrodrenagem somam a maior parte dos R$ 12,3 bi.")
+        secao("Para onde iria o dinheiro estimado?", "Habitação e macrodrenagem somam a maior parte dos R$ 12,3 bi.")
         st.plotly_chart(necessidade(financeiro), width="stretch", config=CONFIG_PLOTLY)
     fonte(f'<a href="{ARCGIS}/hub_base_financeiro/FeatureServer" target="_blank">painel financeiro da Prefeitura de Porto Alegre</a>, '
           'registros de 17/09/2026, coletados em 27/10/2026. Segundo o painel, os recursos aplicados incluem projetos e obras '
