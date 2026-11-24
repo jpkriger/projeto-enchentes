@@ -18,7 +18,7 @@ O servidor das camadas da Prefeitura é `https://gis-smamus.portoalegre.rs.gov.b
 
 `1_simulacao_inct/data.json` é o arquivo fornecido pela disciplina, com prédios afetados por bairro de 3,0 a 10,0 m. O resultado limpo está em `processados/1_simulacao_inct/inct_longo_limpo.json` e `.csv`, e cada valor alterado está em `inct_alteracoes.csv`. O tratamento está explicado em `relatorios/limpeza_dados.pdf`.
 
-`mancha_inct_api/` tem a mancha simulada de cada um dos 25 níveis de 3,0 a 5,4 m, a faixa usada na Tela 2, obtida da mesma API usada pelo [site do INCT](http://vhlab.com.br/INCT/floods/) (`POST http://vhlab.lad.pucrs.br:5002/api/map-data`, campo `flood`), coletada em 10/11/2026. É uma versão simplificada para exibição. Ela alimenta o slider da Tela 2.
+`mancha_inct_api/` tem a mancha simulada de cada um dos 25 níveis de 3,0 a 5,4 m, a faixa usada na Tela 2, obtida da mesma API usada pelo [site do INCT](http://vhlab.com.br/INCT/floods/) (`POST http://vhlab.lad.pucrs.br:5002/api/map-data`, campo `flood`), coletada em 10/11/2026. É uma versão simplificada para exibição. Essas manchas são coerentes com o `data.json` (a 3,0 m, cobrem os mesmos 24 bairros que ele dá como atingidos). O site do INCT foi atualizado depois e hoje serve outra versão da simulação; por isso as manchas não devem ser baixadas de novo sem conferir essa coerência. Ela alimenta o slider da Tela 2.
 
 ## 2. Investimento na reconstrução (Tela 2)
 
@@ -34,7 +34,7 @@ Os [dados abertos do TCE-RS](https://dados.tce.rs.gov.br) (licitações, contrat
 
 ## 4. Arquivos do dashboard
 
-`processados/dashboard/` é gerado por `scripts/prepara_dashboard.py` e traz versões leves do que o app lê: as obras com o nível em que cada uma é alcançada (`obras.csv`), as manchas por nível recortadas ao município, os pontos P08 de Porto Alegre e os números do painel financeiro.
+`processados/dashboard/` é gerado por `scripts/prepara_dashboard.py` e traz versões leves do que o app lê: as obras com o nível em que cada uma é alcançada (`obras.csv`), as manchas inteiras de cada nível, simplificadas para exibir, os pontos P08 de Porto Alegre e os números do painel financeiro.
 
 ## Licenças
 

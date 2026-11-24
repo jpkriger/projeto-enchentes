@@ -17,6 +17,7 @@ from pathlib import Path
 
 import geopandas as gpd
 import pandas as pd
+from shapely.geometry import MultiPolygon, Polygon
 
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 RAIZ = Path(__file__).resolve().parent.parent
@@ -37,21 +38,24 @@ def carregar_obras():
     return gpd.GeoDataFrame(obras, geometry=gpd.points_from_xy(obras.longitude, obras.latitude), crs=4326).to_crs(CRS)
 
 
-def mancha(nivel, municipio):
+def mancha(nivel):
+    """Mancha inteira do INCT, sem recorte. Ela não cobre o lago Guaíba (cobre rios e canais menores), e o limite municipal
+    simplificado cortaria faixas de orla onde ficam obras, como o Calçadão de Ipanema."""
     with open(MANCHAS / f"map_data_{nivel:.1f}m.json".replace(".", "_", 1), encoding="utf-8") as f:
         feicoes = json.load(f)["flood"]["features"]
-    geometria = gpd.GeoDataFrame.from_features(feicoes, crs=4326).to_crs(CRS).make_valid().union_all()
-    return geometria.intersection(municipio)
+    return gpd.GeoDataFrame.from_features(feicoes, crs=4326).to_crs(CRS).make_valid().union_all()
 
 
 def main():
-    municipio = gpd.read_file(BAIRROS).to_crs(CRS).make_valid().union_all()
+    uniao = gpd.read_file(BAIRROS).to_crs(CRS).make_valid().union_all()
+    # contorno do município, só para medir a área da mancha em Porto Alegre; as frestas da malha simplificada são preenchidas
+    municipio = MultiPolygon([Polygon(parte.exterior) for parte in uniao.geoms if isinstance(parte, Polygon)])
     obras = carregar_obras()
     linhas = []
     for nivel in NIVEIS:
-        area = mancha(nivel, municipio)
+        area = mancha(nivel)
         dentro = obras.within(area.buffer(TOLERANCIA_M))
-        linha = {"nivel_m": nivel, "area_mancha_km2": round(area.area / 1e6, 2),
+        linha = {"nivel_m": nivel, "area_mancha_km2": round(area.intersection(municipio).area / 1e6, 2),
                  "obras": int(dentro.sum()), "obras_sem_tolerancia": int(obras.within(area).sum()),
                  "previsto_total_mi": round(obras.loc[dentro, "valor_invest"].sum() / 1e6, 2)}
         for categoria in ("sistema_protecao", "equipamentos"):

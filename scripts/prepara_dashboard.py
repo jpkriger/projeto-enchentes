@@ -3,7 +3,7 @@
 Entradas: dados limpos do INCT, manchas do INCT, base de obras e painel financeiro da Prefeitura, pontos P08 do Copernicus.
 Saídas em dados/processados/dashboard/:
   obras.csv                   uma linha por obra com coordenada, com o menor nível em que a água a alcança
-  manchas/nivel_3_0.geojson   mancha do INCT de cada nível (3,0 a 5,4 m), recortada pelo município e simplificada
+  manchas/nivel_3_0.geojson   mancha do INCT de cada nível (3,0 a 5,4 m), inteira e simplificada para exibir
   p08_poa.csv                 latitude e longitude dos prédios atingidos em 2024 (Copernicus P08) em Porto Alegre
   financeiro.json             necessidade estimada, solicitado, recebido e recursos aplicados
 
@@ -15,6 +15,7 @@ from pathlib import Path
 
 import geopandas as gpd
 import pandas as pd
+from shapely.geometry import MultiPolygon, Polygon
 
 warnings.filterwarnings("ignore", category=RuntimeWarning)
 RAIZ = Path(__file__).resolve().parent.parent
@@ -37,15 +38,20 @@ def ler_json(caminho):
 
 
 def municipio():
+    """Contorno do município, usado para selecionar os pontos P08 de Porto Alegre. A malha de bairros é simplificada e
+    deixa frestas entre bairros vizinhos; elas são preenchidas usando só o contorno externo de cada parte."""
     bairros = gpd.read_file(ORIGINAIS / "comum/bairros.geojson").to_crs(CRS_METROS)
-    return bairros.make_valid().union_all()
+    uniao = bairros.make_valid().union_all()
+    partes = uniao.geoms if hasattr(uniao, "geoms") else [uniao]
+    return MultiPolygon([Polygon(parte.exterior) for parte in partes if isinstance(parte, Polygon)])
 
 
-def mancha_do_nivel(nivel, limite):
+def mancha_do_nivel(nivel):
+    """Mancha inteira do INCT, sem recorte pelo município. Ela não cobre o lago Guaíba (cobre rios e canais menores), e o
+    limite municipal simplificado cortaria faixas de orla onde ficam obras, como o Calçadão de Ipanema."""
     caminho = ORIGINAIS / f"1_simulacao_inct/mancha_inct_api/map_data_{nome_do_nivel(nivel)}m.json"
     feicoes = ler_json(caminho)["flood"]["features"]
-    geometria = gpd.GeoDataFrame.from_features(feicoes, crs=4326).to_crs(CRS_METROS).make_valid().union_all()
-    return geometria.intersection(limite)
+    return gpd.GeoDataFrame.from_features(feicoes, crs=4326).to_crs(CRS_METROS).make_valid().union_all()
 
 
 def preparar_obras(manchas):
@@ -90,8 +96,9 @@ def preparar_p08(limite):
     pasta = ORIGINAIS / "comum/copernicus_p08"
     partes = []
     for arquivo in sorted(pasta.glob("*.geojson")):
-        partes.append(gpd.read_file(arquivo)[["geometry"]])
-    pontos = pd.concat(partes).to_crs(CRS_METROS)
+        partes.append(gpd.read_file(arquivo)[["damage_gra", "geometry"]])
+    pontos = pd.concat(partes)
+    pontos = pontos[pontos["damage_gra"] != "No visible damage"].to_crs(CRS_METROS)   # só os marcados como atingidos
     pontos = pontos[pontos.within(limite)].to_crs(4326)
     return pd.DataFrame({"lat": pontos.geometry.y.round(5), "lon": pontos.geometry.x.round(5)})
 
@@ -129,7 +136,7 @@ def main():
     limite = municipio()
     manchas = {}
     for nivel in NIVEIS:
-        manchas[nivel] = mancha_do_nivel(nivel, limite)
+        manchas[nivel] = mancha_do_nivel(nivel)
 
     obras = preparar_obras(manchas)
     obras.to_csv(SAIDA / "obras.csv", index=False)
