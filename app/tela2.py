@@ -132,18 +132,19 @@ def preparar_obras(obras, valor):
 
 def mostrar():
     titulo("Tela 2 · Investimento exposto",
-           "A mesma simulação do INCT da Tela 1, cruzada com as obras que a Prefeitura monitora desde a enchente de 2024.")
+           "A mesma simulação do INCT da Tela 1, cruzada com as obras públicas de reconstrução que a Prefeitura monitora desde a "
+           "enchente de 2024: espaços e equipamentos públicos e o sistema de proteção contra cheias. Moradias não entram.")
     escopo(["Se o rio subir, quais obras da reconstrução ficam na área alcançada pela água, e quanto está previsto nelas?"],
-           ["As 318 obras de reconstrução monitoradas pela Prefeitura após a enchente de 2024 (274 com localização)",
+           ["Só obras públicas: as 318 obras de reconstrução monitoradas pela Prefeitura após a enchente de 2024 (274 com localização)",
             "194 de equipamentos públicos (193 com localização): 137 de esporte e lazer, 20 de assistência social, 18 de saúde, 14 de educação e 5 de cultura",
             "124 do sistema de proteção contra cheias: diques, casas de bombas, comportas (só 81 com localização)",
             "Valor previsto e situação de cada obra, informados pela Prefeitura"],
-           ["Todas as obras da cidade: só as da reconstrução",
-            "Habitação, cujo valor é uma necessidade estimada, e não o valor de uma obra",
+           ["Moradias e habitação: o valor disponível é uma necessidade estimada de reposição, e não o valor de uma obra",
+            "Outras obras da cidade, fora da reconstrução",
             "Transformação urbana e ações de adaptação climática, sem localização ou valor por obra",
             "Valores pagos: o valor de cada obra é previsto"])
-    st.markdown('<div class="aviso"><b>Investimento exposto</b> é a soma do valor <b>previsto</b> das obras que ficam na área '
-                'alcançada pela água. <b>Não é custo de dano</b>: mostra quanto da verba da reconstrução está em lugares que alagam. Diques, casas de bombas e comportas ficam '
+    st.markdown('<div class="aviso"><b>Investimento exposto</b> é a soma do valor <b>previsto</b> das obras públicas de reconstrução '
+                '(espaços e equipamentos públicos e sistema de proteção; moradias não entram) que ficam na área alcançada pela água. <b>Não é custo de dano</b>: mostra quanto da verba da reconstrução está em lugares que alagam. Diques, casas de bombas e comportas ficam '
                 'na beira da água por função, então é esperado que sejam alcançados já nos níveis baixos e que dominem a soma; '
                 'para ver os serviços à população, filtre <b>Equipamentos públicos</b>.</div>',
                 unsafe_allow_html=True)
@@ -184,7 +185,7 @@ def mostrar():
         cartao("Investimento exposto (valor previsto)", reais(alcancadas["valor_previsto"].sum()),
                f"com o rio a {nivel(valor)}, de {reais(obras['valor_previsto'].sum())} previstos nas obras selecionadas", destaque=True)
     with c2:
-        cartao("Obras na área alcançada", f"{len(alcancadas)} de {len(obras)}", "obras de reconstrução com localização, conforme os filtros")
+        cartao("Obras públicas na área alcançada", f"{len(alcancadas)} de {len(obras)}", "obras de reconstrução com localização, conforme os filtros")
     with c3:
         cartao("Equipamentos públicos alcançados", numero(len(equipamentos)),
                f"{reais(equipamentos['valor_previsto'].sum())} previstos em esporte e lazer, assistência, saúde, educação e cultura")
