@@ -193,7 +193,8 @@ def mostrar():
     st.write("")
     esquerda, direita = st.columns([1.45, 1])
     with esquerda:
-        secao("Onde estão as obras alcançadas?", f"Área azul: mancha simulada pelo INCT com o rio a {nivel(valor)}, como o INCT a fornece (as bordas retas são o limite da área simulada). Tamanho do ponto: valor previsto.")
+        secao("Onde estão as obras alcançadas?", f"Área azul: mancha simulada pelo INCT com o rio a {nivel(valor)}, na versão coletada em 10/11/2026, a mesma do data.json da Tela 1 "
+              "(o site do INCT hoje mostra uma versão mais nova e maior). As bordas retas são o limite da área simulada. Tamanho do ponto: valor previsto.")
         legenda_categorias(mostrar_p08)
         st.plotly_chart(mapa(obras, valor, mostrar_p08), width="stretch", config=CONFIG_PLOTLY)
     with direita:
