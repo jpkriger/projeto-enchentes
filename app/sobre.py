@@ -34,7 +34,7 @@ valor por obra.
 ### Fontes
 - **Simulação do INCT SiMAI:** arquivo `data.json` fornecido pela disciplina (coletado em 27/10/2026) e manchas
   simuladas por nível, da API do [site do INCT](http://vhlab.com.br/INCT/floods/) (coletadas em 10/11/2026). As manchas
-  coletadas são coerentes com o `data.json`: a 3,0 m, cobrem os mesmos 24 bairros que ele dá como atingidos. O site foi
+  coletadas são coerentes com o `data.json`: a 3,0 m, os bairros com mais de 1% da área dentro da mancha são os mesmos 24 que ele dá como atingidos (outros 4 só encostam na mancha). O site foi
   atualizado depois e hoje mostra uma versão diferente da simulação; o dashboard mantém a de 10/11, a mesma da Tela 1.
 - **Prefeitura de Porto Alegre:** malha de bairros, obras de reconstrução e painel financeiro do
   [Monitoramento da Reconstrução](https://prefeitura.poa.br/monitoramento-reconstrucao), pelos dados abertos do servidor
