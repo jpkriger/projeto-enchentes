@@ -33,7 +33,9 @@ valor por obra.
 
 ### Fontes
 - **Simulação do INCT SiMAI:** arquivo `data.json` fornecido pela disciplina (coletado em 27/10/2026) e manchas
-  simuladas por nível, da API do [site do INCT](http://vhlab.com.br/INCT/floods/) (coletadas em 10/11/2026).
+  simuladas por nível, da API do [site do INCT](http://vhlab.com.br/INCT/floods/) (coletadas em 10/11/2026). As manchas
+  coletadas são coerentes com o `data.json`: a 3,0 m, cobrem os mesmos 24 bairros que ele dá como atingidos. O site foi
+  atualizado depois e hoje mostra uma versão diferente da simulação; o dashboard mantém a de 10/11, a mesma da Tela 1.
 - **Prefeitura de Porto Alegre:** malha de bairros, obras de reconstrução e painel financeiro do
   [Monitoramento da Reconstrução](https://prefeitura.poa.br/monitoramento-reconstrucao), pelos dados abertos do servidor
   ArcGIS. Registros de 17/09/2026, coletados em 27/10/2026.
@@ -46,15 +48,22 @@ valor por obra.
   valor plausível ou máximo acumulado, e a porcentagem e a população foram recalculadas. Detalhes em
   `relatorios/limpeza_dados.pdf`.
 - **Investimento exposto:** uma obra é contada quando o seu ponto fica dentro da mancha do INCT, ou a até 50 m dela, naquele
-  nível. O valor somado é o investimento previsto pela Prefeitura para cada obra. Diques, casas de bombas e comportas ficam
+  nível. A mancha é usada inteira, como o INCT a fornece. Ela não cobre o lago Guaíba, mas cobre rios e canais e termina num
+  retângulo, que é o limite da área simulada. Ela não é recortada pelo limite do município porque o limite simplificado dos
+  bairros cortaria faixas de orla onde ficam obras: com a mancha inteira, entra o Calçadão de Ipanema, e nenhuma outra obra muda. O valor somado é o investimento previsto pela Prefeitura para cada obra. Diques, casas de bombas e comportas ficam
   na beira da água por função, por isso já são alcançados nos níveis baixos e respondem pela maior parte da soma.
 
 ### Limitações
 - Os números da simulação são estimativas, não previsões nem contagens oficiais. A população afetada supõe pessoas
   distribuídas igualmente entre todos os prédios do bairro.
+- Comparada com os prédios que o Copernicus marcou como atingidos em 2024, a mancha de 5,3 m contém 80% deles (89% contando até 50 m da borda). Os demais ficam, em geral, a 100–250 m da borda, sobretudo no Sarandi, no Centro Histórico e no Santa Rosa de Lima: a mancha simulada é um pouco menor que a área atingida em 2024. As causas não foram investigadas.
 - Acima de 5,35 m, os níveis são cenários que nunca ocorreram. Na Tela 2, as manchas do INCT foram coletadas só até 5,4 m.
 - Os valores das obras são **previstos**, não pagos, e muitos são rateios: o mesmo contrato dividido entre vários projetos.
   Servem como ordem de grandeza, não como custo exato de cada obra.
+- A Prefeitura publica o valor das obras do sistema de proteção em duas camadas que não concordam: a camada 3, por obra,
+  soma R\\$ 620,6 mi, e a camada 4, por etapa, R\\$ 420,2 mi; os três maiores diques têm de R\\$ 101 a 152 mi cada na
+  primeira e R\\$ 20 mi cada na segunda. O dashboard usa a camada 3, a única que traz os dois grupos de obra com o mesmo
+  campo. Com a camada 4, o investimento exposto a 5,3 m seria de cerca de R\\$ 390 mi, e não R\\$ 712 mi.
 - Cada obra é um ponto no mapa; um dique de vários quilômetros aparece como um único lugar. 44 obras não têm coordenada e
   ficam de fora, 43 delas do sistema de proteção.
 - Os números exibidos no site do painel da Prefeitura às vezes diferem dos dados abertos que ele publica; este dashboard usa

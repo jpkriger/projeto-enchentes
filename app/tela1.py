@@ -110,8 +110,8 @@ def mostrar():
     valor = round(valor, 1)
     st.markdown(estado_do_nivel(valor), unsafe_allow_html=True)
     st.markdown('<div class="aviso"><b>Limitações:</b> os números são <b>estimativas de uma simulação</b>, não previsões nem '
-                'contagens reais. A população afetada supõe pessoas distribuídas igualmente entre todos os prédios do bairro, '
-                'e não se sabe se a simulação considera diques e casas de bombas. Mais detalhes no fim da página.</div>',
+                'contagens reais. A população afetada supõe pessoas distribuídas igualmente entre todos os prédios do bairro. '
+                'Mais detalhes no fim da página.</div>',
                 unsafe_allow_html=True)
 
     no_nivel = limpo[limpo["nivel_m"] == valor]
@@ -134,7 +134,8 @@ def mostrar():
     esquerda, direita = st.columns([1.45, 1])
     with esquerda:
         secao("Quais bairros a água alcança?", f"Porcentagem de prédios afetados em cada bairro, com o rio a {nivel(valor)}. "
-              "Bairros em cinza não são atingidos.")
+              "O bairro inteiro recebe a cor: o mapa não mostra onde a água chega dentro dele (a mancha aparece na Tela 2, "
+              "até 5,4 m). Bairros em cinza não são atingidos.")
         st.plotly_chart(mapa(no_nivel), width="stretch", config=CONFIG_PLOTLY)
     with direita:
         figura, quantidade = barras_por_bairro(no_nivel)
@@ -158,7 +159,6 @@ def mostrar():
           'A02_SOLO_CRIADO/bairros/FeatureServer/0" target="_blank">Prefeitura de Porto Alegre</a>, coletada em 27/10/2026.')
     with st.expander("Limitações dos dados", expanded=True):
         st.markdown(
-            "- A simulação considera a altura da água; não sabemos se inclui diques, comportas e casas de bombas.\n"
             "- A população afetada é a população do bairro multiplicada pela porcentagem de prédios afetados, "
             "supondo pessoas distribuídas igualmente entre todos os prédios, inclusive os não residenciais.\n"
             "- Acima de 5,35 m os valores são cenários que nunca ocorreram.\n"

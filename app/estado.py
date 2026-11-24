@@ -1,7 +1,7 @@
 """Nível do rio compartilhado entre as telas.
 
 As duas telas usam o mesmo nível: mudar o slider em uma muda o ponto de partida da outra
-(consistência e visibilidade do estado). A Tela 2 aceita só até 5,4 m, a faixa que a enchente de 2024 alcançou.
+(consistência e visibilidade do estado). A Tela 2 aceita só até 5,4 m, porque as manchas do INCT foram coletadas só até esse nível.
 """
 import streamlit as st
 

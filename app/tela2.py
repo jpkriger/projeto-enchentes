@@ -110,7 +110,7 @@ def preparar_obras(obras, valor):
     obras["alcancada"] = obras["nivel_alcance"].notna() & (obras["nivel_alcance"] <= valor)
     dicas = []
     for _, obra in obras.iterrows():
-        if pd.isna(obra["valor_previsto"]):
+        if pd.isna(obra["valor_previsto"]) or obra["valor_previsto"] == 0:   # a base traz 12 vazios e 13 zeros
             valor_texto = "sem valor informado"
         else:
             valor_texto = reais(obra["valor_previsto"]) + " previstos"
@@ -166,7 +166,7 @@ def mostrar():
         escolhidas = st.multiselect("Situação da obra de reconstrução", situacoes, default=situacoes)
     with filtro3:
         st.write("")
-        mostrar_p08 = st.toggle("Prédios atingidos em 2024", help="Pontos do Copernicus EMSN194 (P08): prédios marcados como atingidos na enchente real.")
+        mostrar_p08 = st.toggle("Prédios atingidos em 2024", help="Pontos do Copernicus EMSN194 (P08): prédios marcados como atingidos na enchente real. A 5,3 m, 80% deles ficam dentro da mancha simulada; os demais, em geral, logo além da borda.")
 
     obras = preparar_obras(todas, valor)
     obras = obras[obras["categoria"].isin(categorias) & obras["situacao"].isin(escolhidas)]
@@ -186,7 +186,7 @@ def mostrar():
     st.write("")
     esquerda, direita = st.columns([1.45, 1])
     with esquerda:
-        secao("Onde estão as obras alcançadas?", f"Área azul: mancha simulada pelo INCT com o rio a {nivel(valor)}. Tamanho do ponto: valor previsto.")
+        secao("Onde estão as obras alcançadas?", f"Área azul: mancha simulada pelo INCT com o rio a {nivel(valor)}, como o INCT a fornece (as bordas retas são o limite da área simulada). Tamanho do ponto: valor previsto.")
         legenda_categorias(mostrar_p08)
         st.plotly_chart(mapa(obras, valor, mostrar_p08), width="stretch", config=CONFIG_PLOTLY)
     with direita:
@@ -196,7 +196,7 @@ def mostrar():
         ordenadas = alcancadas.sort_values("valor_previsto", ascending=False)
         valores = []
         for valor_obra in ordenadas["valor_previsto"]:
-            if pd.isna(valor_obra):
+            if pd.isna(valor_obra) or valor_obra == 0:
                 valores.append("sem valor")
             else:
                 valores.append(reais(valor_obra))
@@ -208,7 +208,10 @@ def mostrar():
           f'dados abertos da Prefeitura de Porto Alegre (<a href="{ARCGIS}/base_reconstrucao/FeatureServer" target="_blank">ArcGIS</a>), '
           'registros de 17/09/2026, coletados em 27/10/2026; manchas da API do <a href="http://vhlab.com.br/INCT/floods/" '
           'target="_blank">INCT SiMAI</a>, coletadas em 10/11/2026; prédios atingidos: <a href="https://riskandrecovery.emergency.copernicus.eu/EMSN194/" '
-          'target="_blank">© European Union, Copernicus Emergency Management Service</a>, coletados em 04/11/2026. '
+          'target="_blank">© European Union, Copernicus Emergency Management Service</a>, coletados em 04/11/2026; divisas dos bairros: '
+          '<a href="https://gis-smamus.portoalegre.rs.gov.br/server/rest/services/A02_SOLO_CRIADO/bairros/FeatureServer/0" '
+          'target="_blank">malha oficial da Prefeitura</a>, coletada em 27/10/2026. Valores das obras: camada 3 da base, a única que traz '
+          'os dois grupos de obra; a camada 4 dá outros valores ao sistema de proteção (ver Sobre os dados). '
           '44 obras sem coordenada (43 delas do sistema de proteção) não aparecem.')
 
     st.divider()
@@ -239,4 +242,6 @@ def mostrar():
         st.plotly_chart(necessidade(financeiro), width="stretch", config=CONFIG_PLOTLY)
     fonte(f'<a href="{ARCGIS}/hub_base_financeiro/FeatureServer" target="_blank">painel financeiro da Prefeitura de Porto Alegre</a>, '
           f'registros de {data_registros}, coletados em 27/10/2026. Segundo o painel, os recursos aplicados incluem projetos e obras '
-          'contratadas e podem não estar todos pagos.')
+          'contratadas e podem não estar todos pagos. São dois números diferentes da União: o recebido (cartão do meio) é o que '
+          'chegou pelos pedidos formais de recursos, e a parte da União nos recursos aplicados é o que entra na soma do que já foi '
+          'aplicado em projetos e obras; vêm de tabelas diferentes do painel.')
