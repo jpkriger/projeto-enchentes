@@ -92,9 +92,9 @@ Cada mudança de nível faz novas consultas ao servidor, que levaram de 1,5 a 2,
 
 \emph{Tabela das obras alcançadas.} Ordenada pelo valor previsto, para ler os números exatos e achar uma obra específica.
 
-\emph{Finanças da cidade.} No fim, separados por uma linha e com a indicação de que não dependem do nível do rio, três cartões e dois gráficos do painel financeiro da Prefeitura: a necessidade estimada para a recuperação (R\$ 12,3 bi), o que foi solicitado à União e recebido (R\$ 172,9 mi de R\$ 379,4 mi; para a reconstrução, 4,3\% do solicitado) e os recursos aplicados (R\$ 655,6 mi). Dão a escala da cidade inteira para o valor das obras do mapa.
+\emph{Finanças da cidade.} No fim, separados por uma linha e com a indicação de que não dependem do nível do rio, três cartões e dois gráficos do painel financeiro da Prefeitura: a necessidade estimada para a recuperação (R\$ 12,3 bi), o que foi solicitado à União e recebido (R\$ 172,9 mi de R\$ 379,4 mi; para a reconstrução, 4,3\% do solicitado) e os recursos aplicados (R\$ 655,6 mi). O título e o texto do bloco ligam esses totais ao mapa: as 274 obras do mapa somam R\$ 740,3 mi previstos, cerca de 6\% da necessidade estimada e perto de metade dos R\$ 1,5 bi estimados para reconstruir equipamentos, diques, água, esgoto e drenagem; o resto da necessidade é habitação, macrodrenagem nova e perda de arrecadação, que não são obras com local. No gráfico da necessidade, essas três partes aparecem em escuro. Como as categorias do painel e as das obras não coincidem uma a uma, os percentuais são ordem de grandeza.
 
-\begin{figure}[H]\centering\includegraphics[width=0.92\textwidth]{tela2_financeiro.png}\caption{Tela 2: necessidade estimada, solicitado e recebido, e recursos aplicados.}\end{figure}
+\begin{figure}[H]\centering\includegraphics[width=0.92\textwidth]{tela2_financeiro.png}\caption{Tela 2: quanto da necessidade estimada as obras do mapa representam, solicitado e recebido, e recursos aplicados.}\end{figure}
 
 \textbf{Fontes.} Cada bloco traz a fonte com link e data: painel Monitoramento da Reconstrução da Prefeitura (dados abertos no servidor ArcGIS, registros de 17/09/2026, coletados em 27/10/2026), manchas da API do INCT (coletadas em 10/11/2026) e Copernicus EMSN194 (coletado em 04/11/2026).
 
@@ -128,7 +128,7 @@ O protótipo da Fase 3 já tinha as duas telas com todos os requisitos. Para a v
 
 \begin{itemize}
 \item \textbf{Tela 1:} o aviso de limitações passou a ficar visível no topo, e os textos passaram a falar em estimativa.
-\item \textbf{Tela 2:} a tela passou a explicar por que o sistema de proteção concentra o investimento exposto, quantas obras de cada grupo têm localização e por que o nível vai só até 5,4 m, que é até onde as manchas foram coletadas.
+\item \textbf{Tela 2:} a tela passou a explicar por que o sistema de proteção concentra o investimento exposto, quantas obras de cada grupo têm localização e por que o nível vai só até 5,4 m, que é até onde as manchas foram coletadas; o bloco financeiro passou a mostrar quanto da necessidade estimada as obras do mapa representam.
 \item \textbf{Conferência dos dados:} as manchas de 10/11 foram comparadas com o \campo{data.json} e são coerentes; a mancha de 5,3 m foi comparada com os prédios atingidos em 2024 (Copernicus); e a escolha da camada de valores das obras foi documentada.
 \item \textbf{Mancha inteira:} a mancha passou a ser usada inteira, como o INCT a fornece, e não recortada pelo limite simplificado do município. Com isso, o Calçadão de Ipanema entrou na área alcançada: a 5,3 m, são 255 obras e R\$ 712,5 mi. Os números do relatório e do notebook da Fase 2 são da versão anterior.
 \item \textbf{Rótulos e legendas} foram revisados, as obras sem valor aparecem como ``sem valor informado'', e os totais do bloco financeiro passaram a ser calculados a partir dos dados.

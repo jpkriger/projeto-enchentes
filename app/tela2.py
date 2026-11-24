@@ -91,14 +91,20 @@ def solicitado_recebido(financeiro):
     return fig
 
 
+# partes da necessidade estimada que correspondem à reconstrução da infraestrutura existente, onde entram as obras do mapa
+RECONSTRUCAO_INFRA = ("Equipamentos e infraestrutura", "Água, esgoto e drenagem", "Diques e adequação viária")
+
+
 def necessidade(financeiro):
     itens = sorted(financeiro["necessidade_estimada"].items(), key=lambda item: item[1])
     nomes = []
     valores = []
+    cores = []
     for nome, valor in itens:
         nomes.append(nome)
         valores.append(valor / 1e9)
-    fig = go.Figure(go.Bar(x=valores, y=nomes, orientation="h", marker_color="#a9a8a3",
+        cores.append(TINTA_SECUNDARIA if nome in RECONSTRUCAO_INFRA else "#d6d5d0")
+    fig = go.Figure(go.Bar(x=valores, y=nomes, orientation="h", marker_color=cores,
                            hovertemplate="%{y}: R$ %{x:,.2f} bi<extra></extra>"))
     fig.update_xaxes(title_text="R$ bilhões")
     return layout_grafico(fig, altura=300)
@@ -216,11 +222,17 @@ def mostrar():
 
     st.divider()
     financeiro = dados.financeiro()
-    secao("E quanto dinheiro a cidade estima precisar, pediu e recebeu?", "Totais da cidade no painel financeiro da Prefeitura, para toda a recuperação, não só para as obras do mapa. Não dependem do nível do rio.")
-    a, b, c = st.columns(3)
     pedidos = financeiro["solicitado_recebido"]["Total Recebido"]
     aplicados = sum(financeiro["recursos_aplicados_por_origem"].values())
     total_necessidade = sum(financeiro["necessidade_estimada"].values())
+    infra = sum(valor for nome, valor in financeiro["necessidade_estimada"].items() if nome in RECONSTRUCAO_INFRA)
+    previsto_mapa = todas["valor_previsto"].sum()
+    secao("Quanto da necessidade da cidade as obras do mapa representam?",
+          f"As {len(todas)} obras do mapa somam {reais(previsto_mapa)} previstos, cerca de {numero(previsto_mapa / total_necessidade * 100, 0)}% "
+          f"dos {reais(total_necessidade)} que a Prefeitura estima precisar e perto de {numero(previsto_mapa / infra * 100, 0)}% "
+          f"dos {reais(infra)} estimados para reconstruir equipamentos, diques, água, esgoto e drenagem. O resto da necessidade é "
+          "habitação, macrodrenagem nova e perda de arrecadação, que não são obras com local no mapa. Não depende do nível do rio.")
+    a, b, c = st.columns(3)
     reconstrucao = financeiro["solicitado_recebido"]["Reconstrução"]
     parcela = reconstrucao["Recebido"] / reconstrucao["Solicitado"] * 100
     data_registros = financeiro["data_dos_registros"]
@@ -238,10 +250,11 @@ def mostrar():
         secao("Quanto foi pedido à União e quanto chegou?", f"Para a reconstrução chegaram {numero(parcela, 1)}% do solicitado.")
         st.plotly_chart(solicitado_recebido(financeiro), width="stretch", config=CONFIG_PLOTLY)
     with direita:
-        secao("Para onde iria o dinheiro estimado?", f"Habitação e macrodrenagem somam a maior parte dos {reais(total_necessidade)}.")
+        secao("Para onde iria o dinheiro estimado?", f"Em escuro, a reconstrução da infraestrutura, onde entram as obras do mapa ({reais(infra)}).")
         st.plotly_chart(necessidade(financeiro), width="stretch", config=CONFIG_PLOTLY)
     fonte(f'<a href="{ARCGIS}/hub_base_financeiro/FeatureServer" target="_blank">painel financeiro da Prefeitura de Porto Alegre</a>, '
           f'registros de {data_registros}, coletados em 27/10/2026. Segundo o painel, os recursos aplicados incluem projetos e obras '
           'contratadas e podem não estar todos pagos. São dois números diferentes da União: o recebido (cartão do meio) é o que '
           'chegou pelos pedidos formais de recursos, e a parte da União nos recursos aplicados é o que entra na soma do que já foi '
-          'aplicado em projetos e obras; vêm de tabelas diferentes do painel.')
+          'aplicado em projetos e obras; vêm de tabelas diferentes do painel. As categorias da necessidade estimada e as das obras '
+          'não coincidem uma a uma, então os percentuais de cobertura são ordem de grandeza.')
