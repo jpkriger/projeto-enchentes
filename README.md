@@ -4,7 +4,7 @@ Projeto extensionista da disciplina Coleta, Preparação e Análise de Dados (PU
 
 **Autor:** João Pedro da Silva Kriger
 
-**Dashboard:** [link público, na versão final]
+**Dashboard:** <https://projeto-enchentes-jpkriger.streamlit.app/>
 
 ## Como rodar
 

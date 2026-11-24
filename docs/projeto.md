@@ -1,6 +1,6 @@
 # Projeto: Enchentes em Porto Alegre (CPAD / INCT SiMAI)
 
-Documento de trabalho com a ideia, as decisões e os dados do projeto. Atualizado em 21/11/2026. A origem de cada arquivo está em [`dados/README.md`](../dados/README.md).
+Documento de trabalho com a ideia, as decisões e os dados do projeto. Atualizado em 24/11/2026. A origem de cada arquivo está em [`dados/README.md`](../dados/README.md).
 
 ## 1. A ideia
 
@@ -42,7 +42,7 @@ O **robots.txt é respeitado** em toda a coleta. O TCE-RS proíbe o caminho `/ap
 
 A **malha de bairros** da Prefeitura é a base geográfica oficial e é confiável.
 
-A **simulação do INCT** é o `data.json`, que depois da limpeza é coerente como simulação, mas continua sendo estimativa. As manchas por nível vêm da mesma API usada pelo site do INCT.
+A **simulação do INCT** é o `data.json`, que depois da limpeza é coerente como simulação, mas continua sendo estimativa. As manchas por nível vêm da mesma API usada pelo site do INCT, coletadas em 10/11/2026, e são coerentes com o `data.json`: a 3,0 m cobrem os mesmos 24 bairros que ele dá como atingidos, e a 5,3 m a área coberta em cada bairro acompanha a porcentagem de prédios atingidos (correlação de 0,97). O site foi atualizado depois e hoje serve outra versão da simulação, com totais maiores (a 5,3 m, 63.180 prédios no site e 53.989 no arquivo); o dashboard mantém as manchas de 10/11 para que as duas telas usem a mesma versão.
 
 As **bases de reconstrução da Prefeitura** trazem 318 obras: 194 de equipamentos públicos e 124 do sistema de proteção. Delas, 274 têm localização; das 44 sem localização, 43 são do sistema de proteção. Localização e tipo são confiáveis, mas os valores são previsões e a situação falta em muitas obras do sistema de proteção.
 
@@ -50,9 +50,9 @@ Os **pontos P08 do Copernicus** registram 42,6 mil prédios e instalações atin
 
 ## 5. O que os dados mostram
 
-Com o rio a 5,3 m, o nível simulado mais próximo do recorde de 2024, a simulação estima cerca de 136 mil pessoas afetadas em 36 bairros, e 254 das 274 obras com localização ficam na área alcançada, somando R$ 699,9 mi previstos.
+Com o rio a 5,3 m, o nível simulado mais próximo do recorde de 2024, a simulação estima cerca de 136 mil pessoas afetadas em 36 bairros, e 255 das 274 obras com localização ficam na área alcançada, somando R$ 712,5 mi previstos.
 
-O sistema de proteção domina o investimento exposto desde os níveis baixos, porque diques, casas de bombas e comportas ficam na beira da água por função. Já a 3,0 m, 128 obras estão na área alcançada. Para ver o risco aos serviços à população, a leitura principal é a dos equipamentos públicos.
+O sistema de proteção domina o investimento exposto desde os níveis baixos, porque diques, casas de bombas e comportas ficam na beira da água por função. Já a 3,0 m, 129 obras estão na área alcançada. As obras são cruzadas com a mancha inteira do INCT, sem recorte pelo limite do município: a mancha não cobre o lago Guaíba (cobre rios e canais menores), e o limite simplificado dos bairros cortaria faixas de orla onde ficam obras, como o Calçadão de Ipanema. Para ver o risco aos serviços à população, a leitura principal é a dos equipamentos públicos.
 
 A Prefeitura estima em R$ 12,3 bi a necessidade para a recuperação, a maior parte em habitação (R$ 5,5 bi) e expansão da macrodrenagem (R$ 4,7 bi). O painel registra R$ 379,4 mi solicitados à União e R$ 172,9 mi recebidos; para a reconstrução, chegaram R$ 8,4 mi de R$ 196,6 mi (4,3%). Os recursos aplicados somam R$ 655,6 mi, e segundo o painel incluem projetos e obras contratadas que podem não estar todos pagos.
 
