@@ -76,21 +76,6 @@ def curva(obras_filtradas, valor):
     return fig
 
 
-def solicitado_recebido(financeiro):
-    grupos = ["Emergência", "Reconstrução"]
-    pedidos = financeiro["solicitado_recebido"]
-    fig = go.Figure()
-    fig.add_trace(go.Bar(x=grupos, y=[pedidos[g]["Solicitado"] / 1e6 for g in grupos], name="Solicitado à União",
-                         marker_color="#d6d5d0", hovertemplate="%{x}: R$ %{y:,.1f} mi solicitados<extra></extra>"))
-    fig.add_trace(go.Bar(x=grupos, y=[pedidos[g]["Recebido"] / 1e6 for g in grupos], name="Recebido",
-                         marker_color=TINTA_SECUNDARIA, hovertemplate="%{x}: R$ %{y:,.1f} mi recebidos<extra></extra>",
-                         text=[reais(pedidos[g]["Recebido"]) for g in grupos], textposition="outside", textfont=dict(color=TINTA)))
-    fig.update_yaxes(title_text="R$ milhões")
-    fig = layout_grafico(fig, altura=300)
-    fig.update_layout(barmode="group", bargap=.35, bargroupgap=.08)
-    return fig
-
-
 # partes da necessidade estimada que correspondem à reconstrução da infraestrutura existente, onde entram as obras do mapa
 RECONSTRUCAO_INFRA = ("Equipamentos e infraestrutura", "Água, esgoto e drenagem", "Diques e adequação viária")
 
@@ -233,42 +218,29 @@ def mostrar():
 
     st.divider()
     financeiro = dados.financeiro()
-    pedidos = financeiro["solicitado_recebido"]["Total Recebido"]
-    aplicados = sum(financeiro["recursos_aplicados_por_origem"].values())
     total_necessidade = sum(financeiro["necessidade_estimada"].values())
     infra = sum(valor for nome, valor in financeiro["necessidade_estimada"].items() if nome in RECONSTRUCAO_INFRA)
     previsto_mapa = todas["valor_previsto"].sum()
-    secao("Quanto da necessidade da cidade as obras do mapa representam?",
-          "Totais do painel financeiro da Prefeitura, comparados com as obras do mapa. Não dependem do nível do rio.")
-    a, b, c = st.columns(3)
     reconstrucao = financeiro["solicitado_recebido"]["Reconstrução"]
     parcela = reconstrucao["Recebido"] / reconstrucao["Solicitado"] * 100
-    data_registros = financeiro["data_dos_registros"]
-    origem = financeiro["recursos_aplicados_por_origem"]
-    with a:
-        cartao("Obras do mapa (valor previsto)", reais(previsto_mapa),
-               f"cerca de {numero(previsto_mapa / total_necessidade * 100, 0)}% da necessidade estimada e perto de "
-               f"{numero(previsto_mapa / infra * 100, 0)}% da parte de reconstrução da infraestrutura")
-    with b:
-        cartao("Necessidade estimada", reais(total_necessidade),
-               f"{reais(infra)} para reconstruir equipamentos, diques, água, esgoto e drenagem; o resto é habitação, "
-               "macrodrenagem nova e perda de arrecadação, que não são obras com local no mapa")
-    with c:
-        cartao("Recebido da União para a reconstrução", reais(reconstrucao["Recebido"]),
-               f"{numero(parcela, 1)}% dos {reais(reconstrucao['Solicitado'])} pedidos por cadastros formais")
-    esquerda, direita = st.columns(2)
+    secao("Quanto da necessidade da cidade as obras do mapa representam?",
+          "Totais do painel financeiro da Prefeitura, comparados com as obras do mapa. Não dependem do nível do rio.")
+    esquerda, direita = st.columns([1, 1.3])
     with esquerda:
-        secao("Quanto foi pedido à União e quanto chegou?",
-              f"No total, {reais(pedidos['Recebido'])} recebidos de {reais(pedidos['Solicitado'])} pedidos. O painel registra "
-              f"{reais(aplicados)} como aplicados em projetos e obras: {reais(origem['Município'])} do Município, {reais(origem['União'])} da União "
-              f"e {reais(origem['Estado'])} do Estado.")
-        st.plotly_chart(solicitado_recebido(financeiro), width="stretch", config=CONFIG_PLOTLY)
+        cartao("Obras do mapa (valor previsto)", reais(previsto_mapa),
+               f"cerca de {numero(previsto_mapa / total_necessidade * 100, 0)}% dos {reais(total_necessidade)} de necessidade estimada "
+               f"e perto de {numero(previsto_mapa / infra * 100, 0)}% dos {reais(infra)} para reconstruir equipamentos, diques, água, "
+               "esgoto e drenagem")
+        st.write("")
+        cartao("Recebido da União para a reconstrução", f"{numero(parcela, 1)}%",
+               f"{reais(reconstrucao['Recebido'])} dos {reais(reconstrucao['Solicitado'])} pedidos por cadastros formais, "
+               "que são um dos canais de dinheiro")
     with direita:
-        secao("Para onde iria o dinheiro estimado?", f"Em escuro, a reconstrução da infraestrutura, onde entram as obras do mapa ({reais(infra)}).")
+        secao("Para onde iria o dinheiro estimado?",
+              f"Em escuro, a reconstrução da infraestrutura, onde entram as obras do mapa ({reais(infra)}). O resto é habitação, "
+              "macrodrenagem nova e perda de arrecadação, que não são obras com local no mapa.")
         st.plotly_chart(necessidade(financeiro), width="stretch", config=CONFIG_PLOTLY)
     fonte(f'<a href="{ARCGIS}/hub_base_financeiro/FeatureServer" target="_blank">painel financeiro da Prefeitura de Porto Alegre</a>, '
-          f'registros de {data_registros}, coletados em 27/10/2026. Segundo o painel, os recursos registrados como aplicados incluem projetos e obras '
-          'contratadas e podem não estar todos pagos; na parte de reconstrução, a maioria desses valores repete o valor previsto das '
-          'obras, então não indica dinheiro gasto. São dois números diferentes da União: o recebido é o que '
-          'chegou pelos pedidos formais de recursos, e a parte da União nos registrados como aplicados vem de outra tabela do painel. As categorias da necessidade estimada e as das obras '
-          'não coincidem uma a uma, então os percentuais de cobertura são ordem de grandeza.')
+          f'registros de {financeiro["data_dos_registros"]}, coletados em 27/10/2026. A necessidade estimada é o que a Prefeitura '
+          'calcula para a recuperação, não um pedido. As categorias da necessidade e as das obras não coincidem uma a uma, então os '
+          'percentuais são ordem de grandeza.')
