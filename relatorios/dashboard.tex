@@ -21,19 +21,19 @@
 
 \section{Objetivo}
 
-O dashboard é uma alternativa à página atual do INCT SiMAI para responder rápido a duas perguntas. A \textbf{Tela 1} responde: se o Guaíba chegar a X metros, quais bairros e quantas pessoas são afetados? A \textbf{Tela 2} responde: se o rio subir, quais obras da reconstrução de Porto Alegre ficam na área alcançada pela água, e quanto está previsto nelas? Uma terceira página, \emph{Sobre os dados}, reúne as fontes, o tratamento e as limitações.
+O dashboard é uma segunda visão da simulação do INCT SiMAI, organizada para responder rápido a duas perguntas. A \textbf{Tela 1} responde: se o Guaíba chegar a X metros, quais bairros e quantas pessoas são afetados? A \textbf{Tela 2} responde: se o rio subir, quais obras da reconstrução de Porto Alegre ficam na área alcançada pela água, e quanto está previsto nelas? Uma terceira página, \emph{Sobre os dados}, reúne as fontes, o tratamento e as limitações.
 
 O dashboard foi feito em Python com Streamlit e Plotly, está em \campo{app/} no repositório e é publicado no Streamlit Community Cloud; o link público está no \campo{README.md}.
 
 \section{A ferramenta atual do INCT}
 
-A página \href{http://vhlab.com.br/INCT/floods/}{Flood -- INCT SiMAI} foi explorada em 21/11/2026, como ponto de partida do projeto.
+A página \href{http://vhlab.com.br/INCT/floods/}{Flood -- INCT SiMAI} foi explorada em 21/11/2026, como pede o enunciado, para anotar o que funciona e o que atrapalha. O dashboard não substitui a página: ela mostra a simulação rua a rua, e o dashboard mostra a mesma simulação organizada por bairro e por nível do rio.
 
 \begin{figure}[H]\centering\includegraphics[width=0.92\textwidth]{inct_ferramenta_atual.png}\caption{Página atual do INCT com o rio a 5,3 m.}\end{figure}
 
 \textbf{O que funciona.} O mapa mostra a mancha sobre as ruas com bom detalhe, e dá para buscar um endereço e selecionar uma área para ver os prédios e a população dentro dela. Há atalhos para 3,0, 5,3 e 10,0 m. O histórico do nível do Guaíba nos últimos dias, com a cota de inundação marcada, é uma informação útil que o dashboard deste projeto não tem.
 
-\textbf{O que atrapalha.}
+\textbf{O que atrapalha para responder às perguntas deste projeto.}
 A página abre em inglês; o português depende de uma bandeira no canto.
 O nível é digitado num campo de texto, sem um controle deslizante para ver a água subir.
 Não há visão por bairro: não dá para saber quais bairros são atingidos, em que proporção, nem quais são os mais afetados, que é justamente a pergunta da Tela 1.
@@ -44,7 +44,7 @@ Não há aviso de que os números são estimativas nem explicação de como a po
 Um campo técnico (\emph{Road Size}) aparece sem explicação.
 Cada mudança de nível faz novas consultas ao servidor, que levaram de 1,5 a 2,6 segundos nesta visita.
 
-\textbf{O que o dashboard faz diferente.} Os dados de todos os níveis são carregados uma vez, então mudar o nível não consulta servidor nenhum. Tudo é em português, organizado por bairro, com a curva por nível, o recorde marcado e as limitações visíveis. A Tela 2 acrescenta o que a página do INCT não tem: o cruzamento da mancha com as obras da reconstrução.
+\textbf{O que o dashboard acrescenta.} A página continua sendo o lugar para ver a mancha rua a rua e consultar um endereço. O dashboard acrescenta a visão por bairro, com a curva por nível, o recorde marcado e as limitações visíveis, e carrega todos os níveis de uma vez, sem nova consulta ao servidor a cada mudança. A Tela 2 acrescenta o cruzamento da mancha com as obras da reconstrução.
 
 \section{Tela 1: quem é afetado}
 
