@@ -25,6 +25,12 @@ CRS_METROS = 31982            # SIRGAS 2000 / UTM 22S
 TOLERANCIA_M = 50             # mesma tolerância de scripts/obras_por_nivel.py
 SIMPLIFICACAO_M = 15          # simplificação do desenho da mancha, só para exibir no mapa
 NIVEIS = [round(3.0 + i / 10, 1) for i in range(25)]   # 3,0 a 5,4 m
+# O painel da Prefeitura agrupa as obras do DMAE como "Sistema de Prevenção". O grupo não é só proteção contra cheias:
+# também tem estações de esgoto, captação de água e prédios do DMAE (campo escopo_prj).
+GRUPO_DMAE = "Sistema de prevenção (DMAE)"
+TIPOS_DMAE = {"DIQUES": "Dique", "COMPORTAS": "Comporta", "EBAPs": "Casa de bombas pluvial (EBAP)", "MURO DA MAUÁ": "Muro da Mauá",
+              "REDES PLUVIAIS": "Rede pluvial", "EBEs": "Bombeamento de esgoto (EBE)", "ETEs": "Tratamento de esgoto (ETE)",
+              "EBABs": "Captação de água (EBAB)", "EDIFICAÇÕES": "Prédio do DMAE"}
 
 
 def nome_do_nivel(nivel):
@@ -63,11 +69,14 @@ def preparar_obras(manchas):
     categoria = []
     for grupo in obras["dash"]:
         if grupo == "Sistema de Prevenção":
-            categoria.append("Sistema de proteção")
+            categoria.append(GRUPO_DMAE)
         else:
             categoria.append("Equipamentos públicos")
     obras["categoria"] = categoria
-    obras["tipo"] = obras["tema"].fillna("Sistema de proteção")
+    # tipo: o tema dos equipamentos públicos; nas obras do DMAE, o escopo do projeto (as sem escopo são prédios do DMAE)
+    tipo_dmae = obras["escopo_prj"].map(TIPOS_DMAE).fillna("Prédio do DMAE")
+    obras["tipo"] = obras["tema"].where(obras["dash"] != "Sistema de Prevenção", tipo_dmae)
+    obras["valor_contratado"] = obras["valor_cont_dmae"]   # só existe nas obras do DMAE
     obras["situacao"] = obras["obra_status"].fillna("SEM SITUAÇÃO INFORMADA").str.capitalize()
 
     pontos = gpd.GeoDataFrame(obras, geometry=gpd.points_from_xy(obras.longitude, obras.latitude), crs=4326).to_crs(CRS_METROS)
@@ -79,7 +88,7 @@ def preparar_obras(manchas):
     obras["nivel_alcance"] = nivel_alcance
 
     colunas = {"proj_serv": "obra", "categoria": "categoria", "tipo": "tipo", "situacao": "situacao", "bairro": "bairro",
-               "valor_invest": "valor_previsto", "latitude": "lat", "longitude": "lon", "nivel_alcance": "nivel_alcance"}
+               "valor_invest": "valor_previsto", "valor_contratado": "valor_contratado", "latitude": "lat", "longitude": "lon", "nivel_alcance": "nivel_alcance"}
     return obras[list(colunas)].rename(columns=colunas)
 
 

@@ -13,7 +13,7 @@ from estilo import (AGUA_CLARA, CONFIG_PLOTLY, CORES_CATEGORIA, NEUTRO, NIVEL_RE
                     TINTA_SECUNDARIA, cartao, escopo, fonte, layout_grafico, nivel, niveis, numero, reais, secao, titulo)
 
 NIVEL_MAXIMO = 5.4
-CATEGORIAS = ["Sistema de proteção", "Equipamentos públicos"]
+CATEGORIAS = ["Sistema de prevenção (DMAE)", "Equipamentos públicos"]
 ARCGIS = "https://gis-smamus.portoalegre.rs.gov.br/server/rest/services/HUB"
 COR_FORA = "#c9c8c3"      # obras fora da área alcançada (contexto)
 COR_P08 = "#9a9994"       # prédios atingidos em 2024 (contexto)
@@ -133,19 +133,21 @@ def preparar_obras(obras, valor):
 def mostrar():
     titulo("Tela 2 · Investimento exposto",
            "A mesma simulação do INCT da Tela 1, cruzada com as obras públicas de reconstrução que a Prefeitura monitora desde a "
-           "enchente de 2024: espaços e equipamentos públicos e o sistema de proteção contra cheias. Moradias não entram.")
+           "enchente de 2024: espaços e equipamentos públicos e obras do DMAE (sistema de prevenção). Moradias não entram.")
     escopo(["Se o rio subir, quais obras da reconstrução ficam na área alcançada pela água, e quanto está previsto nelas?"],
            ["Só obras públicas: as 318 obras de reconstrução monitoradas pela Prefeitura após a enchente de 2024 (274 com localização)",
             "194 de equipamentos públicos (193 com localização): 137 de esporte e lazer, 20 de assistência social, 18 de saúde, 14 de educação e 5 de cultura",
-            "124 do sistema de proteção contra cheias: diques, casas de bombas, comportas (só 81 com localização)",
+            "124 obras do DMAE, que a Prefeitura agrupa como Sistema de Prevenção (81 com localização): 41 de proteção contra cheias "
+            "(casas de bombas, comportas, diques e o Muro da Mauá), 26 de esgoto, 5 de captação de água, 3 de redes pluviais e 49 prédios do DMAE",
             "Valor previsto e situação de cada obra, informados pela Prefeitura"],
            ["Moradias e habitação: o valor disponível é uma necessidade estimada de reposição, e não o valor de uma obra",
             "Outras obras da cidade, fora da reconstrução",
             "Transformação urbana e ações de adaptação climática, sem localização ou valor por obra",
             "Valores pagos: o valor de cada obra é previsto"])
     st.markdown('<div class="aviso"><b>Investimento exposto</b> é a soma do valor <b>previsto</b> das obras públicas de reconstrução '
-                '(espaços e equipamentos públicos e sistema de proteção; moradias não entram) que ficam na área alcançada pela água. <b>Não é custo de dano</b>: mostra quanto da verba da reconstrução está em lugares que alagam. Diques, casas de bombas e comportas ficam '
-                'na beira da água por função, então é esperado que sejam alcançados já nos níveis baixos e que dominem a soma; '
+                '(espaços e equipamentos públicos e obras do DMAE; moradias não entram) que ficam na área alcançada pela água. <b>Não é custo de dano</b>: mostra quanto da verba da reconstrução está em lugares que alagam. Diques, casas de bombas e comportas ficam '
+                'na beira da água por função, então é esperado que sejam alcançados já nos níveis baixos e que dominem a soma: '
+                'quase todo o valor exposto do DMAE é desses equipamentos de proteção, e só três diques respondem por cerca de metade do total; '
                 'para ver os serviços à população, filtre <b>Equipamentos públicos</b>.</div>',
                 unsafe_allow_html=True)
 
@@ -189,6 +191,13 @@ def mostrar():
     with c3:
         cartao("Equipamentos públicos alcançados", numero(len(equipamentos)),
                f"{reais(equipamentos['valor_previsto'].sum())} previstos em esporte e lazer, assistência, saúde, educação e cultura")
+    diques = alcancadas[(alcancadas["tipo"] == "Dique") & (alcancadas["valor_previsto"] > 0)]
+    if diques["valor_previsto"].sum() > 0:
+        st.markdown(f'<div class="aviso"><b>O valor depende de poucas obras.</b> Os {len(diques)} diques alcançados somam '
+                    f'{reais(diques["valor_previsto"].sum())}, {numero(diques["valor_previsto"].sum() / alcancadas["valor_previsto"].sum() * 100, 0)}% '
+                    f'do investimento exposto, e deles só {reais(diques["valor_contratado"].fillna(0).sum())} estão contratados. '
+                    'Por isso o valor é ordem de grandeza; a contagem de obras e os equipamentos públicos dependem menos dessas escolhas.</div>',
+                    unsafe_allow_html=True)
 
     st.write("")
     esquerda, direita = st.columns([1.45, 1])
@@ -219,8 +228,8 @@ def mostrar():
           'target="_blank">© European Union, Copernicus Emergency Management Service</a>, coletados em 04/11/2026; divisas dos bairros: '
           '<a href="https://gis-smamus.portoalegre.rs.gov.br/server/rest/services/A02_SOLO_CRIADO/bairros/FeatureServer/0" '
           'target="_blank">malha oficial da Prefeitura</a>, coletada em 27/10/2026. Valores das obras: camada 3 da base, a única que traz '
-          'os dois grupos de obra; a camada 4 dá outros valores ao sistema de proteção (ver Sobre os dados). '
-          '44 obras sem coordenada (43 delas do sistema de proteção) não aparecem.')
+          'os dois grupos de obra; a camada 4 dá outros valores às obras do DMAE (ver Sobre os dados). '
+          '44 obras sem coordenada (43 delas do DMAE) não aparecem.')
 
     st.divider()
     financeiro = dados.financeiro()
@@ -250,16 +259,16 @@ def mostrar():
     esquerda, direita = st.columns(2)
     with esquerda:
         secao("Quanto foi pedido à União e quanto chegou?",
-              f"No total, {reais(pedidos['Recebido'])} recebidos de {reais(pedidos['Solicitado'])} pedidos. Já foram aplicados "
-              f"{reais(aplicados)} em projetos e obras: {reais(origem['Município'])} do Município, {reais(origem['União'])} da União "
+              f"No total, {reais(pedidos['Recebido'])} recebidos de {reais(pedidos['Solicitado'])} pedidos. O painel registra "
+              f"{reais(aplicados)} como aplicados em projetos e obras: {reais(origem['Município'])} do Município, {reais(origem['União'])} da União "
               f"e {reais(origem['Estado'])} do Estado.")
         st.plotly_chart(solicitado_recebido(financeiro), width="stretch", config=CONFIG_PLOTLY)
     with direita:
         secao("Para onde iria o dinheiro estimado?", f"Em escuro, a reconstrução da infraestrutura, onde entram as obras do mapa ({reais(infra)}).")
         st.plotly_chart(necessidade(financeiro), width="stretch", config=CONFIG_PLOTLY)
     fonte(f'<a href="{ARCGIS}/hub_base_financeiro/FeatureServer" target="_blank">painel financeiro da Prefeitura de Porto Alegre</a>, '
-          f'registros de {data_registros}, coletados em 27/10/2026. Segundo o painel, os recursos aplicados incluem projetos e obras '
-          'contratadas e podem não estar todos pagos. São dois números diferentes da União: o recebido é o que '
-          'chegou pelos pedidos formais de recursos, e a parte da União nos recursos aplicados é o que entra na soma do que já foi '
-          'aplicado em projetos e obras; vêm de tabelas diferentes do painel. As categorias da necessidade estimada e as das obras '
+          f'registros de {data_registros}, coletados em 27/10/2026. Segundo o painel, os recursos registrados como aplicados incluem projetos e obras '
+          'contratadas e podem não estar todos pagos; na parte de reconstrução, a maioria desses valores repete o valor previsto das '
+          'obras, então não indica dinheiro gasto. São dois números diferentes da União: o recebido é o que '
+          'chegou pelos pedidos formais de recursos, e a parte da União nos registrados como aplicados vem de outra tabela do painel. As categorias da necessidade estimada e as das obras '
           'não coincidem uma a uma, então os percentuais de cobertura são ordem de grandeza.')

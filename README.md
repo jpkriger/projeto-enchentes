@@ -19,6 +19,7 @@ python3 -m venv .venv
 .venv/bin/python scripts/plota_todos_bairros.py  # curvas por bairro, dados originais e limpos
 .venv/bin/python scripts/gera_wireframe.py   # gera relatorios/wireframe_telas.pdf
 .venv/bin/python scripts/prepara_dashboard.py  # arquivos leves usados pelo dashboard
+.venv/bin/python scripts/valores_alternativos.py  # investimento exposto com os outros campos de valor das obras do DMAE
 .venv/bin/streamlit run app/app.py             # abre o dashboard em http://localhost:8501
 ```
 

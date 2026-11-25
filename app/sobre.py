@@ -15,10 +15,14 @@ def mostrar():
 ### Que obras aparecem na Tela 2
 Só as **318 obras de reconstrução** que a Prefeitura monitora desde a enchente de 2024, não todas as obras da cidade:
 - **194 de equipamentos públicos:** 137 de esporte e lazer, 20 de assistência social, 18 de saúde, 14 de educação e 5 de cultura;
-- **124 do sistema de proteção contra cheias:** diques, casas de bombas e comportas.
+- **124 obras do DMAE**, que a Prefeitura agrupa como *Sistema de Prevenção*. O grupo não é só proteção contra cheias:
+  41 são equipamentos de proteção (20 casas de bombas pluviais, 14 comportas, 6 diques e o Muro da Mauá), 26 são de esgoto
+  (estações de bombeamento e de tratamento), 5 de captação de água, 3 de redes pluviais e 49 são prédios do DMAE
+  (gerências, gráfica, almoxarifado e outros). A classificação é a da própria Prefeitura (camadas 3 e 4 da base).
 
-274 têm coordenada e aparecem no mapa. Das 44 sem coordenada, 43 são do sistema de proteção: só 81 das 124 obras de
-proteção estão no mapa.
+274 têm coordenada e aparecem no mapa. Das 44 sem coordenada, 43 são do DMAE, quase todas prédios: só 81 das 124 obras do
+DMAE estão no mapa. Em valor, o grupo é dominado pela proteção contra cheias: a 5,3 m, 98% do valor exposto do DMAE é de
+equipamentos de proteção.
 
 A situação (concluída, em andamento ou sem informação) é a da obra de reconstrução, como a Prefeitura informa. Habitação,
 transformação urbana e ações de adaptação climática também estão no painel da Prefeitura, mas ficam fora do mapa: na
@@ -51,7 +55,9 @@ valor por obra.
   nível. A mancha é usada inteira, como o INCT a fornece. Ela não cobre o lago Guaíba, mas cobre rios e canais e termina num
   retângulo, que é o limite da área simulada. Ela não é recortada pelo limite do município porque o limite simplificado dos
   bairros cortaria faixas de orla onde ficam obras: com a mancha inteira, entra o Calçadão de Ipanema, e nenhuma outra obra muda. O valor somado é o investimento previsto pela Prefeitura para cada obra. Diques, casas de bombas e comportas ficam
-  na beira da água por função, por isso já são alcançados nos níveis baixos e respondem pela maior parte da soma.
+  na beira da água por função, por isso já são alcançados nos níveis baixos e respondem pela maior parte da soma. Só três
+  diques (Sarandi, Vila Dique e Dique Interno da FIERGS) somam R\\$ 368,7 mi: 60% do investimento exposto a 3,0 m e 52%
+  a 5,3 m. Deles, só R\\$ 12,5 mi estão contratados.
 
 ### Limitações
 - Os números da simulação são estimativas, não previsões nem contagens oficiais. A população afetada supõe pessoas
@@ -60,12 +66,15 @@ valor por obra.
 - Acima de 5,35 m, os níveis são cenários que nunca ocorreram. Na Tela 2, as manchas do INCT foram coletadas só até 5,4 m.
 - Os valores das obras são **previstos**, não pagos, e muitos são rateios: o mesmo contrato dividido entre vários projetos.
   Servem como ordem de grandeza, não como custo exato de cada obra.
-- A Prefeitura publica o valor das obras do sistema de proteção em duas camadas que não concordam: a camada 3, por obra,
+- A Prefeitura publica o valor das obras do DMAE em duas camadas que não concordam: a camada 3, por obra,
   soma R\\$ 620,6 mi, e a camada 4, por etapa, R\\$ 420,2 mi; os três maiores diques têm de R\\$ 101 a 152 mi cada na
   primeira e R\\$ 20 mi cada na segunda. O dashboard usa a camada 3, a única que traz os dois grupos de obra com o mesmo
-  campo. Com a camada 4, o investimento exposto a 5,3 m seria de cerca de R\\$ 390 mi, e não R\\$ 712 mi.
+  campo. Com a camada 4 nas obras do DMAE, o investimento exposto a 5,3 m seria de R\\$ 485,9 mi, e não R\\$ 712,5 mi;
+  com o valor já contratado pelo DMAE (que mostra quanto foi contratado, e não outra estimativa), R\\$ 156,7 mi. As três
+  versões, nível a nível, estão em `dados/processados/3_investimento_reconstrucao/valores_alternativos.csv`
+  (`scripts/valores_alternativos.py`).
 - Cada obra é um ponto no mapa; um dique de vários quilômetros aparece como um único lugar. 44 obras não têm coordenada e
-  ficam de fora, 43 delas do sistema de proteção.
+  ficam de fora, 43 delas do DMAE.
 - Os números exibidos no site do painel da Prefeitura às vezes diferem dos dados abertos que ele publica; este dashboard usa
   os dados abertos.
 

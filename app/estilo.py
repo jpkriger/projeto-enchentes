@@ -14,7 +14,7 @@ import streamlit as st
 # Paleta: as três primeiras cores da paleta categórica validada para daltonismo, mais tons neutros.
 AGUA = "#2a78d6"            # informação principal: água e pessoas afetadas
 AGUA_CLARA = "#86b6ef"      # área da mancha no mapa
-PROTECAO = "#eb6834"        # sistema de proteção (diques, casas de bombas, comportas)
+PROTECAO = "#eb6834"        # obras do DMAE, grupo "Sistema de Prevenção" da Prefeitura
 EQUIPAMENTOS = "#1baf7a"    # equipamentos públicos (escolas, saúde, praças...)
 TINTA = "#0b0b0b"           # texto principal
 TINTA_SECUNDARIA = "#52514e"
@@ -23,7 +23,7 @@ NEUTRO_CLARO = "#e4e3df"
 FUNDO_CARTAO = "#ffffff"
 
 RAMPA_AZUL = ["#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#2a78d6", "#1c5cab", "#104281"]
-CORES_CATEGORIA = {"Sistema de proteção": PROTECAO, "Equipamentos públicos": EQUIPAMENTOS}
+CORES_CATEGORIA = {"Sistema de prevenção (DMAE)": PROTECAO, "Equipamentos públicos": EQUIPAMENTOS}
 
 RECORDE_2024 = 5.35
 NIVEL_RECORDE_SIMULADO = 5.3   # o JSON tem passos de 0,1 m; 5,35 fica entre 5,3 e 5,4
