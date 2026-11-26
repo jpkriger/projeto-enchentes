@@ -65,4 +65,4 @@ O dashboard deixa claro que os números do INCT são estimativas de uma simulaç
 - **Fase 1:** `relatorios/base_dados.pdf`.
 - **Fase 2:** scripts de coleta e limpeza, JSON limpo, `relatorios/limpeza_dados.pdf`, `notebooks/eda.ipynb` e `relatorios/wireframe_telas.pdf`.
 - **Fase 3 e versão final (24/11, 23h59):** o dashboard em `app/`, publicado por link público, e `relatorios/dashboard.pdf`.
-- **Apresentação:** 10 minutos com demonstração ao vivo, em 25/11 ou 30/11.
+- **Apresentação:** 10 minutos com demonstração ao vivo, em 25/11 ou 30/11; slides em `relatorios/pitch_apresentacao.pdf`.

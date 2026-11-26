@@ -27,7 +27,7 @@ O dashboard foi feito em Python com Streamlit e Plotly, está em \campo{app/} no
 
 \section{A ferramenta atual do INCT}
 
-A página \href{http://vhlab.com.br/INCT/floods/}{Flood -- INCT SiMAI} foi explorada em 21/11/2026, como pede o enunciado, para anotar o que funciona e o que atrapalha. O dashboard não substitui a página: ela mostra a simulação rua a rua, e o dashboard mostra a mesma simulação organizada por bairro e por nível do rio.
+A página \href{http://vhlab.com.br/INCT/floods/}{Flood -- INCT SiMAI} foi explorada em 21/11/2026 para anotar o que funciona e o que atrapalha. O dashboard não substitui a página: ela mostra a simulação rua a rua, e o dashboard mostra a mesma simulação organizada por bairro e por nível do rio.
 
 \begin{figure}[H]\centering\includegraphics[width=0.92\textwidth]{inct_ferramenta_atual.png}\caption{Página atual do INCT com o rio a 5,3 m.}\end{figure}
 
@@ -39,7 +39,6 @@ O nível é digitado num campo de texto, sem um controle deslizante para ver a �
 Não há visão por bairro: não dá para saber quais bairros são atingidos, em que proporção, nem quais são os mais afetados, que é justamente a pergunta da Tela 1.
 Não há uma curva que mostre como o número de pessoas afetadas cresce com o nível, nem a marca do recorde de 2024.
 O mapa abre no Centro, e ver a cidade inteira exige diminuir o zoom.
-A página foi atualizada depois da coleta das manchas, em 10/11, e hoje mostra outra versão da simulação, sem indicar versão nem data: a 5,3 m, são 63.180 prédios atingidos na página e 53.989 no \campo{data.json} original.
 Não há aviso de que os números são estimativas nem explicação de como a população afetada é calculada; há só um ícone de ajuda.
 Um campo técnico (\emph{Road Size}) aparece sem explicação.
 Cada mudança de nível faz novas consultas ao servidor, que levaram de 1,5 a 2,6 segundos nesta visita.
@@ -78,7 +77,7 @@ Cada mudança de nível faz novas consultas ao servidor, que levaram de 1,5 a 2,
 
 \textbf{De onde vem o valor de cada obra.} A Prefeitura publica dois valores diferentes para as obras do DMAE. A camada 3 da base (\campo{valor\_invest}) tem uma linha por obra, para os dois grupos, e soma R\$ 620,6 mi nas obras do DMAE. A camada 4 (\campo{val\_investimento}) tem uma linha por etapa, só do DMAE, e soma R\$ 420,2 mi; dos seus 114 projetos, só 5 têm o mesmo valor nas duas camadas. A Prefeitura não explica a diferença. O dashboard usa a camada 3, a única que traz os dois grupos com o mesmo campo. A escolha pesa, e quase só por causa de três diques (Sarandi, Vila Dique e Dique Interno da FIERGS): eles somam R\$ 368,7 mi previstos na camada 3, 60\% do investimento exposto a 3,0 m e 52\% a 5,3 m, contra R\$ 20 mi cada na camada 4, e deles só R\$ 12,5 mi estão contratados. Com a camada 4, o investimento exposto a 5,3 m seria de R\$ 485,9 mi, e não R\$ 712,5 mi; com o valor já contratado, R\$ 156,7 mi. A tela mostra o peso dos diques num aviso abaixo dos indicadores, e \campo{scripts/valores\_alternativos.py} gera as três versões nível a nível. Por isso o valor é ordem de grandeza; a contagem de obras e os equipamentos públicos não dependem dessas escolhas.
 
-\textbf{Ligação com a Tela 1.} O nível do rio é o mesmo nas duas telas: ao trocar de tela, o nível escolhido vai junto. As manchas foram coletadas em 10/11 e são coerentes com o \campo{data.json} usado na Tela 1: a 3,0 m, os bairros com mais de 1\% da área dentro da mancha são exatamente os 24 que o arquivo dá como atingidos (outros 4 só encostam na mancha), e a 5,3 m a parcela da área de cada bairro coberta pela mancha acompanha a porcentagem de prédios atingidos (correlação de 0,97). Como o site do INCT foi atualizado depois e hoje serve outra versão, mais distante do arquivo (a 3,0 m, cobre 35 bairros), o dashboard mantém as manchas de 10/11. O controle da Tela 2 vai de 3,0 a 5,4 m, porque as manchas foram coletadas só até esse nível, logo acima do recorde; se a Tela 1 estiver acima disso, a Tela 2 mostra 5,4 m e avisa.
+\textbf{Ligação com a Tela 1.} O nível do rio é o mesmo nas duas telas: ao trocar de tela, o nível escolhido vai junto. As manchas foram coletadas em 10/11 e são coerentes com o \campo{data.json} usado na Tela 1: a 3,0 m, os bairros com mais de 1\% da área dentro da mancha são exatamente os 24 que o arquivo dá como atingidos (outros 4 só encostam na mancha), e a 5,3 m a parcela da área de cada bairro coberta pela mancha acompanha a porcentagem de prédios atingidos (correlação de 0,97). O controle da Tela 2 vai de 3,0 a 5,4 m, porque as manchas foram coletadas só até esse nível, logo acima do recorde; se a Tela 1 estiver acima disso, a Tela 2 mostra 5,4 m e avisa.
 
 \begin{figure}[H]\centering\includegraphics[width=0.92\textwidth]{tela2_topo.png}\caption{Tela 2 com o rio a 5,3 m: escopo, definição, filtros, indicadores, mapa, curva e tabela.}\end{figure}
 
@@ -102,7 +101,7 @@ Cada mudança de nível faz novas consultas ao servidor, que levaram de 1,5 a 2,
 
 \section{Decisões de design}
 
-\textbf{Cores com significado fixo.} Azul é sempre a água e as pessoas afetadas, laranja é sempre o grupo de obras do DMAE, e verde, os equipamentos públicos. O que é contexto fica em cinza. Os controles (slider, botões e filtros) são em cinza escuro, para que o azul fique reservado aos dados. As três cores vêm de uma paleta validada para daltonismo, e nenhuma cor de alarme é usada, como pede o enunciado.
+\textbf{Cores com significado fixo.} Azul é sempre a água e as pessoas afetadas, laranja é sempre o grupo de obras do DMAE, e verde, os equipamentos públicos. O que é contexto fica em cinza. Os controles (slider, botões e filtros) são em cinza escuro, para que o azul fique reservado aos dados. As três cores vêm de uma paleta validada para daltonismo, e nenhuma cor de alarme é usada.
 
 \textbf{Destaque da informação principal.} Em cada tela, o indicador principal é o cartão maior, com uma barra de cor; os demais são menores. Os títulos das seções são perguntas, para que cada gráfico diga o que responde.
 
@@ -132,7 +131,7 @@ O protótipo da Fase 3 já tinha as duas telas com todos os requisitos. Para a v
 \item \textbf{Tela 1:} o aviso de limitações passou a ficar visível no topo, e os textos passaram a falar em estimativa.
 \item \textbf{Tela 2:} a tela passou a explicar o que é o grupo de obras do DMAE, por que ele concentra o investimento exposto, quanto o valor depende de três diques e por que o nível vai só até 5,4 m. O bloco financeiro foi reduzido ao que conversa com o mapa.
 \item \textbf{Conferência dos dados:} as manchas de 10/11 foram comparadas com o \campo{data.json} e são coerentes; a mancha de 5,3 m foi comparada com os prédios atingidos em 2024 (Copernicus); e a escolha da camada de valores das obras foi documentada.
-\item \textbf{Mancha inteira:} a mancha passou a ser usada inteira, como o INCT a fornece, e não recortada pelo limite simplificado do município. Com isso, o Calçadão de Ipanema entrou na área alcançada: a 5,3 m, são 255 obras e R\$ 712,5 mi. Os números do relatório e do notebook da Fase 2 são da versão anterior.
+\item \textbf{Mancha inteira:} a mancha passou a ser usada inteira, como o INCT a fornece, e não recortada pelo limite simplificado do município. Com isso, o Calçadão de Ipanema entrou na área alcançada: a 5,3 m, são 255 obras e R\$ 712,5 mi. O relatório e o notebook da Fase 2 foram atualizados com esse método e esses números, e o relatório da Fase 2 passou a explicar passo a passo como as manchas são obtidas e preparadas.
 \item \textbf{Rótulos e legendas} foram revisados, as obras sem valor aparecem como ``sem valor informado'', e os totais do bloco financeiro passaram a ser calculados a partir dos dados.
 \item \textbf{Valores alternativos:} um script novo calcula o investimento exposto com os outros valores que a base traz para as obras do DMAE, para que os números citados no relatório e na página \emph{Sobre os dados} sejam reproduzíveis.
 \item \textbf{Publicação:} o app ganhou um arquivo de dependências com versões fixas e um link público, e arquivos que não eram usados saíram do repositório.
@@ -140,7 +139,7 @@ O protótipo da Fase 3 já tinha as duas telas com todos os requisitos. Para a v
 
 \section{Uso de ferramenta de IA}
 
-O assistente Claude Code (Anthropic) foi utilizado entre 11/11 e 24/11/2026 na preparação dos dados do dashboard, na escrita do código das telas, nos testes e nas capturas de tela, na revisão do projeto contra o enunciado e na redação deste relatório. As decisões de conteúdo e de design são do autor, que conferiu os números exibidos.
+Utilizei o assistente Claude Code (Anthropic) entre 11/11 e 25/11/2026 na preparação dos dados do dashboard, na escrita do código das telas, nos testes e nas capturas de tela, na revisão do projeto contra o enunciado e na redação deste relatório. As decisões de conteúdo e de design são minhas, e conferi os números exibidos.
 
 \section{Reprodução}
 

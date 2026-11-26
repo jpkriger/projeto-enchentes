@@ -40,7 +40,7 @@ Os arquivos do TCE-RS não são versionados, porque contêm CPF e nome de credor
 | `app/` | dashboard em Streamlit: Tela 1, Tela 2 e página "Sobre os dados" |
 | `scripts/` | coleta, limpeza, preparação dos dados do app, gráficos e wireframe |
 | `notebooks/` | análise exploratória e figuras, incluindo as curvas por bairro |
-| `relatorios/` | base de dados (Fase 1), limpeza (Fase 2), dashboard (Fase 3), provas dos testes e wireframe |
+| `relatorios/` | base de dados (Fase 1), limpeza (Fase 2), dashboard (Fase 3), provas dos testes, wireframe e slides da apresentação (`pitch_apresentacao.pdf`) |
 | `docs/projeto.md` | ideia, decisões, dados e o que eles mostram |
 
 As fontes de cada arquivo estão em `dados/README.md`.

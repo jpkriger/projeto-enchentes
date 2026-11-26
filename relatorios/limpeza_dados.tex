@@ -17,7 +17,7 @@
 
 \title{\textbf{Relatório de limpeza e preparação dos dados}\\[0.3em]\large Projeto Extensionista: análise de dados de enchentes do INCT SiMAI\\Coleta, Preparação e Análise de Dados (Fase 2)}
 \author{Autor: João Pedro da Silva Kriger}
-\date{10 de novembro de 2026}
+\date{10 de novembro de 2026 (revisado em 25 de novembro de 2026)}
 
 \begin{document}
 \maketitle
@@ -28,7 +28,7 @@ O dashboard tem duas telas. A \textbf{Tela 1} responde à pergunta do enunciado:
 
 A \textbf{Tela 2} mostra para onde vai a verba da reconstrução de Porto Alegre. O elemento central é um slider do nível do rio: conforme a água avança, segundo a mancha simulada pelo próprio INCT, a tela mostra quais obras de reconstrução ficam na área alcançada e quanto investimento fica exposto, ou seja, o valor previsto para essas obras. Ela também compara o que a Prefeitura estima precisar com o que foi solicitado e recebido. A ligação com a Tela 1 é o mesmo nível do rio e a mesma simulação.
 
-Este relatório descreve, para cada base, os problemas encontrados e o que foi decidido. A seção~\ref{sec:inct} trata do \campo{data.json}; as seções~\ref{sec:manchas} a \ref{sec:slider}, das bases da Tela 2; a seção~\ref{sec:escopo}, das análises que foram retiradas do projeto e por quê.
+Este relatório descreve, para cada base, os problemas encontrados e o que foi decidido. A seção~\ref{sec:inct} trata do \campo{data.json}; as seções~\ref{sec:manchas} a \ref{sec:slider}, das bases da Tela 2; a seção~\ref{sec:escopo}, das análises exploradas na concepção do projeto e cortadas do escopo.
 
 \section{Bases utilizadas}
 
@@ -36,7 +36,7 @@ Este relatório descreve, para cada base, os problemas encontrados e o que foi d
 
 \textbf{Prefeitura de Porto Alegre (servidor ArcGIS, coletado em 27/10/2026).} A malha dos 94 bairros e as cotas de inundação; as obras do painel Monitoramento da Reconstrução, com tipo, local, valor previsto e situação; as etapas e contratos das obras do sistema de proteção; as áreas de habitação do DEMHAB; e os valores de necessidade, solicitado e recebido do painel financeiro.
 
-\textbf{TCE-RS (dados abertos, coletados em 27/10/2026).} Contratos, licitações e empenhos de 2024 e 2025 da Prefeitura e do DMAE.
+\textbf{TCE-RS (dados abertos, coletados em 27/10/2026).} Contratos, licitações e empenhos de 2024 e 2025 da Prefeitura e do DMAE. Usados só para conferir os valores das obras do DMAE (seção~\ref{sec:obras}).
 
 \textbf{Copernicus EMSN194 (União Europeia, coletado em 04/11/2026).} Os pontos do produto P08, com os prédios atingidos em 2024.
 
@@ -54,8 +54,6 @@ Cinco testes passaram. Todos os 71 níveis têm os mesmos 94 bairros, sem falta 
 Os outros cinco revelaram problemas: a ordem dos bairros muda em 5,3 m; a porcentagem não corresponde à conta exata em 2.620 registros; a população afetada herda esse erro; em 12 momentos os prédios afetados de um bairro diminuem quando o rio sobe; e a população afetada na cidade cai uma vez, entre 9,6 e 9,7 m.
 
 \subsection{Inconsistências e tratamento}
-
-Cada caso é apresentado como pede o enunciado: onde aparece, por que é um problema e a decisão tomada, com a justificativa.
 
 \textbf{1. Porcentagem arredondada sempre para cima.} \onde Em 6.672 dos 6.674 registros, \campo{percentage} é a porcentagem real arredondada para cima. No Cristal, a 3,0 m, são 20 de 10.229 prédios (0,20\%), e o arquivo informa 1\%. A diferença passa de 0,01 ponto em 2.620 registros; nos demais, a porcentagem real já é inteira ou quase, como nos 3.693 registros com 0\% e nos 336 com 100\%. As duas exceções são de Boa Vista do Sul, a 7,2 e 7,3 m: 686 de 2.450 prédios dá exatamente 28\%, e o arquivo traz 29\%, efeito típico de erro de arredondamento do computador. \problema O enunciado diz que o campo é calculado a partir dos prédios, e o resultado fica sempre acima do real, com erro maior onde poucos prédios foram atingidos. O enunciado não diz como arredondar, então pode ter sido uma escolha do INCT. \decisao{corrigir} O campo foi recalculado como prédios afetados divididos pelo total, vezes 100, com duas casas. O valor antigo fica em \campo{percentage\_original}.
 
@@ -94,20 +92,26 @@ Depois da limpeza, o script confere automaticamente que há 71 níveis com 94 ba
 \section{Manchas do INCT por nível}
 \label{sec:manchas}
 
-\textbf{O que são e como foram obtidas.} Para saber até onde a água chega em cada nível, foi usada a mancha simulada pelo próprio INCT, obtida da API do site, uma consulta por nível com pausa de 5 segundos. Foram baixados os 25 níveis de 3,0 a 5,4 m.
+\textbf{O que são.} A mancha é o polígono da área que a simulação do INCT indica como alagada em um nível do Guaíba, o mesmo desenho azul que aparece no site do INCT. Ela cobre a terra alagada e também rios e canais, como o Jacuí e o Gravataí, mas não cobre o lago Guaíba aberto, e termina num retângulo, que é o limite da área simulada. É ela que diz até onde a água chega na Tela 2.
+
+\textbf{Como foram obtidas.} O site do INCT busca cada mancha numa API (\campo{POST http://vhlab.lad.pucrs.br:5002/api/map-data}). O script \campo{scripts/coleta\_bases.py --temas inct} faz a mesma consulta que o site, uma por nível: o nível vai no campo \campo{water\_level}, e os filtros de bairro, rua e endereço vão vazios, para que a resposta traga a mancha inteira. Há pausa de 5 segundos entre as consultas. Foram baixados os 25 níveis de 3,0 a 5,4 m, em 10/11/2026, e cada resposta foi guardada sem alteração em \campo{dados/originais/1\_simulacao\_inct/mancha\_inct\_api/}, num arquivo por nível (\campo{map\_data\_3\_0m.json}, \campo{map\_data\_3\_1m.json} e assim por diante). A mancha está na chave \campo{flood} da resposta, como um único multipolígono em latitude e longitude; as demais chaves descrevem o estilo e a posição do mapa no site e não são usadas.
+
+\textbf{Como foram preparadas.} A mesma preparação é feita em \campo{scripts/obras\_por\_nivel.py}, que faz as contas, e em \campo{scripts/prepara\_dashboard.py}, que gera os arquivos do app. Para cada nível, o script lê o multipolígono da chave \campo{flood}; converte as coordenadas para o sistema SIRGAS 2000 / UTM 22S (EPSG:31982), que é em metros, para que distâncias e áreas possam ser medidas; corrige as partes do desenho que se cruzam ou têm defeito de geometria (função \campo{make\_valid}); e junta todas as partes numa só geometria. A mancha não é recortada pelo limite do município: ela já não cobre o lago, e o limite simplificado dos bairros cortaria faixas de orla onde ficam obras.
+
+Para as contas, a mancha é alargada em 50 m para todos os lados, e uma obra conta como alcançada quando o seu ponto cai dentro dessa faixa (seção~\ref{sec:slider}). Para o mapa do app, o desenho é simplificado com tolerância de 15 m, só para carregar mais rápido, e gravado em \campo{dados/processados/dashboard/manchas/}, um GeoJSON por nível. As contas sempre usam a mancha original, e não a simplificada.
+
+\textbf{Papel da malha de bairros.} A malha oficial de bairros não corta a mancha. Ela serve para montar o contorno do município, que é usado para medir a área da mancha dentro de Porto Alegre e para separar os pontos do Copernicus que ficam na cidade. Como a malha é uma versão simplificada, os bairros vizinhos não se encaixam perfeitamente e sobram frestas entre eles; por isso o contorno é montado juntando os 94 bairros e usando só a borda externa de cada parte, o que fecha essas frestas. A malha também é usada para comparar a mancha com o \campo{data.json} bairro a bairro.
+
+\textbf{Conferências.} A área da mancha dentro do município cresce a cada nível, de 88 km² a 3,0 m para 138 km² a 5,4 m, e o script para com erro se ela diminuir. A mancha também é coerente com o \campo{data.json}: a 3,0 m, os bairros com mais de 1\% da área dentro da mancha são exatamente os 24 que o arquivo dá como atingidos (outros 4 só encostam na mancha), e a 5,3 m a parcela da área de cada bairro coberta pela mancha acompanha a porcentagem de prédios atingidos (correlação de 0,97).
 
 \section{Obras e verba da reconstrução}
 \label{sec:obras}
 
-\textbf{Obras do painel da Prefeitura.} O local e o tipo das obras são confiáveis: as coordenadas caem no bairro informado em quase todos os casos. Os valores, não. São investimentos previstos, e não valores enviados ou pagos. Dos 293 valores, 112 (38\%) se repetem três vezes ou mais, sinal de rateio ou valor-padrão. O valor do mesmo projeto difere entre camadas em 109 de 114 casos. A situação da obra falta em cerca de metade dos pontos do sistema de proteção e conflita entre camadas em 12 projetos. A data de atualização é a mesma em todos os registros, 17/09/2026, que é a data da exportação. Por isso os valores aparecem sempre como ``previstos'' e só como ordem de grandeza. O detalhamento está em \campo{dados/processados/auditoria\_base\_reconstrucao.md}.
-
-\textbf{Cruzamento com os contratos do TCE-RS.} Foi tentado um cruzamento das obras de prevenção com os contratos do TCE-RS, usando a empresa e o valor de contrato informados pela Prefeitura. Em três casos, o valor atribuído a cada obra é um contrato dividido em partes iguais entre vários projetos, o que confirma o rateio; nos demais, não foi encontrado contrato compatível. O cruzamento é feito por \campo{scripts/cruza\_obras\_contratos.py}, e o resultado está em \campo{obras\_contratos\_rateio.csv}.
+\textbf{Obras do painel da Prefeitura.} O local e o tipo das obras são confiáveis: as coordenadas caem no bairro informado em quase todos os casos. Os valores, não. São investimentos previstos, e não valores enviados ou pagos. Dos 293 valores, 112 (38\%) se repetem três vezes ou mais, sinal de rateio ou valor-padrão. Para conferir, os valores das obras do DMAE foram comparados com os contratos do TCE-RS, pela empresa e pelo valor de contrato que a Prefeitura informa (\campo{scripts/cruza\_obras\_contratos.py}): em três casos, o valor de cada obra é um contrato dividido em partes iguais entre vários projetos, o que confirma o rateio. Esse é o único uso do TCE-RS no projeto. O valor do mesmo projeto difere entre camadas em 109 de 114 casos. A situação da obra falta em cerca de metade dos pontos do sistema de proteção e conflita entre camadas em 12 projetos. A data de atualização é a mesma em todos os registros, 17/09/2026, que é a data da exportação. Por isso os valores aparecem sempre como ``previstos'' e só como ordem de grandeza. O detalhamento está em \campo{dados/processados/auditoria\_base\_reconstrucao.md}.
 
 \textbf{Habitação (DEMHAB).} O valor é um custo estimado de reposição, e só 34 das 120 áreas seguem a regra de multiplicar os domicílios inabitáveis por R\$ 170 mil. Ele aparece como necessidade estimada, separado das obras.
 
 \textbf{Painel financeiro.} A Prefeitura estima em R\$ 12,3 bilhões o prejuízo da enchente ao setor público, valor que a Prefeitura apresentou ao governo federal por ofício como estimativa de prejuízo. Esse valor inclui R\$ 5,5 bi em habitação, R\$ 4,7 bi em expansão da macrodrenagem e R\$ 602,8 mi em perda de arrecadação. O painel registra R\$ 164,4 mi recebidos de R\$ 182,8 mi solicitados para emergência e R\$ 8,4 mi de R\$ 196,6 mi para reconstrução. A camada não diz quem repassa, mas o texto do painel confirma que os pedidos foram feitos à União por cadastros formais do governo federal, como os da Defesa Civil e do Ministério da Saúde, num total de R\$ 381,9 milhões; nos dados, o total solicitado é de R\$ 379,4 milhões.
-
-\textbf{Empenhos e contratos (TCE-RS).} Mostram o dinheiro realmente empenhado e pago, mas nenhum campo identifica toda a despesa da enchente. Um filtro por palavras no histórico erra nos dois sentidos: ``reconstrução'' trouxe a compra de placas ortopédicas, e despesas que não citam a enchente ficam de fora. Os marcadores oficiais encontrados são parciais: o projeto do Fundo Municipal de Reconstrução e Adaptação Climática, com R\$ 12,5 milhões pagos desde julho de 2025, e a subfunção Defesa Civil, que inclui outros eventos. \decisao{não usar totais} A base serve só para identificar o contrato de obras específicas. O valor pago por obra também não é confiável, porque o campo de número do contrato vem vazio nos empenhos e o histórico cita o contrato só em parte dos casos. Há ainda erros evidentes de registro nos valores de alguns contratos.
 
 \textbf{Comparação com o painel oficial.} Em 10/11/2026, os números do site do painel foram comparados com os dados abertos que ele publica, com registros de 17/09/2026. Parte confere, como os R\$ 620,6 milhões do sistema de proteção; outra parte não, como as obras de infraestrutura, que no site são 219 e nos dados, 194. Por isso, o dashboard informa a fonte e a data dos dados.
 
@@ -121,44 +125,44 @@ Depois da limpeza, o script confere automaticamente que há 71 níveis com 94 ba
 \textbf{Passo a passo.} O script \campo{scripts/obras\_por\_nivel.py} faz quatro etapas para cada nível de 3,0 a 5,4 m, em passos de 0,1 m:
 \begin{enumerate}
 \item transforma cada obra em um ponto no mapa, usando os campos \campo{latitude} e \campo{longitude} da base de reconstrução da Prefeitura;
-\item lê a mancha do INCT daquele nível, junta os seus polígonos e recorta pelo limite do município;
+\item lê a mancha do INCT daquele nível, inteira e preparada como descrito na seção~\ref{sec:manchas};
 \item testa, para cada ponto, se ele está dentro da mancha ou a até 50 m dela;
 \item conta as obras que passaram no teste e soma o investimento previsto delas, que é o investimento exposto naquele nível, separando sistema de proteção e equipamentos públicos.
 \end{enumerate}
 Todas as contas de distância são feitas em metros, no sistema SIRGAS 2000 / UTM 22S (EPSG:31982). O resultado fica no arquivo \campo{obras\_por\_nivel.csv}, em \campo{dados/processados/}, uma linha por nível.
 
-\textbf{Quais obras entram.} Das 318 obras da base (R\$ 751,7 mi previstos), entram as 274 que têm coordenada (R\$ 740,3 mi). As 44 sem coordenada, quase todas registros de reparo emergencial do sistema de proteção, ficam de fora. As coordenadas existentes são confiáveis: 267 das 274 caem no bairro informado.
+\textbf{Quais obras entram.} Das 318 obras da base (R\$ 751,7 mi previstos), entram as 274 que têm coordenada (R\$ 740,3 mi). As 44 sem coordenada ficam de fora; 43 delas são do DMAE, quase todas prédios de apoio de estações e casas de bombas. As coordenadas existentes são confiáveis: 267 das 274 caem no bairro informado.
 
-\textbf{Resultado.} Com o rio a 3,0 m, já são 128 obras e R\$ 434,5 mi de investimento exposto; a 4,0 m, 223 obras e R\$ 682,2 mi; a 5,4 m, 255 obras e R\$ 700,7 mi. O sistema de proteção domina o valor por ficar na beira do rio. O dado mais relevante são os equipamentos públicos, como escolas, praças e unidades de saúde: já a 3,0 m, uma cheia bem menor que a de 2024, 89 deles estão na área alcançada, com R\$ 67,4 mi de investimento exposto.
+\textbf{Resultado.} Com o rio a 3,0 m, já são 129 obras e R\$ 447,1 mi de investimento exposto; a 4,0 m, 224 obras e R\$ 694,8 mi; a 5,4 m, 256 obras e R\$ 713,3 mi. As obras do DMAE dominam o valor por ficarem na beira do rio. O dado mais relevante são os equipamentos públicos, como escolas, praças e unidades de saúde: já a 3,0 m, uma cheia bem menor que a de 2024, 90 deles estão na área alcançada, com R\$ 80,0 mi de investimento exposto.
 
 \begin{figure}[H]\centering\includegraphics[width=0.95\textwidth]{g9_obras_por_nivel.png}\caption{Obras e investimento exposto dentro da mancha do INCT, nível a nível.}\end{figure}
 
-\textbf{Limites.} O valor é previsto, não enviado nem pago. Cada obra é representada por um único ponto: isso funciona bem para uma escola ou uma praça, mas um dique de vários quilômetros fica representado por um só lugar da estrutura. A tolerância de 50 m existe para compensar isso e o desenho simplificado da mancha, mas ela muda o resultado: sem tolerância, são 82 obras a 3,0 m, e não 128, e 234 a 5,4 m, e não 255. As 44 obras sem coordenada não aparecem no slider. A mancha é simulada, e não a enchente real. O slider vai só até 5,4 m porque acima do recorde não há evento real, e o resultado praticamente não muda. Quando a Tela 1 estiver acima de 5,4 m, a Tela 2 mostra o valor de 5,4 m com um aviso.
+\textbf{Limites.} O valor é previsto, não enviado nem pago. Cada obra é representada por um único ponto: isso funciona bem para uma escola ou uma praça, mas um dique de vários quilômetros fica representado por um só lugar da estrutura. A tolerância de 50 m existe para compensar isso e o desenho simplificado da mancha, mas ela muda o resultado: sem tolerância, são 83 obras a 3,0 m, e não 129, e 236 a 5,4 m, e não 256. As 44 obras sem coordenada não aparecem no slider. A mancha é simulada, e não a enchente real. O slider vai só até 5,4 m porque acima do recorde não há evento real, e o resultado praticamente não muda. Quando a Tela 1 estiver acima de 5,4 m, a Tela 2 mostra o valor de 5,4 m com um aviso.
 
-\section{Análises retiradas do projeto}
+\section{Análises cortadas do escopo}
 \label{sec:escopo}
 
-O projeto passou por análises que foram descartadas, e os dados delas foram apagados.
+No início do projeto, na fase de concepção (\emph{inception}), antes de fechar a pergunta da Tela 2, outras análises foram exploradas. Elas foram cortadas do escopo e não fazem parte do dashboard nem de nenhum número deste relatório, e os dados delas foram apagados. Ficam registradas aqui só para mostrar o que foi considerado e por que saiu.
 
-\textbf{Validação da mancha do INCT.} A simulação foi comparada com a mancha observada do IPH/UFRGS, com o Copernicus e com os domicílios do Censo. A análise foi retirada porque não existe uma fonte da verdade para a extensão da enchente, e a comparação viraria uma discussão de metodologia entre trabalhos de outras equipes. Ficaram só os pontos P08 do Copernicus, como registro de locais atingidos.
+\textbf{Validação da mancha do INCT.} A simulação seria comparada com a mancha observada do IPH/UFRGS, com o Copernicus e com os domicílios do Censo. Saiu porque não existe uma fonte da verdade para a extensão da enchente, e a comparação viraria uma discussão de metodologia entre trabalhos de outras equipes. Ficaram só os pontos P08 do Copernicus, como registro de locais atingidos.
 
-\textbf{Falhas do sistema de proteção.} Cronologia da cheia, áreas das casas de bombas e nível do rio pela ANA. Foram retiradas para manter o foco na verba; da base de prevenção ficou só a camada de obras.
+\textbf{Falhas do sistema de proteção.} Cronologia da cheia, áreas das casas de bombas e nível do rio pela ANA. Saiu para manter o foco na verba da reconstrução; da base de prevenção ficou só a camada de obras.
 
-\textbf{Saúde e fila do SUS (GERCON).} A fila só tinha consultas com especialista, sem cirurgias, e não respondia à pergunta.
+\textbf{Saúde e fila do SUS (GERCON).} Saiu porque a fila só tinha consultas com especialista, sem cirurgias, e não respondia à pergunta.
 
-\textbf{Empresas sancionadas, CNPJ e licitações do Dados Abertos POA.} Serviam à busca de pontos de atenção em contratos, que deixou de ser o foco. A licitação da Prefeitura também não tinha fornecedor em nenhuma das 130.506 linhas.
+\textbf{Pontos de atenção em contratos.} Empresas sancionadas, CNPJ e licitações do Dados Abertos POA. Saiu quando a busca de pontos de atenção em contratos deixou de ser o foco; a licitação da Prefeitura também não tinha fornecedor em nenhuma das 130.506 linhas.
 
-\textbf{Total pago com a enchente.} Retirado pelos motivos da seção~\ref{sec:obras}.
+\textbf{Total pago com a enchente.} Os empenhos do TCE-RS mostrariam o dinheiro de fato pago. Saiu porque nenhum campo identifica toda a despesa da enchente, e um filtro por palavras no histórico erra para mais e para menos.
 
 \section{Coleta responsável e ética}
 
-Os arquivos \campo{robots.txt} foram verificados. O TCE-RS e o Dados Abertos POA proíbem o caminho \campo{/api/} e pedem 10 segundos entre acessos; na exploração inicial esse caminho foi usado nesses portais para buscas, o que foi um erro, e o script final usa só URLs diretas de download, com pausa. O Copernicus proíbe \campo{/download/}, por isso os pontos P08 foram baixados manualmente. A API do INCT e o servidor da Prefeitura não têm \campo{robots.txt}, e o script faz pausas mesmo assim.
+Os arquivos \campo{robots.txt} foram verificados. O TCE-RS e o Dados Abertos POA proíbem o caminho \campo{/api/} e pedem 10 segundos entre acessos; por isso o script de coleta usa só URLs diretas de download, com essa pausa. O Copernicus proíbe \campo{/download/}, por isso os pontos P08 foram baixados manualmente. A API do INCT e o servidor da Prefeitura não têm \campo{robots.txt}, e o script faz pausas mesmo assim.
 
 Os arquivos do TCE-RS contêm CPF e nome de credores pessoa física e não são versionados no repositório; o script os baixa. O recorte exploratório de empenhos (\campo{empenhos\_enchente.csv}) não é usado nas telas e ainda tem nomes de servidores no histórico, por isso precisa ser mascarado ou removido antes da publicação. O dashboard não publica nomes de pessoas físicas, e sinais de atenção em contratos não são tratados como prova de irregularidade.
 
 \section{Uso de ferramenta de IA}
 
-O assistente Claude Code (Anthropic) foi utilizado entre 27/10 e 10/11/2026 na coleta das bases, na escrita dos scripts de limpeza e de análise, na identificação das inconsistências, no notebook, no wireframe, na redação deste relatório e na revisão dos números. As decisões e as conclusões são do autor, que conferiu os resultados.
+Utilizei o assistente Claude Code (Anthropic) entre 27/10 e 10/11/2026, e na revisão de 25/11/2026, na coleta das bases, na escrita dos scripts de limpeza e de análise, na identificação das inconsistências, no notebook, no wireframe, na redação deste relatório e na revisão dos números. As decisões e as conclusões são minhas, e conferi os resultados.
 
 \section{Reprodução}
 
