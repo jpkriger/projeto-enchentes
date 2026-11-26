@@ -1,6 +1,6 @@
 # Projeto: Enchentes em Porto Alegre (CPAD / INCT SiMAI)
 
-Documento de trabalho com a ideia, as decisões e os dados do projeto. Atualizado em 24/11/2026. A origem de cada arquivo está em [`dados/README.md`](../dados/README.md).
+Documento de trabalho com a ideia, as decisões e os dados do projeto. Atualizado em 25/11/2026. A origem de cada arquivo está em [`dados/README.md`](../dados/README.md).
 
 ## 1. A ideia
 
@@ -28,11 +28,11 @@ As duas telas são ligadas pelo **mesmo nível do rio**, que passa de uma para a
 
 O foco é **Porto Alegre**, porque os dados do INCT são só da cidade.
 
-A Tela 2 trata da **verba da reconstrução exposta à água**. As análises de validação da mancha, de falhas do sistema de proteção, de saúde e de fila do SUS foram retiradas, e os dados correspondentes foram apagados. A validação da mancha saiu porque não existe uma fonte da verdade para a extensão da enchente. Dos dados de validação, ficaram apenas os pontos P08 do Copernicus, como camada de contexto.
+A Tela 2 trata da **verba da reconstrução exposta à água**. As análises exploradas na concepção do projeto e cortadas do escopo (validação da mancha, falhas do sistema de proteção, fila do SUS, pontos de atenção em contratos e total pago com a enchente) não fazem parte do dashboard, e os dados correspondentes foram apagados. A validação da mancha saiu porque não existe uma fonte da verdade para a extensão da enchente. Dos dados de validação, ficaram apenas os pontos P08 do Copernicus, como camada de contexto.
 
 A **fonte das obras e dos valores é a base de dados abertos da Prefeitura** (servidor ArcGIS do painel Monitoramento da Reconstrução), com registros de 17/09/2026. O site do painel mostra alguns números diferentes, que não aparecem em nenhuma base publicada; o dashboard usa os dados abertos e informa a fonte e a data.
 
-Os valores por obra **não são usados como número preciso**: são previsões, e muitos se repetem, o que indica rateio de um mesmo contrato entre projetos (ver a [auditoria](../dados/processados/auditoria_base_reconstrucao.md)). Os dados do TCE-RS serviram só para tentar ligar obras do sistema de proteção aos seus contratos, nunca para totais.
+Os valores por obra **não são usados como número preciso**: são previsões, e muitos se repetem, o que indica rateio de um mesmo contrato entre projetos (ver a [auditoria](../dados/processados/auditoria_base_reconstrucao.md)). Os dados do TCE-RS serviram só para conferir esse rateio em três contratos e não aparecem no dashboard.
 
 A habitação fica fora do mapa da Tela 2, porque o seu valor é uma necessidade estimada de reposição e não o valor de uma obra. Transformação urbana e adaptação climática também ficam fora, porque não têm localização nem valor por obra.
 
@@ -42,7 +42,7 @@ O **robots.txt é respeitado** em toda a coleta. O TCE-RS proíbe o caminho `/ap
 
 A **malha de bairros** da Prefeitura é a base geográfica oficial e é confiável.
 
-A **simulação do INCT** é o `data.json`, que depois da limpeza é coerente como simulação, mas continua sendo estimativa. As manchas por nível vêm da mesma API usada pelo site do INCT, coletadas em 10/11/2026, e são coerentes com o `data.json`: a 3,0 m, os bairros com mais de 1% da área dentro da mancha são os mesmos 24 que ele dá como atingidos (outros 4 só encostam na mancha), e a 5,3 m a área coberta em cada bairro acompanha a porcentagem de prédios atingidos (correlação de 0,97). O site foi atualizado depois e hoje serve outra versão da simulação, com totais maiores (a 5,3 m, 63.180 prédios no site e 53.989 no arquivo); o dashboard mantém as manchas de 10/11 para que as duas telas usem a mesma versão.
+A **simulação do INCT** é o `data.json`, que depois da limpeza é coerente como simulação, mas continua sendo estimativa. As manchas por nível vêm da mesma API usada pelo site do INCT, coletadas em 10/11/2026, e são coerentes com o `data.json`: a 3,0 m, os bairros com mais de 1% da área dentro da mancha são os mesmos 24 que ele dá como atingidos (outros 4 só encostam na mancha), e a 5,3 m a área coberta em cada bairro acompanha a porcentagem de prédios atingidos (correlação de 0,97). O dashboard usa essas manchas de 10/11 para que as duas telas usem a mesma versão da simulação.
 
 As **bases de reconstrução da Prefeitura** trazem 318 obras: 194 de equipamentos públicos e 124 obras do DMAE, que a Prefeitura agrupa como Sistema de Prevenção. Esse grupo não é só proteção contra cheias: 41 são equipamentos de proteção (casas de bombas, comportas, diques e o Muro da Mauá), 26 são de esgoto, 5 de captação de água, 3 de redes pluviais e 49 são prédios do DMAE. Delas, 274 têm localização; das 44 sem localização, 43 são do DMAE, quase todas prédios. Localização e tipo são confiáveis, mas os valores são previsões e a situação falta em muitas obras do sistema de proteção.
 

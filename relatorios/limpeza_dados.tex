@@ -156,9 +156,9 @@ No início do projeto, na fase de concepção (\emph{inception}), antes de fecha
 
 \section{Coleta responsável e ética}
 
-Os arquivos \campo{robots.txt} foram verificados. O TCE-RS e o Dados Abertos POA proíbem o caminho \campo{/api/} e pedem 10 segundos entre acessos; por isso o script de coleta usa só URLs diretas de download, com essa pausa. O Copernicus proíbe \campo{/download/}, por isso os pontos P08 foram baixados manualmente. A API do INCT e o servidor da Prefeitura não têm \campo{robots.txt}, e o script faz pausas mesmo assim.
+Os arquivos \campo{robots.txt} foram verificados. O TCE-RS proíbe o caminho \campo{/api/} e pede 10 segundos entre acessos; por isso o script de coleta usa só URLs diretas de download, com essa pausa. O Copernicus proíbe \campo{/download/}, por isso os pontos P08 foram baixados manualmente. A API do INCT e o servidor da Prefeitura não têm \campo{robots.txt}, e o script faz pausas mesmo assim.
 
-Os arquivos do TCE-RS contêm CPF e nome de credores pessoa física e não são versionados no repositório; o script os baixa. O recorte exploratório de empenhos (\campo{empenhos\_enchente.csv}) não é usado nas telas e ainda tem nomes de servidores no histórico, por isso precisa ser mascarado ou removido antes da publicação. O dashboard não publica nomes de pessoas físicas, e sinais de atenção em contratos não são tratados como prova de irregularidade.
+Os arquivos do TCE-RS contêm CPF e nome de credores pessoa física e não são versionados no repositório; o script os baixa. O dashboard não publica nomes de pessoas físicas.
 
 \section{Uso de ferramenta de IA}
 
